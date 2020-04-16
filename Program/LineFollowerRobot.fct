@@ -1,0 +1,3 @@
+main DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"LineFollowerRobot.c" LINE:236
+RobotPosition DSTACK_USAGE:18 DSTACK_LEVEL:22 FILE:"LineFollowerRobot.c" LINE:209
+ReadSensorLineData DSTACK_USAGE:2 DSTACK_LEVEL:24 FILE:"LineFollowerRobot.c" LINE:154

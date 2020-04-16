@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "findlog.h": "c",
+        "math.h": "c",
+        "main.h": "c",
+        "mega328p.h": "c",
+        "mega328p_bits.h": "c",
+        "delay.h": "c",
+        "initsys.h": "c",
+        "angledegtorad.h": "c",
+        "readsensorlinedata.h": "c",
+        "findrotationangle.h": "c",
+        "directionofmovement.h": "c"
+    }
+}

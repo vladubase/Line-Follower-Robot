@@ -1,0 +1,25 @@
+/**************************** Includes ****************************/
+
+#include "mega328p.h"
+#include "mega328p_bits.h"
+#include "delay.h"
+#include "math.h"
+#include "InitSys.h"
+#include "FindLog.h"
+#include "AngleDegToRad.h"
+#include "ReadSensorLineData.h"
+#include "FindRotationAngle.h"
+#include "DirectionOfMovement.h"
+
+/**************************** Functions ***************************/
+
+InitSys ();
+FindLog ();
+AngleDegToRad ();
+ReadSensorLineData ();
+FindRotationAngle ();
+
+MoveForward ();
+MoveStop ();
+MoveLeft ();
+MoveRight ();
