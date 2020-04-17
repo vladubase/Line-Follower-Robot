@@ -149,63 +149,59 @@ void InitSys (void) {
 
 }
 
-bool ReadSensorLineData (bool lineData[]) {
+void ReadSensorLineData (bool *lineData[]) {
 
     #ifdef ReadSensor1
-        lineData[0] = ReadSensor1;
+        *lineData[0] = ReadSensor1;
     #endif
     #ifdef ReadSensor2
-        lineData[1] = ReadSensor2;
+        *lineData[1] = ReadSensor2;
     #endif
     #ifdef ReadSensor3
-        lineData[2] = ReadSensor3;
+        *lineData[2] = ReadSensor3;
     #endif
     #ifdef ReadSensor4
-        lineData[3] = ReadSensor4;
+        *lineData[3] = ReadSensor4;
     #endif
     #ifdef ReadSensor5
-        lineData[4] = ReadSensor5;
+        *lineData[4] = ReadSensor5;
     #endif
     #ifdef ReadSensor6
-        lineData[5] = ReadSensor6;
+        *lineData[5] = ReadSensor6;
     #endif
     #ifdef ReadSensor7
-        lineData[6] = ReadSensor7;
+        *lineData[6] = ReadSensor7;
     #endif
     #ifdef ReadSensor8
-        lineData[7] = ReadSensor8;
+        *lineData[7] = ReadSensor8;
     #endif
     #ifdef ReadSensor9
-        lineData[8] = ReadSensor9;
+        *lineData[8] = ReadSensor9;
     #endif
     #ifdef ReadSensor10
-        lineData[9] = ReadSensor10;
+        *lineData[9] = ReadSensor10;
     #endif
     #ifdef ReadSensor11
-        lineData[10] = ReadSensor11;
+        *lineData[10] = ReadSensor11;
     #endif
     #ifdef ReadSensor12
-        lineData[11] = ReadSensor12;
+        *lineData[11] = ReadSensor12;
     #endif
     #ifdef ReadSensor13
-        lineData[12] = ReadSensor13;
+        *lineData[12] = ReadSensor13;
     #endif
     #ifdef ReadSensor14
-        lineData[13] = ReadSensor14;
+        *lineData[13] = ReadSensor14;
     #endif
     #ifdef ReadSensor15
-        lineData[14] = ReadSensor15;
+        *lineData[14] = ReadSensor15;
     #endif
     #ifdef ReadSensor16
-        lineData[15] = ReadSensor16;
+        *lineData[15] = ReadSensor16;
     #endif
-
-    return lineData[QTY_OF_SENSORS];
-
 }
 
-float
-RobotPosition(void) {
+float RobotPosition(void) {
 
     int posSum = 0;
     float posMedian = QTY_OF_SENSORS / 2;
@@ -213,7 +209,7 @@ RobotPosition(void) {
     int signalCorrected;
     unsigned char i = 0;
 
-    ReadSensorLineData(sensorLineData);
+    ReadSensorLineData(&sensorLineData);
 
     for (i = QTY_OF_SENSORS; i > 0; i--) {
         if (sensorLineData[i]) {
