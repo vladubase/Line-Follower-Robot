@@ -10,6 +10,10 @@
         "angledegtorad.h": "c",
         "readsensorlinedata.h": "c",
         "findrotationangle.h": "c",
-        "directionofmovement.h": "c"
-    }
+        "directionofmovement.h": "c",
+        "stdbool.h": "c",
+        "robotposition.h": "c",
+        "stddef.h": "c"
+    },
+    "git.ignoreLimitWarning": true
 }

@@ -699,5 +699,4 @@ ATmega48P, ATmega88P, ATmega168P, ATmega328P I/O REGISTERS BIT DEFINITIONS
 #define    EEPM0           4       // EEPROM Programming Mode Bit 0
 #define    EEPM1           5       // EEPROM Programming Mode Bit 1
 
-#endif
-
+#endif /* __MEGA328P_BITS_INCLUDED__ */

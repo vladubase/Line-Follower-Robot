@@ -1199,139 +1199,141 @@ strncpyf1:
 ;PCODE: $000002AF VOL: 0
     clr  r24
 ;PCODE: $000002B0 VOL: 0
-strlcpy0:
-;PCODE: $000002B1 VOL: 0
     tst  r23
-;PCODE: $000002B2 VOL: 0
+;PCODE: $000002B1 VOL: 0
     breq strlcpy1
+;PCODE: $000002B2 VOL: 0
+strlcpy0:
 ;PCODE: $000002B3 VOL: 0
     dec  r23
 ;PCODE: $000002B4 VOL: 0
-    ld   r22,z+
+    breq strlcpy1
 ;PCODE: $000002B5 VOL: 0
-    tst  r22
+    ld   r22,z+
 ;PCODE: $000002B6 VOL: 0
-    st   x+,r22
+    tst  r22
 ;PCODE: $000002B7 VOL: 0
-    breq strlcpy2
+    st   x+,r22
 ;PCODE: $000002B8 VOL: 0
-    inc  r24
+    breq strlcpy2
 ;PCODE: $000002B9 VOL: 0
-    rjmp strlcpy0
+    inc  r24
 ;PCODE: $000002BA VOL: 0
-strlcpy1:
+    rjmp strlcpy0
 ;PCODE: $000002BB VOL: 0
-    st   x,r23
+strlcpy1:
 ;PCODE: $000002BC VOL: 0
-strlcpy2:
+    st   x,r23
 ;PCODE: $000002BD VOL: 0
-    mov  r30,r24
+strlcpy2:
 ;PCODE: $000002BE VOL: 0
-    ret
+    mov  r30,r24
 ;PCODE: $000002BF VOL: 0
+    ret
 ;PCODE: $000002C0 VOL: 0
 ;PCODE: $000002C1 VOL: 0
 ;PCODE: $000002C2 VOL: 0
 ;PCODE: $000002C3 VOL: 0
 ;PCODE: $000002C4 VOL: 0
-    ld   r22,y+
 ;PCODE: $000002C5 VOL: 0
-    ld   r30,y+
+    ld   r22,y+
 ;PCODE: $000002C6 VOL: 0
-    ld   r31,y+
+    ld   r30,y+
 ;PCODE: $000002C7 VOL: 0
-    ld   r26,y+
+    ld   r31,y+
 ;PCODE: $000002C8 VOL: 0
-    ld   r27,y+
+    ld   r26,y+
 ;PCODE: $000002C9 VOL: 0
-    clr  r24
+    ld   r27,y+
 ;PCODE: $000002CA VOL: 0
-strlcpyf0:
+    clr  r24
 ;PCODE: $000002CB VOL: 0
     tst  r22
 ;PCODE: $000002CC VOL: 0
     breq strlcpyf1
 ;PCODE: $000002CD VOL: 0
-    dec  r22
+strlcpyf0:
 ;PCODE: $000002CE VOL: 0
+    dec  r22
 ;PCODE: $000002CF VOL: 0
+    breq strlcpyf1
 ;PCODE: $000002D0 VOL: 0
-	lpm  r0,z+
 ;PCODE: $000002D1 VOL: 0
 ;PCODE: $000002D2 VOL: 0
-    tst  r0
+	lpm  r0,z+
 ;PCODE: $000002D3 VOL: 0
-    st   x+,r0
 ;PCODE: $000002D4 VOL: 0
-    breq strlcpyf2
+    tst  r0
 ;PCODE: $000002D5 VOL: 0
-    inc  r24
+    st   x+,r0
 ;PCODE: $000002D6 VOL: 0
-    rjmp strlcpyf0
+    breq strlcpyf2
 ;PCODE: $000002D7 VOL: 0
-strlcpyf1:
+    inc  r24
 ;PCODE: $000002D8 VOL: 0
-    st   x,r22
+    rjmp strlcpyf0
 ;PCODE: $000002D9 VOL: 0
-strlcpyf2:
+strlcpyf1:
 ;PCODE: $000002DA VOL: 0
-    mov  r30,r24
+    st   x,r22
 ;PCODE: $000002DB VOL: 0
-    ret
+strlcpyf2:
 ;PCODE: $000002DC VOL: 0
+    mov  r30,r24
 ;PCODE: $000002DD VOL: 0
+    ret
 ;PCODE: $000002DE VOL: 0
 ;PCODE: $000002DF VOL: 0
 ;PCODE: $000002E0 VOL: 0
 ;PCODE: $000002E1 VOL: 0
 ;PCODE: $000002E2 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $000002E3 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $000002E4 VOL: 0
-strpbrk0:
+    ldd  r27,y+3
 ;PCODE: $000002E5 VOL: 0
-    ld   r22,x
+    ldd  r26,y+2
 ;PCODE: $000002E6 VOL: 0
-    tst  r22
+strpbrk0:
 ;PCODE: $000002E7 VOL: 0
-    breq strpbrk2
+    ld   r22,x
 ;PCODE: $000002E8 VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $000002E9 VOL: 0
-    ld   r30,y
+    breq strpbrk2
 ;PCODE: $000002EA VOL: 0
-strpbrk1:
+    ldd  r31,y+1
 ;PCODE: $000002EB VOL: 0
-    ld   r23,z+
+    ld   r30,y
 ;PCODE: $000002EC VOL: 0
-    tst  r23
+strpbrk1:
 ;PCODE: $000002ED VOL: 0
-    breq strpbrk3
+    ld   r23,z+
 ;PCODE: $000002EE VOL: 0
-    cp   r22,r23
+    tst  r23
 ;PCODE: $000002EF VOL: 0
-    brne strpbrk1
+    breq strpbrk3
 ;PCODE: $000002F0 VOL: 0
-    movw r30,r26
+    cp   r22,r23
 ;PCODE: $000002F1 VOL: 0
-    rjmp strpbrk4
+    brne strpbrk1
 ;PCODE: $000002F2 VOL: 0
-strpbrk3:
+    movw r30,r26
 ;PCODE: $000002F3 VOL: 0
-    adiw r26,1
+    rjmp strpbrk4
 ;PCODE: $000002F4 VOL: 0
-    rjmp strpbrk0
+strpbrk3:
 ;PCODE: $000002F5 VOL: 0
-strpbrk2:
+    adiw r26,1
 ;PCODE: $000002F6 VOL: 0
-    clr  r30
+    rjmp strpbrk0
 ;PCODE: $000002F7 VOL: 0
-    clr  r31
+strpbrk2:
 ;PCODE: $000002F8 VOL: 0
-strpbrk4:
+    clr  r30
 ;PCODE: $000002F9 VOL: 0
+    clr  r31
 ;PCODE: $000002FA VOL: 0
+strpbrk4:
 ;PCODE: $000002FB VOL: 0
 ;PCODE: $000002FC VOL: 0
 ;PCODE: $000002FD VOL: 0
@@ -1339,182 +1341,182 @@ strpbrk4:
 ;PCODE: $000002FF VOL: 0
 ;PCODE: $00000300 VOL: 0
 ;PCODE: $00000301 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $00000302 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $00000303 VOL: 0
-strpbrkf0:
+    ldd  r27,y+3
 ;PCODE: $00000304 VOL: 0
-    ld   r22,x
+    ldd  r26,y+2
 ;PCODE: $00000305 VOL: 0
-    tst  r22
+strpbrkf0:
 ;PCODE: $00000306 VOL: 0
-    breq strpbrkf2
+    ld   r22,x
 ;PCODE: $00000307 VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $00000308 VOL: 0
-    ld   r30,y
+    breq strpbrkf2
 ;PCODE: $00000309 VOL: 0
-strpbrkf1:
+    ldd  r31,y+1
 ;PCODE: $0000030A VOL: 0
+    ld   r30,y
 ;PCODE: $0000030B VOL: 0
+strpbrkf1:
 ;PCODE: $0000030C VOL: 0
-	lpm
 ;PCODE: $0000030D VOL: 0
 ;PCODE: $0000030E VOL: 0
-    tst  r0
+	lpm
 ;PCODE: $0000030F VOL: 0
-    breq strpbrkf3
 ;PCODE: $00000310 VOL: 0
-    adiw r30,1
+    tst  r0
 ;PCODE: $00000311 VOL: 0
-    cp   r22,r0
+    breq strpbrkf3
 ;PCODE: $00000312 VOL: 0
-    brne strpbrkf1
+    adiw r30,1
 ;PCODE: $00000313 VOL: 0
-    movw r30,r26
+    cp   r22,r0
 ;PCODE: $00000314 VOL: 0
-    rjmp strpbrkf4
+    brne strpbrkf1
 ;PCODE: $00000315 VOL: 0
-strpbrkf3:
+    movw r30,r26
 ;PCODE: $00000316 VOL: 0
-    adiw r26,1
+    rjmp strpbrkf4
 ;PCODE: $00000317 VOL: 0
-    rjmp strpbrkf0
+strpbrkf3:
 ;PCODE: $00000318 VOL: 0
-strpbrkf2:
+    adiw r26,1
 ;PCODE: $00000319 VOL: 0
-    clr  r30
+    rjmp strpbrkf0
 ;PCODE: $0000031A VOL: 0
-    clr  r31
+strpbrkf2:
 ;PCODE: $0000031B VOL: 0
-strpbrkf4:
+    clr  r30
 ;PCODE: $0000031C VOL: 0
+    clr  r31
 ;PCODE: $0000031D VOL: 0
+strpbrkf4:
 ;PCODE: $0000031E VOL: 0
 ;PCODE: $0000031F VOL: 0
 ;PCODE: $00000320 VOL: 0
 ;PCODE: $00000321 VOL: 0
 ;PCODE: $00000322 VOL: 0
 ;PCODE: $00000323 VOL: 0
-    ld   r22,y+
 ;PCODE: $00000324 VOL: 0
-    ld   r26,y+
 ;PCODE: $00000325 VOL: 0
-    ld   r27,y+
+    ld   r22,y+
 ;PCODE: $00000326 VOL: 0
-    clr  r30
+    ld   r26,y+
 ;PCODE: $00000327 VOL: 0
-    clr  r31
+    ld   r27,y+
 ;PCODE: $00000328 VOL: 0
-strpos0:
+    clr  r30
 ;PCODE: $00000329 VOL: 0
-    ld   r23,x+
+    clr  r31
 ;PCODE: $0000032A VOL: 0
-    cp   r22,r23
+strpos0:
 ;PCODE: $0000032B VOL: 0
-    breq strpos1
+    ld   r23,x+
 ;PCODE: $0000032C VOL: 0
-    adiw r30,1
+    cp   r22,r23
 ;PCODE: $0000032D VOL: 0
-    tst  r23
+    breq strpos1
 ;PCODE: $0000032E VOL: 0
-    brne strpos0
+    adiw r30,1
 ;PCODE: $0000032F VOL: 0
-    ldi  r30,0xff
+    tst  r23
 ;PCODE: $00000330 VOL: 0
-    ldi  r31,0xff
+    brne strpos0
 ;PCODE: $00000331 VOL: 0
-strpos1:
+    ldi  r30,0xff
 ;PCODE: $00000332 VOL: 0
-    ret
+    ldi  r31,0xff
 ;PCODE: $00000333 VOL: 0
+strpos1:
 ;PCODE: $00000334 VOL: 0
+    ret
 ;PCODE: $00000335 VOL: 0
 ;PCODE: $00000336 VOL: 0
 ;PCODE: $00000337 VOL: 0
 ;PCODE: $00000338 VOL: 0
-    ld   r22,y+
 ;PCODE: $00000339 VOL: 0
-    ld   r26,y+
 ;PCODE: $0000033A VOL: 0
-    ld   r27,y+
+    ld   r22,y+
 ;PCODE: $0000033B VOL: 0
-    clr  r30
+    ld   r26,y+
 ;PCODE: $0000033C VOL: 0
-    clr  r31
+    ld   r27,y+
 ;PCODE: $0000033D VOL: 0
-strrchr0:
+    clr  r30
 ;PCODE: $0000033E VOL: 0
-    ld   r23,x
+    clr  r31
 ;PCODE: $0000033F VOL: 0
-    cp   r22,r23
+strrchr0:
 ;PCODE: $00000340 VOL: 0
-    brne strrchr1
+    ld   r23,x
 ;PCODE: $00000341 VOL: 0
-    movw r30,r26
+    cp   r22,r23
 ;PCODE: $00000342 VOL: 0
-strrchr1:
+    brne strrchr1
 ;PCODE: $00000343 VOL: 0
-    adiw r26,1
+    movw r30,r26
 ;PCODE: $00000344 VOL: 0
-    tst  r23
+strrchr1:
 ;PCODE: $00000345 VOL: 0
-    brne strrchr0
+    adiw r26,1
 ;PCODE: $00000346 VOL: 0
-    ret
+    tst  r23
 ;PCODE: $00000347 VOL: 0
+    brne strrchr0
 ;PCODE: $00000348 VOL: 0
+    ret
 ;PCODE: $00000349 VOL: 0
 ;PCODE: $0000034A VOL: 0
 ;PCODE: $0000034B VOL: 0
 ;PCODE: $0000034C VOL: 0
 ;PCODE: $0000034D VOL: 0
-    ldd  r27,y+3
 ;PCODE: $0000034E VOL: 0
-    ldd  r26,y+2
 ;PCODE: $0000034F VOL: 0
-    clr  r25
+    ldd  r27,y+3
 ;PCODE: $00000350 VOL: 0
-    clr  r24
+    ldd  r26,y+2
 ;PCODE: $00000351 VOL: 0
-strrpbrk0:
+    clr  r25
 ;PCODE: $00000352 VOL: 0
-    ld   r22,x
+    clr  r24
 ;PCODE: $00000353 VOL: 0
-    tst  r22
+strrpbrk0:
 ;PCODE: $00000354 VOL: 0
-    breq strrpbrk2
+    ld   r22,x
 ;PCODE: $00000355 VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $00000356 VOL: 0
-    ld   r30,y
+    breq strrpbrk2
 ;PCODE: $00000357 VOL: 0
-strrpbrk1:
+    ldd  r31,y+1
 ;PCODE: $00000358 VOL: 0
-    ld   r23,z+
+    ld   r30,y
 ;PCODE: $00000359 VOL: 0
-    tst  r23
+strrpbrk1:
 ;PCODE: $0000035A VOL: 0
-    breq strrpbrk3
+    ld   r23,z+
 ;PCODE: $0000035B VOL: 0
-    cp   r22,r23
+    tst  r23
 ;PCODE: $0000035C VOL: 0
-    brne strrpbrk1
+    breq strrpbrk3
 ;PCODE: $0000035D VOL: 0
-    movw r24,r26
+    cp   r22,r23
 ;PCODE: $0000035E VOL: 0
-strrpbrk3:
+    brne strrpbrk1
 ;PCODE: $0000035F VOL: 0
-    adiw r26,1
+    movw r24,r26
 ;PCODE: $00000360 VOL: 0
-    rjmp strrpbrk0
+strrpbrk3:
 ;PCODE: $00000361 VOL: 0
-strrpbrk2:
+    adiw r26,1
 ;PCODE: $00000362 VOL: 0
-    movw r30,r24
+    rjmp strrpbrk0
 ;PCODE: $00000363 VOL: 0
+strrpbrk2:
 ;PCODE: $00000364 VOL: 0
+    movw r30,r24
 ;PCODE: $00000365 VOL: 0
 ;PCODE: $00000366 VOL: 0
 ;PCODE: $00000367 VOL: 0
@@ -1522,149 +1524,149 @@ strrpbrk2:
 ;PCODE: $00000369 VOL: 0
 ;PCODE: $0000036A VOL: 0
 ;PCODE: $0000036B VOL: 0
-    ldd  r27,y+3
 ;PCODE: $0000036C VOL: 0
-    ldd  r26,y+2
 ;PCODE: $0000036D VOL: 0
-    clr  r25
+    ldd  r27,y+3
 ;PCODE: $0000036E VOL: 0
-    clr  r24
+    ldd  r26,y+2
 ;PCODE: $0000036F VOL: 0
-strrpbrkf0:
+    clr  r25
 ;PCODE: $00000370 VOL: 0
-    ld   r22,x
+    clr  r24
 ;PCODE: $00000371 VOL: 0
-    tst  r22
+strrpbrkf0:
 ;PCODE: $00000372 VOL: 0
-    breq strrpbrkf2
+    ld   r22,x
 ;PCODE: $00000373 VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $00000374 VOL: 0
-    ld   r30,y
+    breq strrpbrkf2
 ;PCODE: $00000375 VOL: 0
-strrpbrkf1:
+    ldd  r31,y+1
 ;PCODE: $00000376 VOL: 0
+    ld   r30,y
 ;PCODE: $00000377 VOL: 0
+strrpbrkf1:
 ;PCODE: $00000378 VOL: 0
-	lpm
 ;PCODE: $00000379 VOL: 0
 ;PCODE: $0000037A VOL: 0
-    tst  r0
+	lpm
 ;PCODE: $0000037B VOL: 0
-    breq strrpbrkf3
 ;PCODE: $0000037C VOL: 0
-    adiw r30,1
+    tst  r0
 ;PCODE: $0000037D VOL: 0
-    cp   r22,r0
+    breq strrpbrkf3
 ;PCODE: $0000037E VOL: 0
-    brne strrpbrkf1
+    adiw r30,1
 ;PCODE: $0000037F VOL: 0
-    movw r24,r26
+    cp   r22,r0
 ;PCODE: $00000380 VOL: 0
-strrpbrkf3:
+    brne strrpbrkf1
 ;PCODE: $00000381 VOL: 0
-    adiw r26,1
+    movw r24,r26
 ;PCODE: $00000382 VOL: 0
-    rjmp strrpbrkf0
+strrpbrkf3:
 ;PCODE: $00000383 VOL: 0
-strrpbrkf2:
+    adiw r26,1
 ;PCODE: $00000384 VOL: 0
-    movw r30,r24
+    rjmp strrpbrkf0
 ;PCODE: $00000385 VOL: 0
+strrpbrkf2:
 ;PCODE: $00000386 VOL: 0
+    movw r30,r24
 ;PCODE: $00000387 VOL: 0
 ;PCODE: $00000388 VOL: 0
 ;PCODE: $00000389 VOL: 0
 ;PCODE: $0000038A VOL: 0
 ;PCODE: $0000038B VOL: 0
 ;PCODE: $0000038C VOL: 0
-    ld   r22,y+
 ;PCODE: $0000038D VOL: 0
-    ld   r26,y+
 ;PCODE: $0000038E VOL: 0
-    ld   r27,y+
+    ld   r22,y+
 ;PCODE: $0000038F VOL: 0
-    ldi  r30,0xff
+    ld   r26,y+
 ;PCODE: $00000390 VOL: 0
-    ldi  r31,0xff
+    ld   r27,y+
 ;PCODE: $00000391 VOL: 0
-    clr  r24
+    ldi  r30,0xff
 ;PCODE: $00000392 VOL: 0
-    clr  r25
+    ldi  r31,0xff
 ;PCODE: $00000393 VOL: 0
-strrpos0:
+    clr  r24
 ;PCODE: $00000394 VOL: 0
-    ld   r23,x+
+    clr  r25
 ;PCODE: $00000395 VOL: 0
-    cp   r22,r23
+strrpos0:
 ;PCODE: $00000396 VOL: 0
-    brne strrpos1
+    ld   r23,x+
 ;PCODE: $00000397 VOL: 0
-    movw r30,r24
+    cp   r22,r23
 ;PCODE: $00000398 VOL: 0
-strrpos1:
+    brne strrpos1
 ;PCODE: $00000399 VOL: 0
-    adiw r24,1
+    movw r30,r24
 ;PCODE: $0000039A VOL: 0
-    tst  r23
+strrpos1:
 ;PCODE: $0000039B VOL: 0
-    brne strrpos0
+    adiw r24,1
 ;PCODE: $0000039C VOL: 0
-    ret
+    tst  r23
 ;PCODE: $0000039D VOL: 0
+    brne strrpos0
 ;PCODE: $0000039E VOL: 0
+    ret
 ;PCODE: $0000039F VOL: 0
 ;PCODE: $000003A0 VOL: 0
 ;PCODE: $000003A1 VOL: 0
 ;PCODE: $000003A2 VOL: 0
 ;PCODE: $000003A3 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $000003A4 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $000003A5 VOL: 0
-    movw r24,r26
+    ldd  r26,y+2
 ;PCODE: $000003A6 VOL: 0
-strstr0:
+    ldd  r27,y+3
 ;PCODE: $000003A7 VOL: 0
-    ld   r30,y
+    movw r24,r26
 ;PCODE: $000003A8 VOL: 0
-    ldd  r31,y+1
+strstr0:
 ;PCODE: $000003A9 VOL: 0
-strstr1:
+    ld   r30,y
 ;PCODE: $000003AA VOL: 0
-    ld   r23,z+
+    ldd  r31,y+1
 ;PCODE: $000003AB VOL: 0
-    tst  r23
+strstr1:
 ;PCODE: $000003AC VOL: 0
-    brne strstr2
+    ld   r23,z+
 ;PCODE: $000003AD VOL: 0
-    movw r30,r24
+    tst  r23
 ;PCODE: $000003AE VOL: 0
-    rjmp strstr3
+    brne strstr2
 ;PCODE: $000003AF VOL: 0
-strstr2:
+    movw r30,r24
 ;PCODE: $000003B0 VOL: 0
-    ld   r22,x+
+    rjmp strstr3
 ;PCODE: $000003B1 VOL: 0
-    cp   r22,r23
+strstr2:
 ;PCODE: $000003B2 VOL: 0
-    breq strstr1
+    ld   r22,x+
 ;PCODE: $000003B3 VOL: 0
-    adiw r24,1
+    cp   r22,r23
 ;PCODE: $000003B4 VOL: 0
-    movw r26,r24
+    breq strstr1
 ;PCODE: $000003B5 VOL: 0
-    tst  r22
+    adiw r24,1
 ;PCODE: $000003B6 VOL: 0
-    brne strstr0
+    movw r26,r24
 ;PCODE: $000003B7 VOL: 0
-    clr  r30
+    tst  r22
 ;PCODE: $000003B8 VOL: 0
-    clr  r31
+    brne strstr0
 ;PCODE: $000003B9 VOL: 0
-strstr3:
+    clr  r30
 ;PCODE: $000003BA VOL: 0
+    clr  r31
 ;PCODE: $000003BB VOL: 0
+strstr3:
 ;PCODE: $000003BC VOL: 0
 ;PCODE: $000003BD VOL: 0
 ;PCODE: $000003BE VOL: 0
@@ -1672,56 +1674,56 @@ strstr3:
 ;PCODE: $000003C0 VOL: 0
 ;PCODE: $000003C1 VOL: 0
 ;PCODE: $000003C2 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $000003C3 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $000003C4 VOL: 0
-    movw r24,r26
+    ldd  r26,y+2
 ;PCODE: $000003C5 VOL: 0
-strstrf0:
+    ldd  r27,y+3
 ;PCODE: $000003C6 VOL: 0
-    ld   r30,y
+    movw r24,r26
 ;PCODE: $000003C7 VOL: 0
-    ldd  r31,y+1
+strstrf0:
 ;PCODE: $000003C8 VOL: 0
-strstrf1:
+    ld   r30,y
 ;PCODE: $000003C9 VOL: 0
+    ldd  r31,y+1
 ;PCODE: $000003CA VOL: 0
+strstrf1:
 ;PCODE: $000003CB VOL: 0
-	lpm  r0,z+
 ;PCODE: $000003CC VOL: 0
 ;PCODE: $000003CD VOL: 0
-    tst  r0
+	lpm  r0,z+
 ;PCODE: $000003CE VOL: 0
-    brne strstrf2
 ;PCODE: $000003CF VOL: 0
-    movw r30,r24
+    tst  r0
 ;PCODE: $000003D0 VOL: 0
-    rjmp strstrf3
+    brne strstrf2
 ;PCODE: $000003D1 VOL: 0
-strstrf2:
+    movw r30,r24
 ;PCODE: $000003D2 VOL: 0
-    ld   r22,x+
+    rjmp strstrf3
 ;PCODE: $000003D3 VOL: 0
-    cp   r22,r0
+strstrf2:
 ;PCODE: $000003D4 VOL: 0
-    breq strstrf1
+    ld   r22,x+
 ;PCODE: $000003D5 VOL: 0
-    adiw r24,1
+    cp   r22,r0
 ;PCODE: $000003D6 VOL: 0
-    movw r26,r24
+    breq strstrf1
 ;PCODE: $000003D7 VOL: 0
-    tst  r22
+    adiw r24,1
 ;PCODE: $000003D8 VOL: 0
-    brne strstrf0
+    movw r26,r24
 ;PCODE: $000003D9 VOL: 0
-    clr  r30
+    tst  r22
 ;PCODE: $000003DA VOL: 0
-    clr  r31
+    brne strstrf0
 ;PCODE: $000003DB VOL: 0
-strstrf3:
+    clr  r30
 ;PCODE: $000003DC VOL: 0
+    clr  r31
 ;PCODE: $000003DD VOL: 0
+strstrf3:
 ;PCODE: $000003DE VOL: 0
 ;PCODE: $000003DF VOL: 0
 ;PCODE: $000003E0 VOL: 0
@@ -1729,47 +1731,47 @@ strstrf3:
 ;PCODE: $000003E2 VOL: 0
 ;PCODE: $000003E3 VOL: 0
 ;PCODE: $000003E4 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $000003E5 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $000003E6 VOL: 0
-    clr  r24
+    ldd  r27,y+3
 ;PCODE: $000003E7 VOL: 0
-    clr  r25
+    ldd  r26,y+2
 ;PCODE: $000003E8 VOL: 0
-strspn0:
+    clr  r24
 ;PCODE: $000003E9 VOL: 0
-    ld   r22,x+
+    clr  r25
 ;PCODE: $000003EA VOL: 0
-    tst  r22
+strspn0:
 ;PCODE: $000003EB VOL: 0
-    breq strspn2
+    ld   r22,x+
 ;PCODE: $000003EC VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $000003ED VOL: 0
-    ld   r30,y
-;PCODE: $000003EE VOL: 0
-strspn1:
-;PCODE: $000003EF VOL: 0
-    ld   r23,z+
-;PCODE: $000003F0 VOL: 0
-    tst  r23
-;PCODE: $000003F1 VOL: 0
     breq strspn2
+;PCODE: $000003EE VOL: 0
+    ldd  r31,y+1
+;PCODE: $000003EF VOL: 0
+    ld   r30,y
+;PCODE: $000003F0 VOL: 0
+strspn1:
+;PCODE: $000003F1 VOL: 0
+    ld   r23,z+
 ;PCODE: $000003F2 VOL: 0
-    cp   r22,r23
+    tst  r23
 ;PCODE: $000003F3 VOL: 0
-    brne strspn1
+    breq strspn2
 ;PCODE: $000003F4 VOL: 0
-    adiw r24,1
+    cp   r22,r23
 ;PCODE: $000003F5 VOL: 0
-    rjmp strspn0
+    brne strspn1
 ;PCODE: $000003F6 VOL: 0
-strspn2:
+    adiw r24,1
 ;PCODE: $000003F7 VOL: 0
-    movw r30,r24
+    rjmp strspn0
 ;PCODE: $000003F8 VOL: 0
+strspn2:
 ;PCODE: $000003F9 VOL: 0
+    movw r30,r24
 ;PCODE: $000003FA VOL: 0
 ;PCODE: $000003FB VOL: 0
 ;PCODE: $000003FC VOL: 0
@@ -1777,50 +1779,50 @@ strspn2:
 ;PCODE: $000003FE VOL: 0
 ;PCODE: $000003FF VOL: 0
 ;PCODE: $00000400 VOL: 0
-    ldd  r27,y+3
 ;PCODE: $00000401 VOL: 0
-    ldd  r26,y+2
 ;PCODE: $00000402 VOL: 0
-    clr  r24
+    ldd  r27,y+3
 ;PCODE: $00000403 VOL: 0
-    clr  r25
+    ldd  r26,y+2
 ;PCODE: $00000404 VOL: 0
-strspnf0:
+    clr  r24
 ;PCODE: $00000405 VOL: 0
-    ld   r22,x+
+    clr  r25
 ;PCODE: $00000406 VOL: 0
-    tst  r22
+strspnf0:
 ;PCODE: $00000407 VOL: 0
-    breq strspnf2
+    ld   r22,x+
 ;PCODE: $00000408 VOL: 0
-    ldd  r31,y+1
+    tst  r22
 ;PCODE: $00000409 VOL: 0
-    ld   r30,y
+    breq strspnf2
 ;PCODE: $0000040A VOL: 0
-strspnf1:
+    ldd  r31,y+1
 ;PCODE: $0000040B VOL: 0
+    ld   r30,y
 ;PCODE: $0000040C VOL: 0
+strspnf1:
 ;PCODE: $0000040D VOL: 0
-	lpm  r0,z+
 ;PCODE: $0000040E VOL: 0
 ;PCODE: $0000040F VOL: 0
-    tst  r0
+	lpm  r0,z+
 ;PCODE: $00000410 VOL: 0
-    breq strspnf2
 ;PCODE: $00000411 VOL: 0
-    cp   r22,r0
+    tst  r0
 ;PCODE: $00000412 VOL: 0
-    brne strspnf1
+    breq strspnf2
 ;PCODE: $00000413 VOL: 0
-    adiw r24,1
+    cp   r22,r0
 ;PCODE: $00000414 VOL: 0
-    rjmp strspnf0
+    brne strspnf1
 ;PCODE: $00000415 VOL: 0
-strspnf2:
+    adiw r24,1
 ;PCODE: $00000416 VOL: 0
-    movw r30,r24
+    rjmp strspnf0
 ;PCODE: $00000417 VOL: 0
+strspnf2:
 ;PCODE: $00000418 VOL: 0
+    movw r30,r24
 ;PCODE: $00000419 VOL: 0
 ;PCODE: $0000041A VOL: 0
 ;PCODE: $0000041B VOL: 0
@@ -1890,3 +1892,5 @@ strspnf2:
 ;PCODE: $0000045B VOL: 0
 ;PCODE: $0000045C VOL: 0
 ;PCODE: $0000045D VOL: 0
+;PCODE: $0000045E VOL: 0
+;PCODE: $0000045F VOL: 0

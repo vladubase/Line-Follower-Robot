@@ -1,108 +1,254 @@
+/*
+*	Line Follower Robot
+*	LineFollowerRobot.c
+*
+*	by Uladzislau 'vladubase' Dubatouka <vladubase@gmail.com>.
+*	Created on 2020.05.12.
+*
+*/
+
 /**************************** Includes ****************************/
 
-#include "inc/mega328p.h"
-#include "inc/mega328p_bits.h"
-#include "inc/delay.h"
-#include "inc/math.h"
+#include <mega328p.h>
+#include <mega328p_bits.h>
+#include <delay.h>
+#include <math.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /***************************** Defines ****************************/
 
-#define     F_CPU                       20000000UL      // Clock frequency of quartz resonator
+#define		F_CPU					20000000UL		// Quartz resonator clock frequency
 
-#define     QTY_OF_SENSORS              4                // Quantity of sensors
+#define		QTY_OF_SENSORS			4				// Quantity of sensors
+#define		AVG_SPEED				155				// Average speed of robot
 
-// Sensor order in the right -> direction
-#define     ReadSensor1                 PINB & (1 << 2)
-#define     ReadSensor2                 PINB & (1 << 1)
-#define     ReadSensor3                 PINB & (1 << 0)
-#define     ReadSensor4                 PIND & (1 << 7)
-//#define     ReadSensor5                 PIND & (1 << 2)
-//#define     ReadSensor6                 PIND & (1 << 4)
-//#define     ReadSensor7                 PINB & (1 << 0)
-//#define     ReadSensor8                 PIND & (1 << 7)
-//#define     ReadSensor9                 PINx & (1 << x)
-//#define     ReadSensor10                PINx & (1 << x)
-//#define     ReadSensor11                PINx & (1 << x)
-//#define     ReadSensor12                PINx & (1 << x)
-//#define     ReadSensor13                PINx & (1 << x)
-//#define     ReadSensor14                PINx & (1 << x)
-//#define     ReadSensor15                PINx & (1 << x)
-//#define     ReadSensor16                PINx & (1 << x)
+#define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
+#if MOTORS_NOT_PERFECT
+	#define	L_MOTOR_MISMATCH		1.15F			// Coefficient of motor power difference
+	#define	R_MOTOR_MISMATCH		1.0F			// There is nothing perfect ;)
+#endif /* MOTORS_NOT_PERFECT */
 
-//#define     ReadSensorIR                PINx & (1 << x)
-//#define     MEncoderLeft                PINx & (1 << x)
-//#define     MEncoderRight               PINx & (1 << x)
+// PID
+// Setup: P -> PD -> PID
+#define		kP						2.0F			// Proportional	feedback coefficient	
+#define		kI						0.0F			// Integral 	feedback coefficient
+#define		kD						0.0F			// Differential	feedback coefficient
+#define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
+#define		MAIN_CYCLE_DELAY		5				// The main cycle delay (in ms) for correct work of D-regulation
 
-#define     LED_1_ON                      PIND |= (1 << DDD0)
-#define     LED_1_OFF                     PIND &= ~(1 << DDD0)
-#define     LED_2_ON                      PIND |= (1 << DDD1)
-#define     LED_2_OFF                     PIND &= ~(1 << DDD1)
-#define     LED_3_ON                      PIND |= (1 << DDD2)
-#define     LED_3_OFF                     PIND &= ~(1 << DDD2)
+// Sensor order in the right --> direction
 
-/**************************** Function ****************************/
+#if QTY_OF_SENSORS >= 1
+    #define	READ_SENSOR_1			PINB & (1 << DDB2)
+#endif /* QTY_OF_SENSORS >= 1 */
+#if QTY_OF_SENSORS >= 2
+    #define	READ_SENSOR_2			PINB & (1 << DDB1)
+#endif /* QTY_OF_SENSORS >= 2 */
+#if QTY_OF_SENSORS >= 3
+    #define	READ_SENSOR_3			PINB & (1 << DDB0)
+#endif /* QTY_OF_SENSORS >= 3 */
+#if QTY_OF_SENSORS >= 4
+    #define	READ_SENSOR_4			PIND & (1 << DDD7)
+#endif /* QTY_OF_SENSORS >= 4 */
+#if QTY_OF_SENSORS >= 5
+    #define	READ_SENSOR_5			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 5 */
+#if QTY_OF_SENSORS >= 6
+    #define	READ_SENSOR_6			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 6 */
+#if QTY_OF_SENSORS >= 7
+    #define	READ_SENSOR_7			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 7 */
+#if QTY_OF_SENSORS >= 8
+    #define	READ_SENSOR_8			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 8 */
+#if QTY_OF_SENSORS >= 9
+    #define	READ_SENSOR_9			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 9 */
+#if QTY_OF_SENSORS >= 10
+    #define	READ_SENSOR_10			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 10 */
+#if QTY_OF_SENSORS >= 11
+    #define	READ_SENSOR_11			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 11 */
+#if QTY_OF_SENSORS >= 12
+    #define	READ_SENSOR_12			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 12 */
+#if QTY_OF_SENSORS >= 13
+    #define	READ_SENSOR_13			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 13 */
+#if QTY_OF_SENSORS >= 14
+    #define	READ_SENSOR_14			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 14 */
+#if QTY_OF_SENSORS >= 15
+    #define	READ_SENSOR_15			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 15 */
+#if QTY_OF_SENSORS >= 16
+    #define	READ_SENSOR_16			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 16 */
+
+//#define		READ_IR_SENSOR          PINx & (1 << DDxx)
+
+/************************* Global Variables ***********************/
+
+bool line_data[QTY_OF_SENSORS] = {0};				// Store current values from sensor line
+
+/*********************** Function  prototypes *********************/
+
+void InitSys (void);
+void ReadSensorLineData (void);
+float CurrentRobotError (void);
+
+/****************************** Main ******************************/
+
+void main (void) {
+	register float error_history[QTY_OF_ERR] = {0};	// Storing the values of recent errors
+	register float error_sum = 0.0;					// Sum of errors in history
+	register uint8_t i = 0;
+	register float P = 0.0;
+	register float I = 0.0;
+	register float D = 0.0;
+	register float PID_total_correction = 0.0;
+	register int16_t left_motor_speed = 0;
+	register int16_t right_motor_speed = 0;
+
+	InitSys ();
+
+	// Waiting for a signal on IR sensor
+	#ifdef READ_IR_SENSOR
+		while (READ_IR_SENSOR) {
+			LED_1_ON;
+			delay_ms (25);
+			LED_1_OFF;
+			delay_ms (25);
+		}
+	#endif /* SensorIR */
+
+	//delay_ms (5000);								// This delay is required by the competition rules
+
+	while (true) {
+		error_sum = 0.0;
+
+		for (i = 0; i < QTY_OF_ERR - 1; i++) {	    // Shift error values
+			error_history[i] = error_history[i + 1];
+		}
+		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
+
+		P = error_history[QTY_OF_ERR - 1] * kP;		// Current error * kP
+		for (i = QTY_OF_ERR - 1; i >= 0; i--) {
+			error_sum += error_history[i];
+		}
+		I = error_sum / QTY_OF_ERR * kI;			// Average error * kI
+		D = (error_history[QTY_OF_ERR - 1] - error_history[QTY_OF_ERR - 1 - 1]) * kD;	// (current error - previous error) * kD
+
+		PID_total_correction = (P + I) + D;
+
+		left_motor_speed  = AVG_SPEED + (uint16_t)PID_total_correction;
+		right_motor_speed = AVG_SPEED - (uint16_t)PID_total_correction;
+
+		// Validating a range of variables
+		if (left_motor_speed > 255)
+			left_motor_speed = 255;
+		else if (left_motor_speed < 0)
+			left_motor_speed = 0;
+		if (right_motor_speed > 255)
+			right_motor_speed = 255;
+		else if (right_motor_speed < 0)
+			right_motor_speed = 0;
+
+		// Motors power difference compensation
+		#if MOTORS_NOT_PERFECT
+			if (L_MOTOR_MISMATCH >= R_MOTOR_MISMATCH) {
+				OCR2A = 0;
+				OCR2B = left_motor_speed;
+				OCR0A = 0;
+				OCR0B = right_motor_speed / L_MOTOR_MISMATCH;
+			} else {
+				OCR2A = 0;
+				OCR2B = left_motor_speed / R_MOTOR_MISMATCH;
+				OCR0A = 0;
+				OCR0B = right_motor_speed;
+			}
+		#else
+			OCR2A = 0;
+			OCR2B = left_motor_speed;
+			OCR0A = 0;
+			OCR0B = right_motor_speed;
+		#endif /* MOTORS_NOT_PERFECT */
+
+		delay_ms (MAIN_CYCLE_DELAY);
+	}
+}
+
+/*************************** Functions ****************************/
 
 void InitSys (void) {
+	// Motors
+	    // Output mode
+		DDRB |= (1 << DDB3);			            // OC2A
+		DDRD |= (1 << DDD6) |			            // OC0A
+				(1 << DDD5) |			            // OC0B
+				(1 << DDD3);			            // OC2B
 
-    // Motors
-        DDRB |= (1 << DDB3);            //OC2A
-        DDRD |= (1 << DDD6) |           //OC0A
-                (1 << DDD5) |           //OC0B
-                (1 << DDD3);            //OC2B
+	// SensorLine
+	    // Input mode
+		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
+		DDRD &= ~(1 << DDD7);
 
-    // SensorLine
-        DDRB &= ~((1 << DDB2) |
-                (1 << DDB1) |
-                (1 << DDB0));
-        DDRD &= ~(1 << DDD7);
+	// Infrared Sensor
+	    // Input mode
+		#ifdef READ_SENSOR_IR
+			DDRx &= ~(1 << DDxx);
+		#endif
 
-   // Infrared Sensor
-          //DDRD &= ~(0 << DDD0);
-
-   // LED
-      	DDRD |= (1 << DDD2) | (1 << DDD1) | (1 << DDD0);
-
-
-	// TIMER/COUNTER INITIALIZATION
+	// Timer/Counter(s) initialization
 		// Timer/Counter 0
 		// Fast PWM Mode
-        // Non-inverting mode
-		// Top = 0xFF
+		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+		// TOP = 0xFF
 		// Prescaler: 1:64
 		TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
 		TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
 		TCCR0B |= (1 << CS01) | (1 << CS00);
 		TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
 		TCNT0  = 0x00;
-		OCR0A  = 0x00;    OCR0B  = 0x00;
+		TIMSK0 = 0x00;
+		OCR0A  = 0x00;	OCR0B  = 0x00;
 
 		// Timer/Counter 1
-        // Fast PWM 8-bit
-        TCCR1A &= ~((1 << COM1A1) | (1 << COM1A0) | (1 << COM1B1) | (1 << COM1B0) | (1 << 3) | (1 << 2) | (1 << WGM11) | (1 << WGM10));
-        TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << WGM12) | (1 << CS12) | (1 << CS11) | (1 << CS10));
-        TCCR1C = 0x00;
-		TCNT1H = 0x00;    TCNT1L = 0x00;
-		ICR1H  = 0x00;    ICR1L  = 0x00;
-		OCR1AH = 0x00;    OCR1AL = 0x00;
-		OCR1BH = 0x00;    OCR1BL = 0x00;
+		// Fast PWM 10-bit Mode
+		// Clear OC1A/OC1B on Compare Match, set OC1A/OC1B at BOTTOM (non-inverting mode)
+		// TOP = 0x03FF
+		// Prescaler: 1:64
+		TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
+		TCCR1A &= ~((1 << COM1A0) | (1 << COM1B0) | (1 << 3) | (1 << 2));
+		TCCR1B |= (1 << WGM12) | (1 << CS11) | (1 << CS10);
+		TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << CS12));
+		TCCR1C = 0x00;
+		TCNT1H = 0x00;	TCNT1L = 0x00;
+		TIMSK1 = 0x00;
+		ICR1H  = 0x00;	ICR1L  = 0x00;
+		OCR1AH = 0x00;	OCR1AL = 0x00;
+		OCR1BH = 0x00;	OCR1BL = 0x00;
 
 		// Timer/Counter 2
 		// Fast PWM Mode
-        // Non-inverting mode
-		// Top = 0xFF
+		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+		// TOP = 0xFF
 		// Prescaler: 1:64
 		TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
 		TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
-		TCCR2B |=  (1 << CS22);
+		TCCR2B |= (1 << CS22);
 		TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
 		TCNT2  = 0x00;
-		OCR2A  = 0x00;    OCR2B  = 0x00;
+		TIMSK2 = 0x00;
+		OCR2A  = 0x00;	OCR2B  = 0x00;
 
 	// Crystal Oscillator division factor: 1
 		#pragma optsize-
-			CLKPR  = 0x80;
-			CLKPR  = 0x00;
+			CLKPR = 0x80;
+			CLKPR = 0x00;
 		#ifdef _OPTIMIZE_SIZE_
 		#pragma optsize+
 		#endif
@@ -112,28 +258,16 @@ void InitSys (void) {
 		EICRA  = 0x00;
 		EIMSK  = 0x00;
 		PCICR  = 0x00;
-
-	// Timer/Counter 0 Interrupt(s) initialization
-		// Turn OFF
-		TIMSK0 = 0x00;
-
-	// Timer/Counter 1 Interrupt(s) initialization
-		// Turn OFF
-		TIMSK1 = 0x00;
-
-	// Timer/Counter 2 Interrupt(s) initialization
-		// Turn OFF
-		TIMSK2 = 0x00;
-
-	// USART initialization
-		// Turn OFF
-		UCSR0B = 0x00;
-
+	
 	// Analog Comparator initialization
 		// Turn OFF
 		ACSR   = 0x80;
 		ADCSRB = 0x00;
 		DIDR1  = 0x00;
+
+	// USART initialization
+		// Turn OFF
+		UCSR0B = 0x00;
 
 	// ADC initialization
 		// Turn OFF
@@ -146,134 +280,74 @@ void InitSys (void) {
 	// TWI initialization
 		// Turn OFF
 		TWCR   = 0x00;
-
 }
 
-void ReadSensorLineData (bool *lineData[]) {
-
-    #ifdef ReadSensor1
-        *lineData[0] = ReadSensor1;
-    #endif
-    #ifdef ReadSensor2
-        *lineData[1] = ReadSensor2;
-    #endif
-    #ifdef ReadSensor3
-        *lineData[2] = ReadSensor3;
-    #endif
-    #ifdef ReadSensor4
-        *lineData[3] = ReadSensor4;
-    #endif
-    #ifdef ReadSensor5
-        *lineData[4] = ReadSensor5;
-    #endif
-    #ifdef ReadSensor6
-        *lineData[5] = ReadSensor6;
-    #endif
-    #ifdef ReadSensor7
-        *lineData[6] = ReadSensor7;
-    #endif
-    #ifdef ReadSensor8
-        *lineData[7] = ReadSensor8;
-    #endif
-    #ifdef ReadSensor9
-        *lineData[8] = ReadSensor9;
-    #endif
-    #ifdef ReadSensor10
-        *lineData[9] = ReadSensor10;
-    #endif
-    #ifdef ReadSensor11
-        *lineData[10] = ReadSensor11;
-    #endif
-    #ifdef ReadSensor12
-        *lineData[11] = ReadSensor12;
-    #endif
-    #ifdef ReadSensor13
-        *lineData[12] = ReadSensor13;
-    #endif
-    #ifdef ReadSensor14
-        *lineData[13] = ReadSensor14;
-    #endif
-    #ifdef ReadSensor15
-        *lineData[14] = ReadSensor15;
-    #endif
-    #ifdef ReadSensor16
-        *lineData[15] = ReadSensor16;
-    #endif
+void ReadSensorLineData (void) {
+	#ifdef READ_SENSOR_1
+		line_data[0] = READ_SENSOR_1;
+	#endif /* READ_SENSOR_1 */
+	#ifdef READ_SENSOR_2
+		line_data[1] = READ_SENSOR_2;
+	#endif /* READ_SENSOR_2 */
+	#ifdef READ_SENSOR_3
+		line_data[2] = READ_SENSOR_3;
+	#endif /* READ_SENSOR_3 */
+	#ifdef READ_SENSOR_4
+		line_data[3] = READ_SENSOR_4;
+	#endif /* READ_SENSOR_4 */
+	#ifdef READ_SENSOR_5
+		line_data[4] = READ_SENSOR_5;
+	#endif /* READ_SENSOR_5 */
+	#ifdef READ_SENSOR_6
+		line_data[5] = READ_SENSOR_6;
+	#endif /* READ_SENSOR_6 */
+	#ifdef READ_SENSOR_7
+		line_data[6] = READ_SENSOR_7;
+	#endif /* READ_SENSOR_7 */
+	#ifdef READ_SENSOR_8
+		line_data[7] = READ_SENSOR_8;
+	#endif /* READ_SENSOR_8 */
+	#ifdef READ_SENSOR_9
+		line_data[8] = READ_SENSOR_9;
+	#endif /* READ_SENSOR_9 */
+	#ifdef READ_SENSOR_10
+		line_data[9] = READ_SENSOR_10;
+	#endif /* READ_SENSOR_10 */
+	#ifdef READ_SENSOR_11
+		line_data[10] = READ_SENSOR_11;
+	#endif /* READ_SENSOR_11 */
+	#ifdef READ_SENSOR_12
+		line_data[11] = READ_SENSOR_12;
+	#endif /* READ_SENSOR_12 */
+	#ifdef READ_SENSOR_13
+		line_data[12] = READ_SENSOR_13;
+	#endif /* READ_SENSOR_13 */
+	#ifdef READ_SENSOR_14
+		line_data[13] = READ_SENSOR_14;
+	#endif /* READ_SENSOR_14 */
+	#ifdef READ_SENSOR_15
+		line_data[14] = READ_SENSOR_15;
+	#endif /* READ_SENSOR_15 */
+	#ifdef READ_SENSOR_16
+		line_data[15] = READ_SENSOR_16;
+	#endif /* READ_SENSOR_16 */
 }
 
-float RobotPosition(void) {
+float CurrentRobotError (void) {
+	register uint8_t i = 0;
+	register float current_error = 0.0;
 
-    int posSum = 0;
-    float posMedian = QTY_OF_SENSORS / 2;
-    unsigned short int sensorLineData[QTY_OF_SENSORS] = {0};
-    int signalCorrected;
-    unsigned char i = 0;
+	ReadSensorLineData ();
 
-    ReadSensorLineData(&sensorLineData);
+	for (i = QTY_OF_SENSORS - 1; i >= 0; i--) {
+		if (line_data[i] != 0)						// If no data on [i] sensor skip counting the error
+			current_error += pow (QTY_OF_SENSORS / 2 - i, 3);	// Odd degree to preserve the sign '-'
+	}
 
-    for (i = QTY_OF_SENSORS; i > 0; i--) {
-        if (sensorLineData[i]) {
-            signalCorrected = 1;
-        }
-        else {
-            signalCorrected = 0;
-        }
-
-        posSum += signalCorrected;
-    }
-
-    return posMedian - posSum;
-
+	return current_error;
 }
 
-/****************************** Main ******************************/
 
-void main (void) {
-
-    unsigned char avgSpeed = 150; // средняя скорость моторов
-    unsigned char kP = 10; // коэффициент пропорциональной обратной связи
-    signed char error = 0; // Это ошибка положения
-    signed short int correction = kP * error;
-
-    signed short int leftMotorSpeed = avgSpeed * (1 + correction);
-    signed short int rightMotorSpeed = avgSpeed * (1 - correction);
-
-    InitSys ();
-
-    error = RobotPosition();
-
-    if (leftMotorSpeed >= 0) {
-        OCR2A = leftMotorSpeed;
-        OCR2B = 0;
-    }
-    else {
-        OCR2A = 0;
-        OCR2B = leftMotorSpeed;
-    }
-
-    if (rightMotorSpeed >= 0) {
-        OCR0A = rightMotorSpeed;
-        OCR0B = 0;
-    }
-    else {
-        OCR0A = 0;
-        OCR0B = rightMotorSpeed;
-    }
-
-	// Waiting for a signal on IR sensor
-    #ifdef SensorIR
-        while (SensorIR) {
-            LED_ON;
-            delay_ms (25);
-            LED_OFF;
-            delay_ms (25);
-        }
-    #endif
-
-	//delay_ms (1000);
-
-    while (true) {
-
-    }
-
-}
+//  Literature:
+//      http://we.easyelectronics.ru/Theory/pid-regulyatory--dlya-chaynikov-praktikov.html
+//      https://wiki.roboforum.ru/index.php?title=%d0%9f%d0%b5%d1%80%d0%b5%d0%b2%d0%be%d0%b4_%d1%81%d1%82%d0%b0%d1%82%d1%8c%d0%b8_%22%d0%9f%d1%80%d0%be%d1%81%d1%82%d0%be_%d0%be_%d0%9f%d0%98%d0%94-%d0%b0%d0%bb%d0%b3%d0%be%d1%80%d0%b8%d1%82%d0%bc%d0%b0%d1%85%22#.D0.9D.D0.B0.D1.81.D1.82.D1.80.D0.BE.D0.B9.D0.BA.D0.B0_.D0.9F.D0.98.D0.94-.D1.80.D0.B5.D0.B3.D1.83.D0.BB.D1.8F.D1.82.D0.BE.D1.80.D0.B0

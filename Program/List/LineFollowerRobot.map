@@ -1,12 +1,26 @@
-RAM Allocation
-Variable                                                          Address   Size
---------------------------------------------------------------------------------
-_seed                                                             0x0300       4
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+line_data                                                                         0x0300       4
+_seed                                                                             0x0304       4
 
-EEPROM Allocation
-Variable                                                          Address   Size
---------------------------------------------------------------------------------
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
 
 Register Allocation
-Variable                                                          Register  Size
---------------------------------------------------------------------------------
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x00094    178
+InitSys                                                                           0x00146    123
+ReadSensorLineData                                                                0x001C1     25
+CurrentRobotError                                                                 0x001DA     56
+ftrunc                                                                            0x00212     49
+floor                                                                             0x00243     19
+log                                                                               0x00256    132
+exp                                                                               0x002DA    152
+pow                                                                               0x00372     82

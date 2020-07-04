@@ -1,0 +1,35 @@
+LABCENTER PROTEUS PICK AND PLACE FILE
+=====================================
+
+Component positions for Scheme_ver2.3.pdsprj
+
+Fields: Part ID, Value, Package, Stock Code, Layer, Rotation, X, Y
+Units:  Rotation - degrees, X, Y  - thou
+Notes:  The X, Y value is the centre of package as drawn in ARES.
+        The origin for these values is the Output Origin.
+        The values are a guide only and must be checked manually when
+        setting up automatic insertion equipment.
+
+"C6","22pF","1206_CAP","",TOP,90,250,1313
+"C7","22pF","1206_CAP","",TOP,90,350,1313
+"D2","","LED_3528","",TOP,180,7.08661,150
+"R3","750","1206_RES","",TOP,0,12,275
+"C2","330nF","1206_CAP","",TOP,270,450,1938
+"C3","100nF","1206_CAP","",TOP,180,711.386,1825
+"C5","100nF","1206_CAP","",TOP,0,512,925
+"Q2","STU407DH","TO252-4L","",TOP,0,2120.53,1659.21
+"Q1","STU407DH","TO252-4L","",TOP,0,2420.53,1659.21
+"R1","750","1206_RES","",TOP,180,1087,1849
+"Q4","STU407DH","TO252-4L","",TOP,180,2426.97,641.339
+"Q3","STU407DH","TO252-4L","",TOP,180,2126.97,641.339
+"C12","100nF","1206_CAP","",TOP,0,2278,350
+"C11","100nF","1206_CAP","",TOP,0,2277,1950
+"RN1","10k","RESCAXS127P305X508X63-8","",TOP,0,1387.01,1225
+"RESET","OFF-ON-OFF","5MM MICRO BUTTON SWITCH","",TOP,0,312.5,200
+"C9","100nF","1206_CAP","",TOP,0,538,425
+"R2","1M","1206_RES","",TOP,0,300,925
+"C8","100nF","1206_CAP","",TOP,180,138,425
+"C10","100nF","1206_CAP","",TOP,-90,525,213
+"R4","10k","1206_RES","",TOP,0,1362,475
+"D1","","LED_3528","",TOP,180,992.913,2050
+"L1","10uH","IND_1206","",TOP,180,339,425

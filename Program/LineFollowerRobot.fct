@@ -1,3 +1,6 @@
-main DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"LineFollowerRobot.c" LINE:236
-RobotPosition DSTACK_USAGE:18 DSTACK_LEVEL:22 FILE:"LineFollowerRobot.c" LINE:209
-ReadSensorLineData DSTACK_USAGE:2 DSTACK_LEVEL:24 FILE:"LineFollowerRobot.c" LINE:154
+main DSTACK_USAGE:60 DSTACK_LEVEL:60 FILE:"LineFollowerRobot.c" LINE:105
+CurrentRobotError DSTACK_USAGE:5 DSTACK_LEVEL:65 FILE:"LineFollowerRobot.c" LINE:339
+pow DSTACK_USAGE:12 DSTACK_LEVEL:77 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:740
+exp DSTACK_USAGE:14 DSTACK_LEVEL:91 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:724
+floor DSTACK_USAGE:4 DSTACK_LEVEL:95 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:659
+ftrunc DSTACK_USAGE:4 DSTACK_LEVEL:99 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:544
