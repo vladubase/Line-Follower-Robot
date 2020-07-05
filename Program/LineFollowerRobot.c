@@ -5,6 +5,9 @@
 *	by Uladzislau 'vladubase' Dubatouka <vladubase@gmail.com>.
 *	Created on 2020.05.12.
 *
+*   4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 sensors
+*   6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 sensors
+*
 */
 
 /**************************** Includes ****************************/
@@ -23,7 +26,7 @@
 #define		QTY_OF_SENSORS			4				// Quantity of sensors
 #define		AVG_SPEED				155				// Average speed of robot
 
-#define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
+#define		MOTORS_NOT_PERFECT		true			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
 #if MOTORS_NOT_PERFECT
 	#define	L_MOTOR_MISMATCH		1.15F			// Coefficient of motor power difference
 	#define	R_MOTOR_MISMATCH		1.0F			// There is nothing perfect ;)
@@ -35,7 +38,7 @@
 #define		kI						0.0F			// Integral 	feedback coefficient
 #define		kD						0.0F			// Differential	feedback coefficient
 #define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
-#define		MAIN_CYCLE_DELAY		5				// The main cycle delay (in ms) for correct work of D-regulation
+#define		MAIN_CYCLE_DELAY		2				// The main cycle delay (in ms) for correct work of D-regulation
 
 // Sensor order in the right --> direction
 
@@ -52,37 +55,37 @@
     #define	READ_SENSOR_4			PIND & (1 << DDD7)
 #endif /* QTY_OF_SENSORS >= 4 */
 #if QTY_OF_SENSORS >= 5
-    #define	READ_SENSOR_5			PINx & (1 << DDxx)
+    #define	READ_SENSOR_5			PINB & (1 << DDB4)
 #endif /* QTY_OF_SENSORS >= 5 */
 #if QTY_OF_SENSORS >= 6
-    #define	READ_SENSOR_6			PINx & (1 << DDxx)
+    #define	READ_SENSOR_6			PINB & (1 << DDB5)
 #endif /* QTY_OF_SENSORS >= 6 */
 #if QTY_OF_SENSORS >= 7
-    #define	READ_SENSOR_7			PINx & (1 << DDxx)
+    #define	READ_SENSOR_7			PINC & (1 << DDC0)
 #endif /* QTY_OF_SENSORS >= 7 */
 #if QTY_OF_SENSORS >= 8
-    #define	READ_SENSOR_8			PINx & (1 << DDxx)
+    #define	READ_SENSOR_8			PINC & (1 << DDC1)
 #endif /* QTY_OF_SENSORS >= 8 */
 #if QTY_OF_SENSORS >= 9
-    #define	READ_SENSOR_9			PINx & (1 << DDxx)
+    #define	READ_SENSOR_9			PINC & (1 << DDC2)
 #endif /* QTY_OF_SENSORS >= 9 */
 #if QTY_OF_SENSORS >= 10
-    #define	READ_SENSOR_10			PINx & (1 << DDxx)
+    #define	READ_SENSOR_10			PINC & (1 << DDC3)
 #endif /* QTY_OF_SENSORS >= 10 */
 #if QTY_OF_SENSORS >= 11
-    #define	READ_SENSOR_11			PINx & (1 << DDxx)
+    #define	READ_SENSOR_11			PINC & (1 << DDC4)
 #endif /* QTY_OF_SENSORS >= 11 */
 #if QTY_OF_SENSORS >= 12
-    #define	READ_SENSOR_12			PINx & (1 << DDxx)
+    #define	READ_SENSOR_12			PINC & (1 << DDC5)
 #endif /* QTY_OF_SENSORS >= 12 */
 #if QTY_OF_SENSORS >= 13
-    #define	READ_SENSOR_13			PINx & (1 << DDxx)
+    #define	READ_SENSOR_13			PIND & (1 << DDD4)
 #endif /* QTY_OF_SENSORS >= 13 */
 #if QTY_OF_SENSORS >= 14
-    #define	READ_SENSOR_14			PINx & (1 << DDxx)
+    #define	READ_SENSOR_14			PIND & (1 << DDD2)
 #endif /* QTY_OF_SENSORS >= 14 */
 #if QTY_OF_SENSORS >= 15
-    #define	READ_SENSOR_15			PINx & (1 << DDxx)
+    #define	READ_SENSOR_15			PIND & (1 << DDD1)
 #endif /* QTY_OF_SENSORS >= 15 */
 #if QTY_OF_SENSORS >= 16
     #define	READ_SENSOR_16			PINx & (1 << DDxx)
@@ -126,7 +129,7 @@ void main (void) {
 	#endif /* SensorIR */
 
 	//delay_ms (5000);								// This delay is required by the competition rules
-
+        
 	while (true) {
 		error_sum = 0.0;
 
@@ -136,7 +139,7 @@ void main (void) {
 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
 
 		P = error_history[QTY_OF_ERR - 1] * kP;		// Current error * kP
-		for (i = QTY_OF_ERR - 1; i >= 0; i--) {
+		for (i = 0; QTY_OF_ERR > i; i++) {
 			error_sum += error_history[i];
 		}
 		I = error_sum / QTY_OF_ERR * kI;			// Average error * kI
@@ -193,8 +196,9 @@ void InitSys (void) {
 
 	// SensorLine
 	    // Input mode
-		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
-		DDRD &= ~(1 << DDD7);
+		DDRB &= ~((1 << DDB5) | (1 << DDB4) | (1 << DDB2) | (1 << DDB1) | (1 << DDB0));
+        DDRC &= ~((1 << DDC5) | (1 << DDC4) | (1 << DDC3) | (1 << DDC2) | (1 << DDC1) | (1 << DDC0));
+		DDRD &= ~((1 << DDD7) | (1 << DDD2) | (1 << DDD1) | (1 << DDD0));
 
 	// Infrared Sensor
 	    // Input mode
@@ -336,10 +340,10 @@ void ReadSensorLineData (void) {
 float CurrentRobotError (void) {
 	register uint8_t i = 0;
 	register float current_error = 0.0;
-
+    
 	ReadSensorLineData ();
 
-	for (i = QTY_OF_SENSORS - 1; i >= 0; i--) {
+	for (i = 0; QTY_OF_SENSORS > i; i++) {
 		if (line_data[i] != 0)						// If no data on [i] sensor skip counting the error
 			current_error += pow (QTY_OF_SENSORS / 2 - i, 3);	// Odd degree to preserve the sign '-'
 	}
