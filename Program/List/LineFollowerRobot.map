@@ -15,12 +15,12 @@ Variable                                                                        
 FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-main                                                                              0x00094    178
-InitSys                                                                           0x00146    123
-ReadSensorLineData                                                                0x001C1     25
-CurrentRobotError                                                                 0x001DA     56
-ftrunc                                                                            0x00212     49
-floor                                                                             0x00243     19
-log                                                                               0x00256    132
-exp                                                                               0x002DA    152
-pow                                                                               0x00372     82
+main                                                                              0x00094    191
+InitSys                                                                           0x00153    128
+ReadSensorLineData                                                                0x001D3     25
+CurrentRobotError                                                                 0x001EC     56
+ftrunc                                                                            0x00224     49
+floor                                                                             0x00255     19
+log                                                                               0x00268    132
+exp                                                                               0x002EC    152
+pow                                                                               0x00384     82

@@ -131,6 +131,7 @@ void main (void) {
 	//delay_ms (5000);								// This delay is required by the competition rules
         
 	while (true) {
+        PORTD |= (1 << 0);
 		error_sum = 0.0;
 
 		for (i = 0; i < QTY_OF_ERR - 1; i++) {	    // Shift error values
@@ -179,6 +180,7 @@ void main (void) {
 			OCR0A = 0;
 			OCR0B = right_motor_speed;
 		#endif /* MOTORS_NOT_PERFECT */
+        PORTD &= ~(1 << 0);
 
 		delay_ms (MAIN_CYCLE_DELAY);
 	}
@@ -198,7 +200,11 @@ void InitSys (void) {
 	    // Input mode
 		DDRB &= ~((1 << DDB5) | (1 << DDB4) | (1 << DDB2) | (1 << DDB1) | (1 << DDB0));
         DDRC &= ~((1 << DDC5) | (1 << DDC4) | (1 << DDC3) | (1 << DDC2) | (1 << DDC1) | (1 << DDC0));
-		DDRD &= ~((1 << DDD7) | (1 << DDD2) | (1 << DDD1) | (1 << DDD0));
+		DDRD &= ~((1 << DDD7) | (1 << DDD2) | (1 << DDD1));
+
+	// LED
+		// Output mode
+		DDRD |= (1 << DDD0);
 
 	// Infrared Sensor
 	    // Input mode

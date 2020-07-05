@@ -22,7 +22,7 @@ Active0=0
 EditorPanel0=0
 PageIndex0=0
 EditorPanel1=0
-TimeStamp1=1357094310
+TimeStamp1=1357221988
 PageIndex1=1
 TimeStamp0=1352119078
 OF2=C:\Program Files (x86)\CodeVisionAVR\inc\stdint.h
@@ -184,11 +184,11 @@ WarningExternalDeclaredNeverDefined=1
 WarningUnknownPragma=1
 DebugBootLoader=0
 WatchAVR8LAutoVariables=0
-Build=457
+Build=484
 UseEEPROMLocation0=1
 GlobalVarAddr=776
 EEPROMVarAddr=0
-COFFileTimeStamp=1357092999
+COFFileTimeStamp=1357222574
 [Assembler]
 OutputFormat=1
 [Libraries]
@@ -272,7 +272,7 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1357096814
+TimeStamp=1357222357
 [BookmarksFoldedCode]
 Files=22
 F1=LineFollowerRobot.c
@@ -298,11 +298,11 @@ F20=C:\Program Files (x86)\CodeVisionAVR\inc\delay.h
 F21=C:\Program Files (x86)\CodeVisionAVR\inc\stdbool.h
 F22=C:\Program Files (x86)\CodeVisionAVR\inc\stdint.h
 [Bookmarks1]
-TimeStamp=1357095749
-Row=0
-Column=0
+TimeStamp=1357221988
+Row=98
+Column=37
 ScrollPosX=0
-ScrollPosY=0
+ScrollPosY=90
 BK0=-1
 BK1=-1
 BK2=-1
@@ -636,7 +636,7 @@ BK9=-1
 [FoldedCode19]
 Blocks=0
 [CompilerDebug]
-Build=457
+Build=484
 RebuildAll=0
 LinkageInformationPresent=1
 UseEEPROMLocation0=1
@@ -657,8 +657,8 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 456
-L18=9010 line(s) compiled
+L17=Build: 484
+L18=9022 line(s) compiled
 L19=No errors
 L20=No warnings
 L21=
@@ -677,19 +677,19 @@ L33=
 L34=Heap size: 0 byte(s)
 L35=
 L36=EEPROM usage: 0 byte(s), 0,0% of EEPROM
-L37=Program size: 1625 words (3250 bytes), 9,9% of FLASH
-L38=60 words (120 bytes), 3,6% reduced by Code Compression
+L37=Program size: 1643 words (3286 bytes), 10,0% of FLASH
+L38=62 words (124 bytes), 3,6% reduced by Code Compression
 Lines=38
 [BuildInfoAssembler]
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=D:\Documents\!Projects\!Line Follower Robot\Program\List\LineFollowerRobot.asm(3019): No EEPROM data, deleting D:\Documents\!Projects\!Line Follower Robot\Program\Exe\LineFollowerRobot.eep
+L4=D:\Documents\!Projects\LineFollowerRobot\Program\List\LineFollowerRobot.asm(3043): No EEPROM data, deleting D:\Documents\!Projects\LineFollowerRobot\Program\Exe\LineFollowerRobot.eep
 L5=
 L6=ATmega328P memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x000cb2   3170     80   3250   32768   9.9%
+L9=[.cseg] 0x000000 0x000cd6   3206     80   3286   32768  10.0%
 L10=[.dseg] 0x000100 0x000308      0      8      8    2048   0.4%
 L11=[.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 L12=
@@ -744,9 +744,18 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
+[FoldedCode1]
+Line1=295
+Blocks=1
+[FoldedCode20]
+Blocks=0
+[FoldedCode21]
+Blocks=0
+[FoldedCode22]
+Blocks=0
 [HeadersList]
 Files=1
-F1=D:\Documents\!Projects\!Line Follower Robot\Program\LineFollowerRobot.c
+F1=D:\Documents\!Projects\LineFollowerRobot\Program\LineFollowerRobot.c
 [Header1]
 Files=6
 F1=C:\Program Files (x86)\CodeVisionAVR\inc\mega328p.h
@@ -755,11 +764,3 @@ F3=C:\Program Files (x86)\CodeVisionAVR\inc\delay.h
 F4=C:\Program Files (x86)\CodeVisionAVR\inc\math.h
 F5=C:\Program Files (x86)\CodeVisionAVR\inc\stdbool.h
 F6=C:\Program Files (x86)\CodeVisionAVR\inc\stdint.h
-[FoldedCode1]
-Blocks=0
-[FoldedCode20]
-Blocks=0
-[FoldedCode21]
-Blocks=0
-[FoldedCode22]
-Blocks=0
