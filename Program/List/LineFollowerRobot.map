@@ -1,8 +1,8 @@
 RAM Allocation [bytes]
 Variable                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-line_data                                                                         0x0300      16
-_seed                                                                             0x0310       4
+line_data                                                                         0x0300       4
+_seed                                                                             0x0304       4
 
 EEPROM Allocation [bytes]
 Variable                                                                          Address   Size
@@ -16,11 +16,11 @@ FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
 main                                                                              0x00094    176
-InitSys                                                                           0x00144    122
-ReadSensorLineData                                                                0x001BE     97
-CurrentRobotError                                                                 0x0021F     58
-ftrunc                                                                            0x00259     49
-floor                                                                             0x0028A     19
-log                                                                               0x0029D    132
-exp                                                                               0x00321    152
-pow                                                                               0x003B9     82
+InitSys                                                                           0x00144    103
+ReadSensorLineData                                                                0x001AB     25
+CurrentRobotError                                                                 0x001C4     58
+ftrunc                                                                            0x001FE     49
+floor                                                                             0x0022F     19
+log                                                                               0x00242    132
+exp                                                                               0x002C6    152
+pow                                                                               0x0035E     82

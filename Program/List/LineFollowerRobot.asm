@@ -1269,7 +1269,7 @@ __GLOBAL_INI_END:
 ;
 ;#define		F_CPU					20000000UL		// Quartz resonator clock frequency
 ;
-;#define		QTY_OF_SENSORS			16				// Quantity of sensors
+;#define		QTY_OF_SENSORS			4				// Quantity of sensors
 ;#define		AVG_SPEED				155				// Average speed of robot
 ;
 ;#define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
@@ -1280,7 +1280,7 @@ __GLOBAL_INI_END:
 ;
 ;// PID
 ;// Setup: P -> PD -> PID
-;#define		kP						10.0F			// Proportional	feedback coefficient
+;#define		kP						5.0F			// Proportional	feedback coefficient
 ;#define		kI						0.0F			// Integral 	feedback coefficient
 ;#define		kD						0.0F			// Differential	feedback coefficient
 ;#define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
@@ -1289,52 +1289,52 @@ __GLOBAL_INI_END:
 ;// Sensor order in the right --> direction
 ;
 ;#if QTY_OF_SENSORS >= 1
-;    #define	READ_SENSOR_1			PINB & (1 << DDB5)
+;    #define	READ_SENSOR_1			PINB & (1 << DDB2)
 ;#endif /* QTY_OF_SENSORS >= 1 */
 ;#if QTY_OF_SENSORS >= 2
-;    #define	READ_SENSOR_2			PINB & (1 << DDB4)
+;    #define	READ_SENSOR_2			PINB & (1 << DDB1)
 ;#endif /* QTY_OF_SENSORS >= 2 */
 ;#if QTY_OF_SENSORS >= 3
-;    #define	READ_SENSOR_3			PINB & (1 << DDB2)
+;    #define	READ_SENSOR_3			PINB & (1 << DDB0)
 ;#endif /* QTY_OF_SENSORS >= 3 */
 ;#if QTY_OF_SENSORS >= 4
-;    #define	READ_SENSOR_4			PINB & (1 << DDD1)
+;    #define	READ_SENSOR_4			PIND & (1 << DDD7)
 ;#endif /* QTY_OF_SENSORS >= 4 */
 ;#if QTY_OF_SENSORS >= 5
-;    #define	READ_SENSOR_5			PINB & (1 << DDB0)
+;    #define	READ_SENSOR_5			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 5 */
 ;#if QTY_OF_SENSORS >= 6
-;    #define	READ_SENSOR_6			PIND & (1 << DDB7)
+;    #define	READ_SENSOR_6			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 6 */
 ;#if QTY_OF_SENSORS >= 7
-;    #define	READ_SENSOR_7			PINC & (1 << DDC0)
+;    #define	READ_SENSOR_7			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 7 */
 ;#if QTY_OF_SENSORS >= 8
-;    #define	READ_SENSOR_8			PINC & (1 << DDC1)
+;    #define	READ_SENSOR_8			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 8 */
 ;#if QTY_OF_SENSORS >= 9
-;    #define	READ_SENSOR_9			PINC & (1 << DDC2)
+;    #define	READ_SENSOR_9			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 9 */
 ;#if QTY_OF_SENSORS >= 10
-;    #define	READ_SENSOR_10			PINC & (1 << DDC3)
+;    #define	READ_SENSOR_10			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 10 */
 ;#if QTY_OF_SENSORS >= 11
-;    #define	READ_SENSOR_11			PINC & (1 << DDC4)
+;    #define	READ_SENSOR_11			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 11 */
 ;#if QTY_OF_SENSORS >= 12
-;    #define	READ_SENSOR_12			PINC & (1 << DDC5)
+;    #define	READ_SENSOR_12			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 12 */
 ;#if QTY_OF_SENSORS >= 13
-;    #define	READ_SENSOR_13			PIND & (1 << DDD4)
+;    #define	READ_SENSOR_13			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 13 */
 ;#if QTY_OF_SENSORS >= 14
-;    #define	READ_SENSOR_14			PIND & (1 << DDD2)
+;    #define	READ_SENSOR_14			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 14 */
 ;#if QTY_OF_SENSORS >= 15
-;    #define	READ_SENSOR_15			PIND & (1 << DDD1)
+;    #define	READ_SENSOR_15			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 15 */
 ;#if QTY_OF_SENSORS >= 16
-;    #define	READ_SENSOR_16			PIND & (1 << DDD0)
+;    #define	READ_SENSOR_16			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 16 */
 ;
 ;//#define		READ_IR_SENSOR          PINx & (1 << DDxx)
@@ -1438,7 +1438,7 @@ _0x9:
 ; 0000 008C 
 ; 0000 008D 		P = error_history[QTY_OF_ERR - 1] * kP;		// Current error * kP
 	__GETD2S 56
-	__GETD1N 0x41200000
+	__GETD1N 0x40A00000
 	CALL __MULF12
 	__PUTD1S 12
 ; 0000 008E 		for (i = 0; i < QTY_OF_ERR; i++) {
@@ -1702,179 +1702,91 @@ _InitSys:
 ; 0000 0100 		#ifdef _OPTIMIZE_SIZE_
 ; 0000 0101 		#pragma optsize+
 ; 0000 0102 		#endif
-; 0000 0103 
-; 0000 0104 	// External Interrupt(s) initialization
-; 0000 0105 		// Turn OFF
-; 0000 0106 		EICRA  = 0x00;
-	STS  105,R30
-; 0000 0107 		EIMSK  = 0x00;
-	OUT  0x1D,R30
-; 0000 0108 		PCICR  = 0x00;
-	STS  104,R30
-; 0000 0109 
-; 0000 010A 	// Analog Comparator initialization
-; 0000 010B 		// Turn OFF
-; 0000 010C 		ACSR   = 0x80;
-	LDI  R30,LOW(128)
-	OUT  0x30,R30
-; 0000 010D 		ADCSRB = 0x00;
-	LDI  R30,LOW(0)
-	STS  123,R30
-; 0000 010E 		DIDR1  = 0x00;
-	STS  127,R30
-; 0000 010F 
-; 0000 0110 	// USART initialization
-; 0000 0111 		// Turn OFF
-; 0000 0112 		UCSR0B = 0x00;
-	STS  193,R30
-; 0000 0113 
-; 0000 0114 	// ADC initialization
-; 0000 0115 		// Turn OFF
-; 0000 0116 		ADCSRA = 0x00;
-	STS  122,R30
-; 0000 0117 
-; 0000 0118 	// SPI initialization
-; 0000 0119 		// Turn OFF
-; 0000 011A 		SPCR   = 0x00;
-	OUT  0x2C,R30
-; 0000 011B 
-; 0000 011C 	// TWI initialization
-; 0000 011D 		// Turn OFF
-; 0000 011E 		TWCR   = 0x00;
-	STS  188,R30
-; 0000 011F }
+; 0000 0103 }
 	RET
 ; .FEND
 ;
 ;void ReadSensorLineData (void) {
-; 0000 0121 void ReadSensorLineData (void) {
+; 0000 0105 void ReadSensorLineData (void) {
 _ReadSensorLineData:
 ; .FSTART _ReadSensorLineData
-; 0000 0122 	#ifdef READ_SENSOR_1
-; 0000 0123 		line_data[0] = READ_SENSOR_1;
+; 0000 0106 	#ifdef READ_SENSOR_1
+; 0000 0107 		line_data[0] = READ_SENSOR_1;
 	IN   R30,0x3
-	ANDI R30,LOW(0x20)
+	ANDI R30,LOW(0x4)
 	LDI  R26,LOW(_line_data)
 	LDI  R27,HIGH(_line_data)
 	CALL SUBOPT_0x5
-; 0000 0124 	#endif /* READ_SENSOR_1 */
-; 0000 0125 	#ifdef READ_SENSOR_2
-; 0000 0126 		line_data[1] = READ_SENSOR_2;
+; 0000 0108 	#endif /* READ_SENSOR_1 */
+; 0000 0109 	#ifdef READ_SENSOR_2
+; 0000 010A 		line_data[1] = READ_SENSOR_2;
 	__POINTW2MN _line_data,1
-	IN   R30,0x3
-	ANDI R30,LOW(0x10)
-	CALL SUBOPT_0x5
-; 0000 0127 	#endif /* READ_SENSOR_2 */
-; 0000 0128 	#ifdef READ_SENSOR_3
-; 0000 0129 		line_data[2] = READ_SENSOR_3;
-	__POINTW2MN _line_data,2
-	IN   R30,0x3
-	ANDI R30,LOW(0x4)
-	CALL SUBOPT_0x5
-; 0000 012A 	#endif /* READ_SENSOR_3 */
-; 0000 012B 	#ifdef READ_SENSOR_4
-; 0000 012C 		line_data[3] = READ_SENSOR_4;
-	__POINTW2MN _line_data,3
 	IN   R30,0x3
 	ANDI R30,LOW(0x2)
 	CALL SUBOPT_0x5
-; 0000 012D 	#endif /* READ_SENSOR_4 */
-; 0000 012E 	#ifdef READ_SENSOR_5
-; 0000 012F 		line_data[4] = READ_SENSOR_5;
-	__POINTW2MN _line_data,4
+; 0000 010B 	#endif /* READ_SENSOR_2 */
+; 0000 010C 	#ifdef READ_SENSOR_3
+; 0000 010D 		line_data[2] = READ_SENSOR_3;
+	__POINTW2MN _line_data,2
 	IN   R30,0x3
 	ANDI R30,LOW(0x1)
 	CALL SUBOPT_0x5
-; 0000 0130 	#endif /* READ_SENSOR_5 */
-; 0000 0131 	#ifdef READ_SENSOR_6
-; 0000 0132 		line_data[5] = READ_SENSOR_6;
-	__POINTW2MN _line_data,5
+; 0000 010E 	#endif /* READ_SENSOR_3 */
+; 0000 010F 	#ifdef READ_SENSOR_4
+; 0000 0110 		line_data[3] = READ_SENSOR_4;
+	__POINTW2MN _line_data,3
 	IN   R30,0x9
 	ANDI R30,LOW(0x80)
 	CALL SUBOPT_0x5
-; 0000 0133 	#endif /* READ_SENSOR_6 */
-; 0000 0134 	#ifdef READ_SENSOR_7
-; 0000 0135 		line_data[6] = READ_SENSOR_7;
-	__POINTW2MN _line_data,6
-	IN   R30,0x6
-	ANDI R30,LOW(0x1)
-	CALL SUBOPT_0x5
-; 0000 0136 	#endif /* READ_SENSOR_7 */
-; 0000 0137 	#ifdef READ_SENSOR_8
-; 0000 0138 		line_data[7] = READ_SENSOR_8;
-	__POINTW2MN _line_data,7
-	IN   R30,0x6
-	ANDI R30,LOW(0x2)
-	CALL SUBOPT_0x5
-; 0000 0139 	#endif /* READ_SENSOR_8 */
-; 0000 013A 	#ifdef READ_SENSOR_9
-; 0000 013B 		line_data[8] = READ_SENSOR_9;
-	__POINTW2MN _line_data,8
-	IN   R30,0x6
-	ANDI R30,LOW(0x4)
-	CALL SUBOPT_0x5
-; 0000 013C 	#endif /* READ_SENSOR_9 */
-; 0000 013D 	#ifdef READ_SENSOR_10
-; 0000 013E 		line_data[9] = READ_SENSOR_10;
-	__POINTW2MN _line_data,9
-	IN   R30,0x6
-	ANDI R30,LOW(0x8)
-	CALL SUBOPT_0x5
-; 0000 013F 	#endif /* READ_SENSOR_10 */
-; 0000 0140 	#ifdef READ_SENSOR_11
-; 0000 0141 		line_data[10] = READ_SENSOR_11;
-	__POINTW2MN _line_data,10
-	IN   R30,0x6
-	ANDI R30,LOW(0x10)
-	CALL SUBOPT_0x5
-; 0000 0142 	#endif /* READ_SENSOR_11 */
-; 0000 0143 	#ifdef READ_SENSOR_12
-; 0000 0144 		line_data[11] = READ_SENSOR_12;
-	__POINTW2MN _line_data,11
-	IN   R30,0x6
-	ANDI R30,LOW(0x20)
-	CALL SUBOPT_0x5
-; 0000 0145 	#endif /* READ_SENSOR_12 */
-; 0000 0146 	#ifdef READ_SENSOR_13
-; 0000 0147 		line_data[12] = READ_SENSOR_13;
-	__POINTW2MN _line_data,12
-	IN   R30,0x9
-	ANDI R30,LOW(0x10)
-	CALL SUBOPT_0x5
-; 0000 0148 	#endif /* READ_SENSOR_13 */
-; 0000 0149 	#ifdef READ_SENSOR_14
-; 0000 014A 		line_data[13] = READ_SENSOR_14;
-	__POINTW2MN _line_data,13
-	IN   R30,0x9
-	ANDI R30,LOW(0x4)
-	CALL SUBOPT_0x5
-; 0000 014B 	#endif /* READ_SENSOR_14 */
-; 0000 014C 	#ifdef READ_SENSOR_15
-; 0000 014D 		line_data[14] = READ_SENSOR_15;
-	__POINTW2MN _line_data,14
-	IN   R30,0x9
-	ANDI R30,LOW(0x2)
-	CALL SUBOPT_0x5
-; 0000 014E 	#endif /* READ_SENSOR_15 */
-; 0000 014F 	#ifdef READ_SENSOR_16
-; 0000 0150 		line_data[15] = READ_SENSOR_16;
-	__POINTW2MN _line_data,15
-	IN   R30,0x9
-	ANDI R30,LOW(0x1)
-	CALL SUBOPT_0x5
-; 0000 0151 	#endif /* READ_SENSOR_16 */
-; 0000 0152 }
+; 0000 0111 	#endif /* READ_SENSOR_4 */
+; 0000 0112 	#ifdef READ_SENSOR_5
+; 0000 0113 		line_data[4] = READ_SENSOR_5;
+; 0000 0114 	#endif /* READ_SENSOR_5 */
+; 0000 0115 	#ifdef READ_SENSOR_6
+; 0000 0116 		line_data[5] = READ_SENSOR_6;
+; 0000 0117 	#endif /* READ_SENSOR_6 */
+; 0000 0118 	#ifdef READ_SENSOR_7
+; 0000 0119 		line_data[6] = READ_SENSOR_7;
+; 0000 011A 	#endif /* READ_SENSOR_7 */
+; 0000 011B 	#ifdef READ_SENSOR_8
+; 0000 011C 		line_data[7] = READ_SENSOR_8;
+; 0000 011D 	#endif /* READ_SENSOR_8 */
+; 0000 011E 	#ifdef READ_SENSOR_9
+; 0000 011F 		line_data[8] = READ_SENSOR_9;
+; 0000 0120 	#endif /* READ_SENSOR_9 */
+; 0000 0121 	#ifdef READ_SENSOR_10
+; 0000 0122 		line_data[9] = READ_SENSOR_10;
+; 0000 0123 	#endif /* READ_SENSOR_10 */
+; 0000 0124 	#ifdef READ_SENSOR_11
+; 0000 0125 		line_data[10] = READ_SENSOR_11;
+; 0000 0126 	#endif /* READ_SENSOR_11 */
+; 0000 0127 	#ifdef READ_SENSOR_12
+; 0000 0128 		line_data[11] = READ_SENSOR_12;
+; 0000 0129 	#endif /* READ_SENSOR_12 */
+; 0000 012A 	#ifdef READ_SENSOR_13
+; 0000 012B 		line_data[12] = READ_SENSOR_13;
+; 0000 012C 	#endif /* READ_SENSOR_13 */
+; 0000 012D 	#ifdef READ_SENSOR_14
+; 0000 012E 		line_data[13] = READ_SENSOR_14;
+; 0000 012F 	#endif /* READ_SENSOR_14 */
+; 0000 0130 	#ifdef READ_SENSOR_15
+; 0000 0131 		line_data[14] = READ_SENSOR_15;
+; 0000 0132 	#endif /* READ_SENSOR_15 */
+; 0000 0133 	#ifdef READ_SENSOR_16
+; 0000 0134 		line_data[15] = READ_SENSOR_16;
+; 0000 0135 	#endif /* READ_SENSOR_16 */
+; 0000 0136 }
 	RET
 ; .FEND
 ;
 ;float CurrentRobotError (void) {
-; 0000 0154 float CurrentRobotError (void) {
+; 0000 0138 float CurrentRobotError (void) {
 _CurrentRobotError:
 ; .FSTART _CurrentRobotError
-; 0000 0155 	register uint8_t i = 0;
-; 0000 0156 	register float current_error = 0.0;
-; 0000 0157 
-; 0000 0158 	ReadSensorLineData ();
+; 0000 0139 	register uint8_t i = 0;
+; 0000 013A 	register float current_error = 0.0;
+; 0000 013B 
+; 0000 013C 	ReadSensorLineData ();
 	SBIW R28,4
 	LDI  R30,LOW(0)
 	ST   Y,R30
@@ -1886,21 +1798,19 @@ _CurrentRobotError:
 ;	current_error -> Y+1
 	LDI  R17,0
 	RCALL _ReadSensorLineData
-; 0000 0159 
-; 0000 015A 	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
+; 0000 013D 
+; 0000 013E 	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
 	LDI  R17,LOW(0)
 _0x15:
-	CPI  R17,17
+	CPI  R17,5
 	BRSH _0x16
-; 0000 015B         // If the data on the [i] sensor is zero,
-; 0000 015C         // then the sensor is located above the black line
-; 0000 015D         if (i == 0) {
-	CPI  R17,0
+; 0000 013F         if (i == (QTY_OF_SENSORS / 2)) {
+	CPI  R17,2
 	BREQ _0x14
-; 0000 015E             // Skip for the correct counting errors
-; 0000 015F             continue;
-; 0000 0160         }
-; 0000 0161 	    if (line_data[i] == 0) {
+; 0000 0140             // Skip for the correct counting errors
+; 0000 0141             continue;
+; 0000 0142         }
+; 0000 0143 	    if (line_data[i] == 0) {
 	MOV  R30,R17
 	LDI  R31,0
 	SUBI R30,LOW(-_line_data)
@@ -1908,12 +1818,14 @@ _0x15:
 	LD   R30,Z
 	CPI  R30,0
 	BRNE _0x18
-; 0000 0162             // Odd degree to preserve the sign '-'
-; 0000 0163             current_error += pow (QTY_OF_SENSORS / 2 - i, 3);
+; 0000 0144             // If the data on the [i] sensor is zero,
+; 0000 0145             // then the sensor is located above the black line
+; 0000 0146             // Odd degree to preserve the sign '-'
+; 0000 0147             current_error += pow (QTY_OF_SENSORS / 2 - i, 3);
 	MOV  R30,R17
 	LDI  R31,0
-	LDI  R26,LOW(8)
-	LDI  R27,HIGH(8)
+	LDI  R26,LOW(2)
+	LDI  R27,HIGH(2)
 	CALL __SWAPW12
 	SUB  R30,R26
 	SBC  R31,R27
@@ -1924,20 +1836,20 @@ _0x15:
 	__GETD2S 1
 	CALL __ADDF12
 	__PUTD1S 1
-; 0000 0164         }
-; 0000 0165 	}
+; 0000 0148         }
+; 0000 0149 	}
 _0x18:
 _0x14:
 	SUBI R17,-1
 	RJMP _0x15
 _0x16:
-; 0000 0166 
-; 0000 0167 	return current_error;
+; 0000 014A 
+; 0000 014B 	return current_error;
 	__GETD1S 1
 	LDD  R17,Y+0
 	ADIW R28,5
 	RET
-; 0000 0168 }
+; 0000 014C }
 ; .FEND
 ;
 ;
@@ -2258,7 +2170,7 @@ _0x2080001:
 
 	.DSEG
 _line_data:
-	.BYTE 0x10
+	.BYTE 0x4
 __seed_G101:
 	.BYTE 0x4
 
@@ -2294,7 +2206,7 @@ SUBOPT_0x4:
 	CALL __CFD1U
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 16 TIMES, CODE SIZE REDUCTION:42 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
 SUBOPT_0x5:
 	TST  R30
 	LDI  R30,1

@@ -23,7 +23,7 @@
 
 #define		F_CPU					20000000UL		// Quartz resonator clock frequency
 
-#define		QTY_OF_SENSORS			16				// Quantity of sensors
+#define		QTY_OF_SENSORS			4				// Quantity of sensors
 #define		AVG_SPEED				155				// Average speed of robot
 
 #define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
@@ -34,7 +34,7 @@
 
 // PID
 // Setup: P -> PD -> PID
-#define		kP						10.0F			// Proportional	feedback coefficient	
+#define		kP						5.0F			// Proportional	feedback coefficient	
 #define		kI						0.0F			// Integral 	feedback coefficient
 #define		kD						0.0F			// Differential	feedback coefficient
 #define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
@@ -43,52 +43,52 @@
 // Sensor order in the right --> direction
 
 #if QTY_OF_SENSORS >= 1
-    #define	READ_SENSOR_1			PINB & (1 << DDB5)
+    #define	READ_SENSOR_1			PINB & (1 << DDB2)
 #endif /* QTY_OF_SENSORS >= 1 */
 #if QTY_OF_SENSORS >= 2
-    #define	READ_SENSOR_2			PINB & (1 << DDB4)
+    #define	READ_SENSOR_2			PINB & (1 << DDB1)
 #endif /* QTY_OF_SENSORS >= 2 */
 #if QTY_OF_SENSORS >= 3
-    #define	READ_SENSOR_3			PINB & (1 << DDB2)
+    #define	READ_SENSOR_3			PINB & (1 << DDB0)
 #endif /* QTY_OF_SENSORS >= 3 */
 #if QTY_OF_SENSORS >= 4
-    #define	READ_SENSOR_4			PINB & (1 << DDD1)
+    #define	READ_SENSOR_4			PIND & (1 << DDD7)
 #endif /* QTY_OF_SENSORS >= 4 */
 #if QTY_OF_SENSORS >= 5
-    #define	READ_SENSOR_5			PINB & (1 << DDB0)
+    #define	READ_SENSOR_5			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 5 */
 #if QTY_OF_SENSORS >= 6
-    #define	READ_SENSOR_6			PIND & (1 << DDB7)
+    #define	READ_SENSOR_6			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 6 */
 #if QTY_OF_SENSORS >= 7
-    #define	READ_SENSOR_7			PINC & (1 << DDC0)
+    #define	READ_SENSOR_7			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 7 */
 #if QTY_OF_SENSORS >= 8
-    #define	READ_SENSOR_8			PINC & (1 << DDC1)
+    #define	READ_SENSOR_8			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 8 */
 #if QTY_OF_SENSORS >= 9
-    #define	READ_SENSOR_9			PINC & (1 << DDC2)
+    #define	READ_SENSOR_9			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 9 */
 #if QTY_OF_SENSORS >= 10
-    #define	READ_SENSOR_10			PINC & (1 << DDC3)
+    #define	READ_SENSOR_10			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 10 */
 #if QTY_OF_SENSORS >= 11
-    #define	READ_SENSOR_11			PINC & (1 << DDC4)
+    #define	READ_SENSOR_11			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 11 */
 #if QTY_OF_SENSORS >= 12
-    #define	READ_SENSOR_12			PINC & (1 << DDC5)
-#endif /* QTY_OF_SENSORS >= 12 */
+    #define	READ_SENSOR_12			PINx & (1 << DDxx)
+#endif /* QTY_OF_SENSORS >= 12 */                   
 #if QTY_OF_SENSORS >= 13
-    #define	READ_SENSOR_13			PIND & (1 << DDD4)
+    #define	READ_SENSOR_13			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 13 */
 #if QTY_OF_SENSORS >= 14
-    #define	READ_SENSOR_14			PIND & (1 << DDD2)
+    #define	READ_SENSOR_14			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 14 */
 #if QTY_OF_SENSORS >= 15
-    #define	READ_SENSOR_15			PIND & (1 << DDD1)
+    #define	READ_SENSOR_15			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 15 */
 #if QTY_OF_SENSORS >= 16
-    #define	READ_SENSOR_16			PIND & (1 << DDD0)
+    #define	READ_SENSOR_16			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 16 */
 
 //#define		READ_IR_SENSOR          PINx & (1 << DDxx)
@@ -256,34 +256,6 @@ void InitSys (void) {
 		#ifdef _OPTIMIZE_SIZE_
 		#pragma optsize+
 		#endif
-
-	// External Interrupt(s) initialization
-		// Turn OFF
-		EICRA  = 0x00;
-		EIMSK  = 0x00;
-		PCICR  = 0x00;
-	
-	// Analog Comparator initialization
-		// Turn OFF
-		ACSR   = 0x80;
-		ADCSRB = 0x00;
-		DIDR1  = 0x00;
-
-	// USART initialization
-		// Turn OFF
-		UCSR0B = 0x00;
-
-	// ADC initialization
-		// Turn OFF
-		ADCSRA = 0x00;
-
-	// SPI initialization
-		// Turn OFF
-		SPCR   = 0x00;
-
-	// TWI initialization
-		// Turn OFF
-		TWCR   = 0x00;
 }
 
 void ReadSensorLineData (void) {
@@ -344,13 +316,13 @@ float CurrentRobotError (void) {
 	ReadSensorLineData ();
 
 	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
-        // If the data on the [i] sensor is zero,
-        // then the sensor is located above the black line 
-        if i == 0 {
+        if (i == (QTY_OF_SENSORS / 2)) {
             // Skip for the correct counting errors
             continue;  
         }
-	    if (line_data[i] == 0) {
+	    if (line_data[i] == 0) { 
+            // If the data on the [i] sensor is zero,
+            // then the sensor is located above the black line 
             // Odd degree to preserve the sign '-' 
             current_error += pow (QTY_OF_SENSORS / 2 - i, 3);  
         }
@@ -361,5 +333,6 @@ float CurrentRobotError (void) {
 
 
 //  Literature:
+//      Find information about how to use ADC for logical levels on sensor inputs
 //      http://we.easyelectronics.ru/Theory/pid-regulyatory--dlya-chaynikov-praktikov.html
 //      https://wiki.roboforum.ru/index.php?title=%d0%9f%d0%b5%d1%80%d0%b5%d0%b2%d0%be%d0%b4_%d1%81%d1%82%d0%b0%d1%82%d1%8c%d0%b8_%22%d0%9f%d1%80%d0%be%d1%81%d1%82%d0%be_%d0%be_%d0%9f%d0%98%d0%94-%d0%b0%d0%bb%d0%b3%d0%be%d1%80%d0%b8%d1%82%d0%bc%d0%b0%d1%85%22#.D0.9D.D0.B0.D1.81.D1.82.D1.80.D0.BE.D0.B9.D0.BA.D0.B0_.D0.9F.D0.98.D0.94-.D1.80.D0.B5.D0.B3.D1.83.D0.BB.D1.8F.D1.82.D0.BE.D1.80.D0.B0

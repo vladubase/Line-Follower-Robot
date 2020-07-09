@@ -47,7 +47,7 @@
 ;
 ;#define		F_CPU					20000000UL		// Quartz resonator clock frequency
 ;
-;#define		QTY_OF_SENSORS			16				// Quantity of sensors
+;#define		QTY_OF_SENSORS			4				// Quantity of sensors
 ;#define		AVG_SPEED				155				// Average speed of robot
 ;
 ;#define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
@@ -58,7 +58,7 @@
 ;
 ;// PID
 ;// Setup: P -> PD -> PID
-;#define		kP						10.0F			// Proportional	feedback coefficient
+;#define		kP						5.0F			// Proportional	feedback coefficient
 ;#define		kI						0.0F			// Integral 	feedback coefficient
 ;#define		kD						0.0F			// Differential	feedback coefficient
 ;#define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
@@ -67,52 +67,52 @@
 ;// Sensor order in the right --> direction
 ;
 ;#if QTY_OF_SENSORS >= 1
-;    #define	READ_SENSOR_1			PINB & (1 << DDB5)
+;    #define	READ_SENSOR_1			PINB & (1 << DDB2)
 ;#endif /* QTY_OF_SENSORS >= 1 */
 ;#if QTY_OF_SENSORS >= 2
-;    #define	READ_SENSOR_2			PINB & (1 << DDB4)
+;    #define	READ_SENSOR_2			PINB & (1 << DDB1)
 ;#endif /* QTY_OF_SENSORS >= 2 */
 ;#if QTY_OF_SENSORS >= 3
-;    #define	READ_SENSOR_3			PINB & (1 << DDB2)
+;    #define	READ_SENSOR_3			PINB & (1 << DDB0)
 ;#endif /* QTY_OF_SENSORS >= 3 */
 ;#if QTY_OF_SENSORS >= 4
-;    #define	READ_SENSOR_4			PINB & (1 << DDD1)
+;    #define	READ_SENSOR_4			PIND & (1 << DDD7)
 ;#endif /* QTY_OF_SENSORS >= 4 */
 ;#if QTY_OF_SENSORS >= 5
-;    #define	READ_SENSOR_5			PINB & (1 << DDB0)
+;    #define	READ_SENSOR_5			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 5 */
 ;#if QTY_OF_SENSORS >= 6
-;    #define	READ_SENSOR_6			PIND & (1 << DDB7)
+;    #define	READ_SENSOR_6			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 6 */
 ;#if QTY_OF_SENSORS >= 7
-;    #define	READ_SENSOR_7			PINC & (1 << DDC0)
+;    #define	READ_SENSOR_7			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 7 */
 ;#if QTY_OF_SENSORS >= 8
-;    #define	READ_SENSOR_8			PINC & (1 << DDC1)
+;    #define	READ_SENSOR_8			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 8 */
 ;#if QTY_OF_SENSORS >= 9
-;    #define	READ_SENSOR_9			PINC & (1 << DDC2)
+;    #define	READ_SENSOR_9			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 9 */
 ;#if QTY_OF_SENSORS >= 10
-;    #define	READ_SENSOR_10			PINC & (1 << DDC3)
+;    #define	READ_SENSOR_10			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 10 */
 ;#if QTY_OF_SENSORS >= 11
-;    #define	READ_SENSOR_11			PINC & (1 << DDC4)
+;    #define	READ_SENSOR_11			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 11 */
 ;#if QTY_OF_SENSORS >= 12
-;    #define	READ_SENSOR_12			PINC & (1 << DDC5)
+;    #define	READ_SENSOR_12			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 12 */
 ;#if QTY_OF_SENSORS >= 13
-;    #define	READ_SENSOR_13			PIND & (1 << DDD4)
+;    #define	READ_SENSOR_13			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 13 */
 ;#if QTY_OF_SENSORS >= 14
-;    #define	READ_SENSOR_14			PIND & (1 << DDD2)
+;    #define	READ_SENSOR_14			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 14 */
 ;#if QTY_OF_SENSORS >= 15
-;    #define	READ_SENSOR_15			PIND & (1 << DDD1)
+;    #define	READ_SENSOR_15			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 15 */
 ;#if QTY_OF_SENSORS >= 16
-;    #define	READ_SENSOR_16			PIND & (1 << DDD0)
+;    #define	READ_SENSOR_16			PINx & (1 << DDxx)
 ;#endif /* QTY_OF_SENSORS >= 16 */
 ;
 ;//#define		READ_IR_SENSOR          PINx & (1 << DDxx)
@@ -525,83 +525,103 @@
 ; 0000 0100 		#ifdef _OPTIMIZE_SIZE_
 ; 0000 0101 		#pragma optsize+
 ; 0000 0102 		#endif
-; 0000 0103 
-; 0000 0104 	// External Interrupt(s) initialization
-; 0000 0105 		// Turn OFF
-; 0000 0106 		EICRA  = 0x00;
+; 0000 0103 }
 ;PCODE: $000000F5 VOL: 0
 ;PCODE: $000000F6 VOL: 0
-; 0000 0107 		EIMSK  = 0x00;
-;PCODE: $000000F7 VOL: 0
-;PCODE: $000000F8 VOL: 0
-; 0000 0108 		PCICR  = 0x00;
-;PCODE: $000000F9 VOL: 0
-;PCODE: $000000FA VOL: 0
-; 0000 0109 
-; 0000 010A 	// Analog Comparator initialization
-; 0000 010B 		// Turn OFF
-; 0000 010C 		ACSR   = 0x80;
-;PCODE: $000000FB VOL: 0
-;PCODE: $000000FC VOL: 0
-; 0000 010D 		ADCSRB = 0x00;
-;PCODE: $000000FD VOL: 0
-;PCODE: $000000FE VOL: 0
-; 0000 010E 		DIDR1  = 0x00;
-;PCODE: $000000FF VOL: 0
-;PCODE: $00000100 VOL: 0
-; 0000 010F 
-; 0000 0110 	// USART initialization
-; 0000 0111 		// Turn OFF
-; 0000 0112 		UCSR0B = 0x00;
-;PCODE: $00000101 VOL: 0
-;PCODE: $00000102 VOL: 0
-; 0000 0113 
-; 0000 0114 	// ADC initialization
-; 0000 0115 		// Turn OFF
-; 0000 0116 		ADCSRA = 0x00;
-;PCODE: $00000103 VOL: 0
-;PCODE: $00000104 VOL: 0
-; 0000 0117 
-; 0000 0118 	// SPI initialization
-; 0000 0119 		// Turn OFF
-; 0000 011A 		SPCR   = 0x00;
-;PCODE: $00000105 VOL: 0
-;PCODE: $00000106 VOL: 0
-; 0000 011B 
-; 0000 011C 	// TWI initialization
-; 0000 011D 		// Turn OFF
-; 0000 011E 		TWCR   = 0x00;
-;PCODE: $00000107 VOL: 0
-;PCODE: $00000108 VOL: 0
-; 0000 011F }
-;PCODE: $00000109 VOL: 0
-;PCODE: $0000010A VOL: 0
 ;
 ;void ReadSensorLineData (void) {
-; 0000 0121 void ReadSensorLineData (void) {
+; 0000 0105 void ReadSensorLineData (void) {
+;PCODE: $000000F7 VOL: 0
+;PCODE: $000000F8 VOL: 0
+; 0000 0106 	#ifdef READ_SENSOR_1
+; 0000 0107 		line_data[0] = READ_SENSOR_1;
+;PCODE: $000000F9 VOL: 0
+;PCODE: $000000FA VOL: 0
+;PCODE: $000000FB VOL: 0
+;PCODE: $000000FC VOL: 0
+;PCODE: $000000FD VOL: 0
+;PCODE: $000000FE VOL: 0
+; 0000 0108 	#endif /* READ_SENSOR_1 */
+; 0000 0109 	#ifdef READ_SENSOR_2
+; 0000 010A 		line_data[1] = READ_SENSOR_2;
+;PCODE: $000000FF VOL: 0
+;PCODE: $00000100 VOL: 0
+;PCODE: $00000101 VOL: 0
+;PCODE: $00000102 VOL: 0
+;PCODE: $00000103 VOL: 0
+;PCODE: $00000104 VOL: 0
+;PCODE: $00000105 VOL: 0
+; 0000 010B 	#endif /* READ_SENSOR_2 */
+; 0000 010C 	#ifdef READ_SENSOR_3
+; 0000 010D 		line_data[2] = READ_SENSOR_3;
+;PCODE: $00000106 VOL: 0
+;PCODE: $00000107 VOL: 0
+;PCODE: $00000108 VOL: 0
+;PCODE: $00000109 VOL: 0
+;PCODE: $0000010A VOL: 0
 ;PCODE: $0000010B VOL: 0
 ;PCODE: $0000010C VOL: 0
-; 0000 0122 	#ifdef READ_SENSOR_1
-; 0000 0123 		line_data[0] = READ_SENSOR_1;
+; 0000 010E 	#endif /* READ_SENSOR_3 */
+; 0000 010F 	#ifdef READ_SENSOR_4
+; 0000 0110 		line_data[3] = READ_SENSOR_4;
 ;PCODE: $0000010D VOL: 0
 ;PCODE: $0000010E VOL: 0
 ;PCODE: $0000010F VOL: 0
 ;PCODE: $00000110 VOL: 0
 ;PCODE: $00000111 VOL: 0
 ;PCODE: $00000112 VOL: 0
-; 0000 0124 	#endif /* READ_SENSOR_1 */
-; 0000 0125 	#ifdef READ_SENSOR_2
-; 0000 0126 		line_data[1] = READ_SENSOR_2;
 ;PCODE: $00000113 VOL: 0
+; 0000 0111 	#endif /* READ_SENSOR_4 */
+; 0000 0112 	#ifdef READ_SENSOR_5
+; 0000 0113 		line_data[4] = READ_SENSOR_5;
+; 0000 0114 	#endif /* READ_SENSOR_5 */
+; 0000 0115 	#ifdef READ_SENSOR_6
+; 0000 0116 		line_data[5] = READ_SENSOR_6;
+; 0000 0117 	#endif /* READ_SENSOR_6 */
+; 0000 0118 	#ifdef READ_SENSOR_7
+; 0000 0119 		line_data[6] = READ_SENSOR_7;
+; 0000 011A 	#endif /* READ_SENSOR_7 */
+; 0000 011B 	#ifdef READ_SENSOR_8
+; 0000 011C 		line_data[7] = READ_SENSOR_8;
+; 0000 011D 	#endif /* READ_SENSOR_8 */
+; 0000 011E 	#ifdef READ_SENSOR_9
+; 0000 011F 		line_data[8] = READ_SENSOR_9;
+; 0000 0120 	#endif /* READ_SENSOR_9 */
+; 0000 0121 	#ifdef READ_SENSOR_10
+; 0000 0122 		line_data[9] = READ_SENSOR_10;
+; 0000 0123 	#endif /* READ_SENSOR_10 */
+; 0000 0124 	#ifdef READ_SENSOR_11
+; 0000 0125 		line_data[10] = READ_SENSOR_11;
+; 0000 0126 	#endif /* READ_SENSOR_11 */
+; 0000 0127 	#ifdef READ_SENSOR_12
+; 0000 0128 		line_data[11] = READ_SENSOR_12;
+; 0000 0129 	#endif /* READ_SENSOR_12 */
+; 0000 012A 	#ifdef READ_SENSOR_13
+; 0000 012B 		line_data[12] = READ_SENSOR_13;
+; 0000 012C 	#endif /* READ_SENSOR_13 */
+; 0000 012D 	#ifdef READ_SENSOR_14
+; 0000 012E 		line_data[13] = READ_SENSOR_14;
+; 0000 012F 	#endif /* READ_SENSOR_14 */
+; 0000 0130 	#ifdef READ_SENSOR_15
+; 0000 0131 		line_data[14] = READ_SENSOR_15;
+; 0000 0132 	#endif /* READ_SENSOR_15 */
+; 0000 0133 	#ifdef READ_SENSOR_16
+; 0000 0134 		line_data[15] = READ_SENSOR_16;
+; 0000 0135 	#endif /* READ_SENSOR_16 */
+; 0000 0136 }
 ;PCODE: $00000114 VOL: 0
 ;PCODE: $00000115 VOL: 0
+;
+;float CurrentRobotError (void) {
+; 0000 0138 float CurrentRobotError (void) {
 ;PCODE: $00000116 VOL: 0
 ;PCODE: $00000117 VOL: 0
+; 0000 0139 	register uint8_t i = 0;
+; 0000 013A 	register float current_error = 0.0;
+; 0000 013B 
+; 0000 013C 	ReadSensorLineData ();
 ;PCODE: $00000118 VOL: 0
 ;PCODE: $00000119 VOL: 0
-; 0000 0127 	#endif /* READ_SENSOR_2 */
-; 0000 0128 	#ifdef READ_SENSOR_3
-; 0000 0129 		line_data[2] = READ_SENSOR_3;
 ;PCODE: $0000011A VOL: 0
 ;PCODE: $0000011B VOL: 0
 ;PCODE: $0000011C VOL: 0
@@ -609,49 +629,47 @@
 ;PCODE: $0000011E VOL: 0
 ;PCODE: $0000011F VOL: 0
 ;PCODE: $00000120 VOL: 0
-; 0000 012A 	#endif /* READ_SENSOR_3 */
-; 0000 012B 	#ifdef READ_SENSOR_4
-; 0000 012C 		line_data[3] = READ_SENSOR_4;
 ;PCODE: $00000121 VOL: 0
+;	i -> R17
+;	current_error -> Y+1
 ;PCODE: $00000122 VOL: 0
 ;PCODE: $00000123 VOL: 0
 ;PCODE: $00000124 VOL: 0
+; 0000 013D 
+; 0000 013E 	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
 ;PCODE: $00000125 VOL: 0
 ;PCODE: $00000126 VOL: 0
 ;PCODE: $00000127 VOL: 0
-; 0000 012D 	#endif /* READ_SENSOR_4 */
-; 0000 012E 	#ifdef READ_SENSOR_5
-; 0000 012F 		line_data[4] = READ_SENSOR_5;
 ;PCODE: $00000128 VOL: 0
 ;PCODE: $00000129 VOL: 0
 ;PCODE: $0000012A VOL: 0
 ;PCODE: $0000012B VOL: 0
 ;PCODE: $0000012C VOL: 0
 ;PCODE: $0000012D VOL: 0
+; 0000 013F         if (i == (QTY_OF_SENSORS / 2)) {
 ;PCODE: $0000012E VOL: 0
-; 0000 0130 	#endif /* READ_SENSOR_5 */
-; 0000 0131 	#ifdef READ_SENSOR_6
-; 0000 0132 		line_data[5] = READ_SENSOR_6;
 ;PCODE: $0000012F VOL: 0
 ;PCODE: $00000130 VOL: 0
+; 0000 0140             // Skip for the correct counting errors
+; 0000 0141             continue;
 ;PCODE: $00000131 VOL: 0
+; 0000 0142         }
+; 0000 0143 	    if (line_data[i] == 0) {
 ;PCODE: $00000132 VOL: 0
 ;PCODE: $00000133 VOL: 0
 ;PCODE: $00000134 VOL: 0
 ;PCODE: $00000135 VOL: 0
-; 0000 0133 	#endif /* READ_SENSOR_6 */
-; 0000 0134 	#ifdef READ_SENSOR_7
-; 0000 0135 		line_data[6] = READ_SENSOR_7;
 ;PCODE: $00000136 VOL: 0
 ;PCODE: $00000137 VOL: 0
 ;PCODE: $00000138 VOL: 0
+; 0000 0144             // If the data on the [i] sensor is zero,
+; 0000 0145             // then the sensor is located above the black line
+; 0000 0146             // Odd degree to preserve the sign '-'
+; 0000 0147             current_error += pow (QTY_OF_SENSORS / 2 - i, 3);
 ;PCODE: $00000139 VOL: 0
 ;PCODE: $0000013A VOL: 0
 ;PCODE: $0000013B VOL: 0
 ;PCODE: $0000013C VOL: 0
-; 0000 0136 	#endif /* READ_SENSOR_7 */
-; 0000 0137 	#ifdef READ_SENSOR_8
-; 0000 0138 		line_data[7] = READ_SENSOR_8;
 ;PCODE: $0000013D VOL: 0
 ;PCODE: $0000013E VOL: 0
 ;PCODE: $0000013F VOL: 0
@@ -659,173 +677,24 @@
 ;PCODE: $00000141 VOL: 0
 ;PCODE: $00000142 VOL: 0
 ;PCODE: $00000143 VOL: 0
-; 0000 0139 	#endif /* READ_SENSOR_8 */
-; 0000 013A 	#ifdef READ_SENSOR_9
-; 0000 013B 		line_data[8] = READ_SENSOR_9;
 ;PCODE: $00000144 VOL: 0
+; 0000 0148         }
+; 0000 0149 	}
 ;PCODE: $00000145 VOL: 0
 ;PCODE: $00000146 VOL: 0
 ;PCODE: $00000147 VOL: 0
 ;PCODE: $00000148 VOL: 0
 ;PCODE: $00000149 VOL: 0
 ;PCODE: $0000014A VOL: 0
-; 0000 013C 	#endif /* READ_SENSOR_9 */
-; 0000 013D 	#ifdef READ_SENSOR_10
-; 0000 013E 		line_data[9] = READ_SENSOR_10;
+; 0000 014A 
+; 0000 014B 	return current_error;
 ;PCODE: $0000014B VOL: 0
 ;PCODE: $0000014C VOL: 0
 ;PCODE: $0000014D VOL: 0
 ;PCODE: $0000014E VOL: 0
 ;PCODE: $0000014F VOL: 0
+; 0000 014C }
 ;PCODE: $00000150 VOL: 0
-;PCODE: $00000151 VOL: 0
-; 0000 013F 	#endif /* READ_SENSOR_10 */
-; 0000 0140 	#ifdef READ_SENSOR_11
-; 0000 0141 		line_data[10] = READ_SENSOR_11;
-;PCODE: $00000152 VOL: 0
-;PCODE: $00000153 VOL: 0
-;PCODE: $00000154 VOL: 0
-;PCODE: $00000155 VOL: 0
-;PCODE: $00000156 VOL: 0
-;PCODE: $00000157 VOL: 0
-;PCODE: $00000158 VOL: 0
-; 0000 0142 	#endif /* READ_SENSOR_11 */
-; 0000 0143 	#ifdef READ_SENSOR_12
-; 0000 0144 		line_data[11] = READ_SENSOR_12;
-;PCODE: $00000159 VOL: 0
-;PCODE: $0000015A VOL: 0
-;PCODE: $0000015B VOL: 0
-;PCODE: $0000015C VOL: 0
-;PCODE: $0000015D VOL: 0
-;PCODE: $0000015E VOL: 0
-;PCODE: $0000015F VOL: 0
-; 0000 0145 	#endif /* READ_SENSOR_12 */
-; 0000 0146 	#ifdef READ_SENSOR_13
-; 0000 0147 		line_data[12] = READ_SENSOR_13;
-;PCODE: $00000160 VOL: 0
-;PCODE: $00000161 VOL: 0
-;PCODE: $00000162 VOL: 0
-;PCODE: $00000163 VOL: 0
-;PCODE: $00000164 VOL: 0
-;PCODE: $00000165 VOL: 0
-;PCODE: $00000166 VOL: 0
-; 0000 0148 	#endif /* READ_SENSOR_13 */
-; 0000 0149 	#ifdef READ_SENSOR_14
-; 0000 014A 		line_data[13] = READ_SENSOR_14;
-;PCODE: $00000167 VOL: 0
-;PCODE: $00000168 VOL: 0
-;PCODE: $00000169 VOL: 0
-;PCODE: $0000016A VOL: 0
-;PCODE: $0000016B VOL: 0
-;PCODE: $0000016C VOL: 0
-;PCODE: $0000016D VOL: 0
-; 0000 014B 	#endif /* READ_SENSOR_14 */
-; 0000 014C 	#ifdef READ_SENSOR_15
-; 0000 014D 		line_data[14] = READ_SENSOR_15;
-;PCODE: $0000016E VOL: 0
-;PCODE: $0000016F VOL: 0
-;PCODE: $00000170 VOL: 0
-;PCODE: $00000171 VOL: 0
-;PCODE: $00000172 VOL: 0
-;PCODE: $00000173 VOL: 0
-;PCODE: $00000174 VOL: 0
-; 0000 014E 	#endif /* READ_SENSOR_15 */
-; 0000 014F 	#ifdef READ_SENSOR_16
-; 0000 0150 		line_data[15] = READ_SENSOR_16;
-;PCODE: $00000175 VOL: 0
-;PCODE: $00000176 VOL: 0
-;PCODE: $00000177 VOL: 0
-;PCODE: $00000178 VOL: 0
-;PCODE: $00000179 VOL: 0
-;PCODE: $0000017A VOL: 0
-;PCODE: $0000017B VOL: 0
-; 0000 0151 	#endif /* READ_SENSOR_16 */
-; 0000 0152 }
-;PCODE: $0000017C VOL: 0
-;PCODE: $0000017D VOL: 0
-;
-;float CurrentRobotError (void) {
-; 0000 0154 float CurrentRobotError (void) {
-;PCODE: $0000017E VOL: 0
-;PCODE: $0000017F VOL: 0
-; 0000 0155 	register uint8_t i = 0;
-; 0000 0156 	register float current_error = 0.0;
-; 0000 0157 
-; 0000 0158 	ReadSensorLineData ();
-;PCODE: $00000180 VOL: 0
-;PCODE: $00000181 VOL: 0
-;PCODE: $00000182 VOL: 0
-;PCODE: $00000183 VOL: 0
-;PCODE: $00000184 VOL: 0
-;PCODE: $00000185 VOL: 0
-;PCODE: $00000186 VOL: 0
-;PCODE: $00000187 VOL: 0
-;PCODE: $00000188 VOL: 0
-;PCODE: $00000189 VOL: 0
-;	i -> R17
-;	current_error -> Y+1
-;PCODE: $0000018A VOL: 0
-;PCODE: $0000018B VOL: 0
-;PCODE: $0000018C VOL: 0
-; 0000 0159 
-; 0000 015A 	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
-;PCODE: $0000018D VOL: 0
-;PCODE: $0000018E VOL: 0
-;PCODE: $0000018F VOL: 0
-;PCODE: $00000190 VOL: 0
-;PCODE: $00000191 VOL: 0
-;PCODE: $00000192 VOL: 0
-;PCODE: $00000193 VOL: 0
-;PCODE: $00000194 VOL: 0
-;PCODE: $00000195 VOL: 0
-; 0000 015B         // If the data on the [i] sensor is zero,
-; 0000 015C         // then the sensor is located above the black line
-; 0000 015D         if (i == 0) {
-;PCODE: $00000196 VOL: 0
-;PCODE: $00000197 VOL: 0
-; 0000 015E             // Skip for the correct counting errors
-; 0000 015F             continue;
-;PCODE: $00000198 VOL: 0
-; 0000 0160         }
-; 0000 0161 	    if (line_data[i] == 0) {
-;PCODE: $00000199 VOL: 0
-;PCODE: $0000019A VOL: 0
-;PCODE: $0000019B VOL: 0
-;PCODE: $0000019C VOL: 0
-;PCODE: $0000019D VOL: 0
-;PCODE: $0000019E VOL: 0
-;PCODE: $0000019F VOL: 0
-; 0000 0162             // Odd degree to preserve the sign '-'
-; 0000 0163             current_error += pow (QTY_OF_SENSORS / 2 - i, 3);
-;PCODE: $000001A0 VOL: 0
-;PCODE: $000001A1 VOL: 0
-;PCODE: $000001A2 VOL: 0
-;PCODE: $000001A3 VOL: 0
-;PCODE: $000001A4 VOL: 0
-;PCODE: $000001A5 VOL: 0
-;PCODE: $000001A6 VOL: 0
-;PCODE: $000001A7 VOL: 0
-;PCODE: $000001A8 VOL: 0
-;PCODE: $000001A9 VOL: 0
-;PCODE: $000001AA VOL: 0
-;PCODE: $000001AB VOL: 0
-; 0000 0164         }
-; 0000 0165 	}
-;PCODE: $000001AC VOL: 0
-;PCODE: $000001AD VOL: 0
-;PCODE: $000001AE VOL: 0
-;PCODE: $000001AF VOL: 0
-;PCODE: $000001B0 VOL: 0
-;PCODE: $000001B1 VOL: 0
-; 0000 0166 
-; 0000 0167 	return current_error;
-;PCODE: $000001B2 VOL: 0
-;PCODE: $000001B3 VOL: 0
-;PCODE: $000001B4 VOL: 0
-;PCODE: $000001B5 VOL: 0
-;PCODE: $000001B6 VOL: 0
-; 0000 0168 }
-;PCODE: $000001B7 VOL: 0
 ;
 ;
 ;//  Literature:
