@@ -5,8 +5,32 @@
 *	by Uladzislau 'vladubase' Dubatouka <vladubase@gmail.com>.
 *	Created on 2020.05.12.
 *
-*   4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 sensors
-*   6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 sensors
+*	This program is controlling the Line following robot using PID regulator.
+*	It has a flexible settings system via #defines at the beginning of the .C main file.
+*	IO ports are configured through registers.
+*	
+*  "The usual procedure for setting up the PID regulator:
+*	1. At a low speed, we adjust the P-controller (we select a value of kP such 
+*		that in the coolest turns the robot passes keeping the line close to its
+*		extreme sensors). kD and kI are equal to zero, i.e. use a pure P-regulator;
+*	2. Increase the speed, select the value of kD. If the robot went without
+*		inertia when setting the P-controller, then the kP value can be left unchanged.
+*		If the robot has already gone with inertia, as is usually the case
+*		with fast robots, then the kP value will need to be lowered -
+*		we will see this by the fact that the robot will cease to deviate
+*		strongly from the line thanks to the help of the D-controller;
+*	3. When the PD controller is configured, then I can be selected,
+*		reducing the deviation of the robot from the line. The values ​​of
+*		the coefficients kD and kP are usually also somewhat lower.
+*		An i-controller is useful for racing where a line can make loops.
+*		Deviation of the robot from a straight line is fraught with
+*		the choice of the wrong direction of movement. When racing on tracks
+*		without loops, the PD controller is often used, since in the general
+*		case it allows you to develop a higher speed."
+*	(Credit: https://www.goodlancer.com/pid-control/).
+*
+*   4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
+*   6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
 *
 */
 
@@ -21,50 +45,49 @@
 
 /***************************** Defines ****************************/
 
-#define		F_CPU					20000000UL		// Quartz resonator clock frequency
+#define		F_CPU					((uint32_t)20000000)// Quartz resonator clock frequency
 
-#define		QTY_OF_SENSORS			4				// Quantity of sensors
-#define		AVG_SPEED				155				// Average speed of robot
+#define		QTY_OF_SENSORS			((uint8_t)8)		// Quantity of sensors
+#define		AVG_SPEED				((uint8_t)155)		// Average speed of robot
 
-#define		MOTORS_NOT_PERFECT		false			// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
-#if MOTORS_NOT_PERFECT
-	#define	L_MOTOR_MISMATCH		1.05F			// Coefficient of motor power difference
-	#define	R_MOTOR_MISMATCH		1.0F			// There is nothing perfect ;)
+#define		MOTORS_NOT_PERFECT		true 				// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
+#if MOTORS_NOT_PERFECT									// There is nothing perfect ;)
+	#define	L_MOTOR_MISMATCH		((float)1.0)		// Coefficient of motor power difference
+	#define	R_MOTOR_MISMATCH		((float)1.07)		// Coefficient of motor power difference
 #endif /* MOTORS_NOT_PERFECT */
 
 // PID
 // Setup: P -> PD -> PID
-#define		kP						5.0F			// Proportional	feedback coefficient	
-#define		kI						0.0F			// Integral 	feedback coefficient
-#define		kD						0.0F			// Differential	feedback coefficient
-#define		QTY_OF_ERR				10				// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
-#define		MAIN_CYCLE_DELAY		2				// The main cycle delay (in ms) for correct work of D-regulation
+#define		kP						((uint8_t)1)		// Proportional	feedback coefficient	
+#define		kI						((uint8_t)0)		// Integral 	feedback coefficient
+#define		kD						((uint8_t)0)		// Differential	feedback coefficient
+#define		QTY_OF_ERR				((uint8_t)10)		// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
+#define		MAIN_CYCLE_DELAY		((uint8_t)2)		// The main cycle delay (in ms) for correct work of D-regulation
 
-// Sensor order in the right --> direction
-
+// Sensor order in the right --> direction                  
 #if QTY_OF_SENSORS >= 1
-    #define	READ_SENSOR_1			PINB & (1 << DDB2)
+    #define	READ_SENSOR_1			PIND & (1 << DDD2)
 #endif /* QTY_OF_SENSORS >= 1 */
 #if QTY_OF_SENSORS >= 2
-    #define	READ_SENSOR_2			PINB & (1 << DDB1)
+    #define	READ_SENSOR_2			PIND & (1 << DDD4)
 #endif /* QTY_OF_SENSORS >= 2 */
 #if QTY_OF_SENSORS >= 3
-    #define	READ_SENSOR_3			PINB & (1 << DDB0)
+    #define	READ_SENSOR_3			PINC & (1 << DDC5)
 #endif /* QTY_OF_SENSORS >= 3 */
 #if QTY_OF_SENSORS >= 4
-    #define	READ_SENSOR_4			PIND & (1 << DDD7)
+    #define	READ_SENSOR_4			PINC & (1 << DDC4)
 #endif /* QTY_OF_SENSORS >= 4 */
 #if QTY_OF_SENSORS >= 5
-    #define	READ_SENSOR_5			PINx & (1 << DDxx)
+    #define	READ_SENSOR_5			PINC & (1 << DDC3)
 #endif /* QTY_OF_SENSORS >= 5 */
 #if QTY_OF_SENSORS >= 6
-    #define	READ_SENSOR_6			PINx & (1 << DDxx)
+    #define	READ_SENSOR_6			PINC & (1 << DDC2)
 #endif /* QTY_OF_SENSORS >= 6 */
 #if QTY_OF_SENSORS >= 7
-    #define	READ_SENSOR_7			PINx & (1 << DDxx)
+    #define	READ_SENSOR_7			PINC & (1 << DDC1)
 #endif /* QTY_OF_SENSORS >= 7 */
 #if QTY_OF_SENSORS >= 8
-    #define	READ_SENSOR_8			PINx & (1 << DDxx)
+    #define	READ_SENSOR_8			PINC & (1 << DDC0)
 #endif /* QTY_OF_SENSORS >= 8 */
 #if QTY_OF_SENSORS >= 9
     #define	READ_SENSOR_9			PINx & (1 << DDxx)
@@ -91,7 +114,7 @@
     #define	READ_SENSOR_16			PINx & (1 << DDxx)
 #endif /* QTY_OF_SENSORS >= 16 */
 
-//#define		READ_IR_SENSOR          PINx & (1 << DDxx)
+//#define	READ_IR_SENSOR			PINx & (1 << DDxx)
 
 /************************* Global Variables ***********************/
 
@@ -106,16 +129,18 @@ float CurrentRobotError (void);
 /****************************** Main ******************************/
 
 void main (void) {
+	// DEFINITION OF VARIABLES
 	register float error_history[QTY_OF_ERR] = {0};	// Storing the values of recent errors
 	register float error_sum = 0.0;					// Sum of errors in history
 	register uint8_t i = 0;
 	register float P = 0.0;
 	register float I = 0.0;
 	register float D = 0.0;
-	register float PID_total_correction = 0.0;
+	register float PID_total_correction = 0.0;      // Sum of P, I, D
 	register int16_t left_motor_speed = 0;
 	register int16_t right_motor_speed = 0;
 
+	// MICROCONTROLLER INITIALIZATION
 	InitSys ();
 
 	// Waiting for a signal on IR sensor
@@ -126,30 +151,36 @@ void main (void) {
 			LED_1_OFF;
 			delay_ms (25);
 		}
-	#endif /* SensorIR */
+	#endif /* READ_IR_SENSOR */
 
 	//delay_ms (5000);								// This delay is required by the competition rules
-        
+	
+	// MAIN CYCLE
 	while (true) {
 		error_sum = 0.0;
 
-		for (i = 0; i < QTY_OF_ERR - 1; i++) {	    // Shift error values
+	    // Shift error values
+		for (i = 0; i < QTY_OF_ERR - 1; i++) {
 			error_history[i] = error_history[i + 1];
 		}
 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
 
+		// Calculation of value P
 		P = error_history[QTY_OF_ERR - 1] * kP;		// Current error * kP
+		// Calculation of value I
 		for (i = 0; i < QTY_OF_ERR; i++) {
 			error_sum += error_history[i];
 		}
-		I = error_sum / QTY_OF_ERR * kI;			// Average error * kI
-		D = (error_history[QTY_OF_ERR - 1] -        // (current error - previous error) * kD
-            error_history[QTY_OF_ERR - 1 - 1]) * kD;
+		I = error_sum * kI;							// sum of errors * kI
+		// Calculation of value D
+		D = (error_history[QTY_OF_ERR - 1] -        // (current error - first error) * kD
+        	error_history[0]) * kD;
 
 		PID_total_correction = (P + I) + D;
 
-		left_motor_speed  = AVG_SPEED + (uint16_t)PID_total_correction;
-		right_motor_speed = AVG_SPEED - (uint16_t)PID_total_correction;
+		// 
+		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
+		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
 
 		// Validating a range of variables
 		if (left_motor_speed > 255)
@@ -163,17 +194,10 @@ void main (void) {
 
 		// Motors power difference compensation
 		#if MOTORS_NOT_PERFECT
-			if (L_MOTOR_MISMATCH >= R_MOTOR_MISMATCH) {
-				OCR2A = 0;
-				OCR2B = left_motor_speed;
-				OCR0A = 0;
-				OCR0B = right_motor_speed / L_MOTOR_MISMATCH;
-			} else {
-				OCR2A = 0;
-				OCR2B = left_motor_speed / R_MOTOR_MISMATCH;
-				OCR0A = 0;
-				OCR0B = right_motor_speed;
-			}
+			OCR2A = 0;
+			OCR2B = left_motor_speed / R_MOTOR_MISMATCH;
+			OCR0A = 0;
+			OCR0B = right_motor_speed / L_MOTOR_MISMATCH;
 		#else
 			OCR2A = 0;
 			OCR2B = left_motor_speed;
@@ -204,7 +228,7 @@ void InitSys (void) {
 	    // Input mode
 		#ifdef READ_SENSOR_IR
 			DDRx &= ~(1 << DDxx);
-		#endif
+		#endif /* READ_SENSOR_IR */
 
 	// Timer/Counter(s) initialization
 		// Timer/Counter 0
@@ -251,11 +275,11 @@ void InitSys (void) {
 
 	// Crystal Oscillator division factor: 1
 		#pragma optsize-
-			CLKPR = 0x80;
+			CLKPR |= (1 << CLKPCE);
 			CLKPR = 0x00;
 		#ifdef _OPTIMIZE_SIZE_
-		#pragma optsize+
-		#endif
+			#pragma optsize+
+		#endif /* _OPTIMIZE_SIZE_ */
 }
 
 void ReadSensorLineData (void) {
@@ -315,24 +339,14 @@ float CurrentRobotError (void) {
     
 	ReadSensorLineData ();
 
-	for (i = 0; i < QTY_OF_SENSORS + 1; i++) {
-        if (i == (QTY_OF_SENSORS / 2)) {
-            // Skip for the correct counting errors
-            continue;  
-        }
+	for (i = 0; i < QTY_OF_SENSORS; i++) {
 	    if (line_data[i] == 0) { 
-            // If the data on the [i] sensor is zero,
+            // If the data on the [i]th sensor is zero,
             // then the sensor is located above the black line 
             // Odd degree to preserve the sign '-' 
-            current_error += pow (QTY_OF_SENSORS / 2 - i, 3);  
+            current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);  
         }
 	}
 
 	return current_error;
 }
-
-
-//  Literature:
-//      Find information about how to use ADC for logical levels on sensor inputs
-//      http://we.easyelectronics.ru/Theory/pid-regulyatory--dlya-chaynikov-praktikov.html
-//      https://wiki.roboforum.ru/index.php?title=%d0%9f%d0%b5%d1%80%d0%b5%d0%b2%d0%be%d0%b4_%d1%81%d1%82%d0%b0%d1%82%d1%8c%d0%b8_%22%d0%9f%d1%80%d0%be%d1%81%d1%82%d0%be_%d0%be_%d0%9f%d0%98%d0%94-%d0%b0%d0%bb%d0%b3%d0%be%d1%80%d0%b8%d1%82%d0%bc%d0%b0%d1%85%22#.D0.9D.D0.B0.D1.81.D1.82.D1.80.D0.BE.D0.B9.D0.BA.D0.B0_.D0.9F.D0.98.D0.94-.D1.80.D0.B5.D0.B3.D1.83.D0.BB.D1.8F.D1.82.D0.BE.D1.80.D0.B0

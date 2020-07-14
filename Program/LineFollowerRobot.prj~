@@ -6,7 +6,7 @@ A=vladubase@gmail.com
 C=
 D=04.03.2020 18:24:33
 Files=1
-OpenedFiles=1
+OpenedFiles=4
 OF1=LineFollowerRobot.c
 Active1=1
 OutputListFilesDirectory=List
@@ -21,7 +21,7 @@ Active0=0
 EditorPanel0=0
 PageIndex0=0
 EditorPanel1=0
-TimeStamp1=1357803027
+TimeStamp1=1357578649
 PageIndex1=1
 TimeStamp0=1352119078
 OF2=C:\Program Files (x86)\CodeVisionAVR\inc\stdint.h
@@ -124,7 +124,7 @@ GlobalConstInFlash=0
 EnhancedFunctionParameterPassing=1
 AutomaticRegisterAllocation=1
 SmartRegisterAllocation=1
-PreprocessorOutput=1
+PreprocessorOutput=0
 IOBitDefinitions=1
 StackEndMarkers=0
 Warnings=1
@@ -184,7 +184,7 @@ WarningExternalDeclaredNeverDefined=1
 WarningUnknownPragma=1
 DebugBootLoader=0
 WatchAVR8LAutoVariables=0
-Build=547
+Build=515
 UseEEPROMLocation0=1
 GlobalVarAddr=776
 EEPROMVarAddr=0
@@ -276,7 +276,7 @@ UserProgWorkDir=
 ProgrammChip=0
 MergeROMFile=0
 ROMFilePath=
-SCKFrequency=460800
+SCKFrequency=5000000
 LockBits=0
 BootLockBits0=0
 BootLockBits1=0
@@ -344,9 +344,9 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1357803045
+TimeStamp=1357578672
 [BookmarksFoldedCode]
-Files=23
+Files=22
 F1=LineFollowerRobot.c
 F2=List\LineFollowerRobot.asm
 F3=inc\ReadSensorLineData.h
@@ -369,13 +369,12 @@ F19=Inc\mega328p.h
 F20=C:\Program Files (x86)\CodeVisionAVR\inc\delay.h
 F21=C:\Program Files (x86)\CodeVisionAVR\inc\stdbool.h
 F22=C:\Program Files (x86)\CodeVisionAVR\inc\stdint.h
-F23=C:\Program Files (x86)\CodeVisionAVR\inc\math.h
 [Bookmarks1]
-TimeStamp=1357803027
-Row=5
-Column=10
+TimeStamp=1357578649
+Row=312
+Column=29
 ScrollPosX=0
-ScrollPosY=0
+ScrollPosY=190
 BK0=-1
 BK1=-1
 BK2=-1
@@ -817,31 +816,15 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[Bookmarks23]
-TimeStamp=977953859
-Row=41
-Column=9
-ScrollPosX=0
-ScrollPosY=17
-BK0=-1
-BK1=-1
-BK2=-1
-BK3=-1
-BK4=-1
-BK5=-1
-BK6=-1
-BK7=-1
-BK8=-1
-BK9=-1
-[FoldedCode23]
-Blocks=0
-[FoldedCode22]
+[FoldedCode1]
+Line1=190
+Line2=262
+Blocks=2
+[FoldedCode20]
 Blocks=0
 [FoldedCode21]
 Blocks=0
-[FoldedCode20]
-Blocks=0
-[FoldedCode1]
+[FoldedCode22]
 Blocks=0
 [HeadersList]
 Files=1

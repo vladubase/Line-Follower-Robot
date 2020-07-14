@@ -1,0 +1,20 @@
+{
+	"cSpell.words": [
+		"CLKPR",
+		"DDRB",
+		"DDRC",
+		"DDRD",
+		"ICNC",
+		"PINB",
+		"PINC",
+		"PIND",
+		"PORTB",
+		"PORTC",
+		"PORTD",
+		"TCCR",
+		"TCNT",
+		"TIMSK",
+		"eeprom",
+		"sfrb"
+	]
+}

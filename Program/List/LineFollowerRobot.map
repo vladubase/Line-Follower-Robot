@@ -1,26 +1,13 @@
-RAM Allocation [bytes]
-Variable                                                                          Address   Size
-------------------------------------------------------------------------------------------------
-line_data                                                                         0x0300       4
-_seed                                                                             0x0304       4
+RAM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+line_data                                                         0x0300       8
+_seed                                                             0x0308       4
 
-EEPROM Allocation [bytes]
-Variable                                                                          Address   Size
-------------------------------------------------------------------------------------------------
+EEPROM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
 
 Register Allocation
-Variable                                                                          Register  Size
-------------------------------------------------------------------------------------------------
-
-FLASH Allocation [words]
-Function                                                                          Address   Size
-------------------------------------------------------------------------------------------------
-main                                                                              0x00094    176
-InitSys                                                                           0x00144    103
-ReadSensorLineData                                                                0x001AB     25
-CurrentRobotError                                                                 0x001C4     58
-ftrunc                                                                            0x001FE     49
-floor                                                                             0x0022F     19
-log                                                                               0x00242    132
-exp                                                                               0x002C6    152
-pow                                                                               0x0035E     82
+Variable                                                          Register  Size
+--------------------------------------------------------------------------------
