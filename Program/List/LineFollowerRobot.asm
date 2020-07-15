@@ -1248,8 +1248,8 @@ __GLOBAL_INI_END:
 ;	*						case it allows you to develop a higher speed."
 ;	*						(Credit: https://www.goodlancer.com/pid-control/).
 ;	*
-;	*   @note	4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
-;	*			6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
+;	*   @note		4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
+;	*				6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
 ;	*
 ;*****/
 ;
@@ -1277,11 +1277,12 @@ __GLOBAL_INI_END:
 ;
 ;#define		F_CPU				((uint32_t)20000000)	// Quartz resonator clock frequency
 ;
-;#define		QTY_OF_SENSORS		8						// Quantity of sensors
+;#define		QTY_OF_SENSORS		8U						// Quantity of sensors
 ;#define		AVG_SPEED			((uint8_t)155)			// Average speed of robot
 ;
 ;#define		MOTORS_NOT_PERFECT	true 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
-;#if MOTORS_NOT_PERFECT									// There is nothing perfect ;)
+;#if MOTORS_NOT_PERFECT
+;	// There is nothing perfect ;)
 ;	#define	L_MOTOR_MISMATCH	((float)1.0)			// Coefficient of motor power difference
 ;	#define	R_MOTOR_MISMATCH	((float)1.07)			// Coefficient of motor power difference
 ;#endif /* MOTORS_NOT_PERFECT */
@@ -1359,23 +1360,23 @@ __GLOBAL_INI_END:
 ;/****************************** Main ******************************/
 ;
 ;void main (void) {
-; 0000 0085 void main (void) {
+; 0000 0086 void main (void) {
 
 	.CSEG
 _main:
-; 0000 0086 	// DEFINITION OF VARIABLES
-; 0000 0087 	register float error_history[QTY_OF_ERR] = {0};		// Storing the values of recent errors
-; 0000 0088 	register float error_sum = 0.0;						// Sum of errors in history
-; 0000 0089 	register uint8_t i = 0;
-; 0000 008A 	register float P = 0.0;
-; 0000 008B 	register float I = 0.0;
-; 0000 008C 	register float D = 0.0;
-; 0000 008D 	register float PID_total_correction = 0.0;      	// Sum of P, I, D
-; 0000 008E 	register int16_t left_motor_speed = 0;
-; 0000 008F 	register int16_t right_motor_speed = 0;
-; 0000 0090 
-; 0000 0091 	// MICROCONTROLLER INITIALIZATION
-; 0000 0092 	InitSys ();
+; 0000 0087 	// DEFINITION OF VARIABLES
+; 0000 0088 	register float error_history[QTY_OF_ERR] = {0};		// Storing the values of recent errors
+; 0000 0089 	register float error_sum = 0.0;						// Sum of errors in history
+; 0000 008A 	register uint8_t i = 0;
+; 0000 008B 	register float P = 0.0;
+; 0000 008C 	register float I = 0.0;
+; 0000 008D 	register float D = 0.0;
+; 0000 008E 	register float PID_total_correction = 0.0;      	// Sum of P, I, D
+; 0000 008F 	register int16_t left_motor_speed = 0;
+; 0000 0090 	register int16_t right_motor_speed = 0;
+; 0000 0091 
+; 0000 0092 	// MICROCONTROLLER INITIALIZATION
+; 0000 0093 	InitSys ();
 	SBIW R28,60
 	LDI  R24,60
 	LDI  R26,LOW(0)
@@ -1396,33 +1397,33 @@ _main:
 	__GETWRN 18,19,0
 	__GETWRN 20,21,0
 	RCALL _InitSys
-; 0000 0093 
-; 0000 0094 	// Waiting for a signal on IR sensor
-; 0000 0095 	#ifdef READ_IR_SENSOR
-; 0000 0096 		while (READ_IR_SENSOR) {
-; 0000 0097 			LED_1_ON;
-; 0000 0098 			delay_ms (25);
-; 0000 0099 			LED_1_OFF;
-; 0000 009A 			delay_ms (25);
-; 0000 009B 		}
-; 0000 009C 	#endif /* READ_IR_SENSOR */
-; 0000 009D 
-; 0000 009E 	//delay_ms (5000);									// This delay is required by the competition rules
-; 0000 009F 
-; 0000 00A0 	// MAIN CYCLE
-; 0000 00A1 	while (true) {
+; 0000 0094 
+; 0000 0095 	// Waiting for a signal on IR sensor
+; 0000 0096 	#ifdef READ_IR_SENSOR
+; 0000 0097 		while (READ_IR_SENSOR) {
+; 0000 0098 			LED_1_ON;
+; 0000 0099 			delay_ms (25);
+; 0000 009A 			LED_1_OFF;
+; 0000 009B 			delay_ms (25);
+; 0000 009C 		}
+; 0000 009D 	#endif /* READ_IR_SENSOR */
+; 0000 009E 
+; 0000 009F 	//delay_ms (5000);									// This delay is required by the competition rules
+; 0000 00A0 
+; 0000 00A1 	// MAIN CYCLE
+; 0000 00A2 	while (true) {
 _0x4:
-; 0000 00A2 		error_sum = 0.0;
+; 0000 00A3 		error_sum = 0.0;
 	LDI  R30,LOW(0)
 	__CLRD1S 16
-; 0000 00A3 
-; 0000 00A4 	    // Shift error values
-; 0000 00A5 		for (i = 0; i < QTY_OF_ERR - 1; i++) {
+; 0000 00A4 
+; 0000 00A5 	    // Shift error values
+; 0000 00A6 		for (i = 0; i < QTY_OF_ERR - 1; i++) {
 	LDI  R17,LOW(0)
 _0x8:
 	CPI  R17,9
 	BRSH _0x9
-; 0000 00A6 			error_history[i] = error_history[i + 1];
+; 0000 00A7 			error_history[i] = error_history[i + 1];
 	CALL SUBOPT_0x0
 	ADD  R30,R26
 	ADC  R31,R27
@@ -1438,27 +1439,27 @@ _0x8:
 	CALL __GETD1P
 	MOVW R26,R0
 	CALL __PUTDP1
-; 0000 00A7 		}
+; 0000 00A8 		}
 	SUBI R17,-1
 	RJMP _0x8
 _0x9:
-; 0000 00A8 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
+; 0000 00A9 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
 	RCALL _CurrentRobotError
 	__PUTD1S 56
-; 0000 00A9 
-; 0000 00AA 		// Calculation of value P
-; 0000 00AB 		P = error_history[QTY_OF_ERR - 1] * kP;			// Current error * kP
+; 0000 00AA 
+; 0000 00AB 		// Calculation of value P
+; 0000 00AC 		P = error_history[QTY_OF_ERR - 1] * kP;			// Current error * kP
 	__GETD2S 56
 	CALL SUBOPT_0x1
 	CALL __MULF12
 	__PUTD1S 12
-; 0000 00AC 		// Calculation of value I
-; 0000 00AD 		for (i = 0; i < QTY_OF_ERR; i++) {
+; 0000 00AD 		// Calculation of value I
+; 0000 00AE 		for (i = 0; i < QTY_OF_ERR; i++) {
 	LDI  R17,LOW(0)
 _0xB:
 	CPI  R17,10
 	BRSH _0xC
-; 0000 00AE 			error_sum += error_history[i];
+; 0000 00AF 			error_sum += error_history[i];
 	CALL SUBOPT_0x0
 	ADD  R26,R30
 	ADC  R27,R31
@@ -1466,83 +1467,83 @@ _0xB:
 	__GETD2S 16
 	CALL __ADDF12
 	__PUTD1S 16
-; 0000 00AF 		}
+; 0000 00B0 		}
 	SUBI R17,-1
 	RJMP _0xB
 _0xC:
-; 0000 00B0 		I = error_sum * kI;								// sum of errors * kI
+; 0000 00B1 		I = error_sum * kI;								// sum of errors * kI
 	__GETD2S 16
 	CALL SUBOPT_0x2
 	CALL __MULF12
 	__PUTD1S 8
-; 0000 00B1 		// Calculation of value D
-; 0000 00B2 		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - first error) * kD
-; 0000 00B3         	error_history[0]) * kD;
+; 0000 00B2 		// Calculation of value D
+; 0000 00B3 		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - first error) * kD
+; 0000 00B4         	error_history[0]) * kD;
 	__GETD2S 20
 	__GETD1S 56
 	CALL __SUBF12
 	__GETD2N 0x0
 	CALL __MULF12
 	__PUTD1S 4
-; 0000 00B4 
-; 0000 00B5 		PID_total_correction = (P + I) + D;
+; 0000 00B5 
+; 0000 00B6 		PID_total_correction = (P + I) + D;
 	CALL SUBOPT_0x3
 	__GETD2S 12
 	CALL __ADDF12
 	CALL SUBOPT_0x4
 	CALL __ADDF12
 	CALL __PUTD1S0
-; 0000 00B6 
-; 0000 00B7 		//
-; 0000 00B8 		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
+; 0000 00B7 
+; 0000 00B8 		//
+; 0000 00B9 		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
 	CALL SUBOPT_0x5
 	LDI  R26,LOW(155)
 	LDI  R27,HIGH(155)
 	SUB  R26,R30
 	SBC  R27,R31
 	MOVW R18,R26
-; 0000 00B9 		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
+; 0000 00BA 		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
 	CALL SUBOPT_0x5
 	SUBI R30,LOW(-155)
 	SBCI R31,HIGH(-155)
 	MOVW R20,R30
-; 0000 00BA 
-; 0000 00BB 		// Validating a range of variables
-; 0000 00BC 		if (left_motor_speed > 255)
+; 0000 00BB 
+; 0000 00BC 		// Validating a range of variables
+; 0000 00BD 		if (left_motor_speed > 255)
 	__CPWRN 18,19,256
 	BRLT _0xD
-; 0000 00BD 			left_motor_speed = 255;
+; 0000 00BE 			left_motor_speed = 255;
 	__GETWRN 18,19,255
-; 0000 00BE 		else if (left_motor_speed < 0)
+; 0000 00BF 		else if (left_motor_speed < 0)
 	RJMP _0xE
 _0xD:
 	TST  R19
 	BRPL _0xF
-; 0000 00BF 			left_motor_speed = 0;
+; 0000 00C0 			left_motor_speed = 0;
 	__GETWRN 18,19,0
-; 0000 00C0 		if (right_motor_speed > 255)
+; 0000 00C1 		if (right_motor_speed > 255)
 _0xF:
 _0xE:
 	__CPWRN 20,21,256
 	BRLT _0x10
-; 0000 00C1 			right_motor_speed = 255;
+; 0000 00C2 			right_motor_speed = 255;
 	__GETWRN 20,21,255
-; 0000 00C2 		else if (right_motor_speed < 0)
+; 0000 00C3 		else if (right_motor_speed < 0)
 	RJMP _0x11
 _0x10:
 	TST  R21
 	BRPL _0x12
-; 0000 00C3 			right_motor_speed = 0;
+; 0000 00C4 			right_motor_speed = 0;
 	__GETWRN 20,21,0
-; 0000 00C4 
-; 0000 00C5 		// Motors power difference compensation
-; 0000 00C6 		#if MOTORS_NOT_PERFECT
-; 0000 00C7 			OCR2A = 0;
+; 0000 00C5 
+; 0000 00C6 		// Motors power difference compensation
+; 0000 00C7 		#if MOTORS_NOT_PERFECT
+; 0000 00C8 			OCR2A = 0;
 _0x12:
 _0x11:
 	LDI  R30,LOW(0)
 	STS  179,R30
-; 0000 00C8 			OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
+; 0000 00C9 			OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
 	MOVW R30,R18
 	CALL SUBOPT_0x6
 	CALL SUBOPT_0x7
@@ -1551,273 +1552,273 @@ _0x11:
 	LDI  R27,HIGH(180)
 	CALL __CFD1U
 	ST   X,R30
-; 0000 00C9 			OCR0A = 0;
+; 0000 00CA 			OCR0A = 0;
 	LDI  R30,LOW(0)
 	OUT  0x27,R30
-; 0000 00CA 			OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
+; 0000 00CB 			OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
 	MOVW R30,R20
 	CALL SUBOPT_0x6
 	__GETD2N 0x3F88F5C3
 	CALL __MULF12
 	CALL __CFD1U
 	OUT  0x28,R30
-; 0000 00CB 		#else
-; 0000 00CC 			OCR2A = 0;
-; 0000 00CD 			OCR2B = left_motor_speed;
-; 0000 00CE 			OCR0A = 0;
-; 0000 00CF 			OCR0B = right_motor_speed;
-; 0000 00D0 		#endif /* MOTORS_NOT_PERFECT */
-; 0000 00D1 
-; 0000 00D2 		delay_ms (MAIN_CYCLE_DELAY);
+; 0000 00CC 		#else
+; 0000 00CD 			OCR2A = 0;
+; 0000 00CE 			OCR2B = left_motor_speed;
+; 0000 00CF 			OCR0A = 0;
+; 0000 00D0 			OCR0B = right_motor_speed;
+; 0000 00D1 		#endif /* MOTORS_NOT_PERFECT */
+; 0000 00D2 
+; 0000 00D3 		delay_ms (MAIN_CYCLE_DELAY);
 	LDI  R26,LOW(2)
 	LDI  R27,0
 	CALL _delay_ms
-; 0000 00D3 	}
+; 0000 00D4 	}
 	RJMP _0x4
-; 0000 00D4 }
+; 0000 00D5 }
 _0x13:
 	RJMP _0x13
 ;
 ;/*************************** Functions ****************************/
 ;
 ;void InitSys (void) {
-; 0000 00D8 void InitSys (void) {
+; 0000 00D9 void InitSys (void) {
 _InitSys:
-; 0000 00D9 	// Motors
-; 0000 00DA 	    // Output mode
-; 0000 00DB 		DDRB |= (1 << DDB3);			            	// OC2A
+; 0000 00DA 	// Motors
+; 0000 00DB 	    // Output mode
+; 0000 00DC 		DDRB |= (1 << DDB3);			            	// OC2A
 	SBI  0x4,3
-; 0000 00DC 		DDRD |= (1 << DDD6) |			            	// OC0A
-; 0000 00DD 				(1 << DDD5) |			            	// OC0B
-; 0000 00DE 				(1 << DDD3);			            	// OC2B
+; 0000 00DD 		DDRD |= (1 << DDD6) |			            	// OC0A
+; 0000 00DE 				(1 << DDD5) |			            	// OC0B
+; 0000 00DF 				(1 << DDD3);			            	// OC2B
 	IN   R30,0xA
 	ORI  R30,LOW(0x68)
 	OUT  0xA,R30
-; 0000 00DF 
-; 0000 00E0 	// SensorLine
-; 0000 00E1 	    // Input mode
-; 0000 00E2 		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
+; 0000 00E0 
+; 0000 00E1 	// SensorLine
+; 0000 00E2 	    // Input mode
+; 0000 00E3 		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
 	IN   R30,0x4
 	ANDI R30,LOW(0xF8)
 	OUT  0x4,R30
-; 0000 00E3 		DDRD &= ~(1 << DDD7);
+; 0000 00E4 		DDRD &= ~(1 << DDD7);
 	CBI  0xA,7
-; 0000 00E4 
-; 0000 00E5 	// Infrared Sensor
-; 0000 00E6 	    // Input mode
-; 0000 00E7 		#ifdef READ_SENSOR_IR
-; 0000 00E8 			DDRx &= ~(1 << DDxx);
-; 0000 00E9 		#endif /* READ_SENSOR_IR */
-; 0000 00EA 
-; 0000 00EB 	// Timer/Counter(s) initialization
-; 0000 00EC 		// Timer/Counter 0
-; 0000 00ED 		// Fast PWM Mode
-; 0000 00EE 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
-; 0000 00EF 		// TOP = 0xFF
-; 0000 00F0 		// Prescaler: 1:64
-; 0000 00F1 		TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
+; 0000 00E5 
+; 0000 00E6 	// Infrared Sensor
+; 0000 00E7 	    // Input mode
+; 0000 00E8 		#ifdef READ_SENSOR_IR
+; 0000 00E9 			DDRx &= ~(1 << DDxx);
+; 0000 00EA 		#endif /* READ_SENSOR_IR */
+; 0000 00EB 
+; 0000 00EC 	// Timer/Counter(s) initialization
+; 0000 00ED 		// Timer/Counter 0
+; 0000 00EE 		// Fast PWM Mode
+; 0000 00EF 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+; 0000 00F0 		// TOP = 0xFF
+; 0000 00F1 		// Prescaler: 1:64
+; 0000 00F2 		TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
 	IN   R30,0x24
 	ORI  R30,LOW(0xA3)
 	OUT  0x24,R30
-; 0000 00F2 		TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
+; 0000 00F3 		TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
 	IN   R30,0x24
 	ANDI R30,LOW(0xA3)
 	OUT  0x24,R30
-; 0000 00F3 		TCCR0B |= (1 << CS01) | (1 << CS00);
+; 0000 00F4 		TCCR0B |= (1 << CS01) | (1 << CS00);
 	IN   R30,0x25
 	ORI  R30,LOW(0x3)
 	OUT  0x25,R30
-; 0000 00F4 		TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
+; 0000 00F5 		TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
 	IN   R30,0x25
 	ANDI R30,LOW(0x3)
 	OUT  0x25,R30
-; 0000 00F5 		TCNT0  = 0x00;
+; 0000 00F6 		TCNT0  = 0x00;
 	LDI  R30,LOW(0)
 	OUT  0x26,R30
-; 0000 00F6 		TIMSK0 = 0x00;
+; 0000 00F7 		TIMSK0 = 0x00;
 	STS  110,R30
-; 0000 00F7 		OCR0A  = 0x00;	OCR0B  = 0x00;
+; 0000 00F8 		OCR0A  = 0x00;	OCR0B  = 0x00;
 	OUT  0x27,R30
 	OUT  0x28,R30
-; 0000 00F8 
-; 0000 00F9 		// Timer/Counter 1
-; 0000 00FA 		// Fast PWM 10-bit Mode
-; 0000 00FB 		// Clear OC1A/OC1B on Compare Match, set OC1A/OC1B at BOTTOM (non-inverting mode)
-; 0000 00FC 		// TOP = 0x03FF
-; 0000 00FD 		// Prescaler: 1:64
-; 0000 00FE 		TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
+; 0000 00F9 
+; 0000 00FA 		// Timer/Counter 1
+; 0000 00FB 		// Fast PWM 10-bit Mode
+; 0000 00FC 		// Clear OC1A/OC1B on Compare Match, set OC1A/OC1B at BOTTOM (non-inverting mode)
+; 0000 00FD 		// TOP = 0x03FF
+; 0000 00FE 		// Prescaler: 1:64
+; 0000 00FF 		TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
 	LDS  R30,128
 	ORI  R30,LOW(0xA3)
 	STS  128,R30
-; 0000 00FF 		TCCR1A &= ~((1 << COM1A0) | (1 << COM1B0) | (1 << 3) | (1 << 2));
+; 0000 0100 		TCCR1A &= ~((1 << COM1A0) | (1 << COM1B0) | (1 << 3) | (1 << 2));
 	LDS  R30,128
 	ANDI R30,LOW(0xA3)
 	STS  128,R30
-; 0000 0100 		TCCR1B |= (1 << WGM12) | (1 << CS11) | (1 << CS10);
+; 0000 0101 		TCCR1B |= (1 << WGM12) | (1 << CS11) | (1 << CS10);
 	LDS  R30,129
 	ORI  R30,LOW(0xB)
 	STS  129,R30
-; 0000 0101 		TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << CS12));
+; 0000 0102 		TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << CS12));
 	LDS  R30,129
 	ANDI R30,LOW(0xB)
 	STS  129,R30
-; 0000 0102 		TCCR1C = 0x00;
+; 0000 0103 		TCCR1C = 0x00;
 	LDI  R30,LOW(0)
 	STS  130,R30
-; 0000 0103 		TCNT1H = 0x00;	TCNT1L = 0x00;
+; 0000 0104 		TCNT1H = 0x00;	TCNT1L = 0x00;
 	STS  133,R30
 	STS  132,R30
-; 0000 0104 		TIMSK1 = 0x00;
+; 0000 0105 		TIMSK1 = 0x00;
 	STS  111,R30
-; 0000 0105 		ICR1H  = 0x00;	ICR1L  = 0x00;
+; 0000 0106 		ICR1H  = 0x00;	ICR1L  = 0x00;
 	STS  135,R30
 	STS  134,R30
-; 0000 0106 		OCR1AH = 0x00;	OCR1AL = 0x00;
+; 0000 0107 		OCR1AH = 0x00;	OCR1AL = 0x00;
 	STS  137,R30
 	STS  136,R30
-; 0000 0107 		OCR1BH = 0x00;	OCR1BL = 0x00;
+; 0000 0108 		OCR1BH = 0x00;	OCR1BL = 0x00;
 	STS  139,R30
 	STS  138,R30
-; 0000 0108 
-; 0000 0109 		// Timer/Counter 2
-; 0000 010A 		// Fast PWM Mode
-; 0000 010B 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
-; 0000 010C 		// TOP = 0xFF
-; 0000 010D 		// Prescaler: 1:64
-; 0000 010E 		TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
+; 0000 0109 
+; 0000 010A 		// Timer/Counter 2
+; 0000 010B 		// Fast PWM Mode
+; 0000 010C 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+; 0000 010D 		// TOP = 0xFF
+; 0000 010E 		// Prescaler: 1:64
+; 0000 010F 		TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
 	LDS  R30,176
 	ORI  R30,LOW(0xA3)
 	STS  176,R30
-; 0000 010F 		TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
+; 0000 0110 		TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
 	LDS  R30,176
 	ANDI R30,LOW(0xA3)
 	STS  176,R30
-; 0000 0110 		TCCR2B |= (1 << CS22);
+; 0000 0111 		TCCR2B |= (1 << CS22);
 	LDS  R30,177
 	ORI  R30,4
 	STS  177,R30
-; 0000 0111 		TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
+; 0000 0112 		TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
 	LDS  R30,177
 	ANDI R30,LOW(0x4)
 	STS  177,R30
-; 0000 0112 		TCNT2  = 0x00;
+; 0000 0113 		TCNT2  = 0x00;
 	LDI  R30,LOW(0)
 	STS  178,R30
-; 0000 0113 		TIMSK2 = 0x00;
+; 0000 0114 		TIMSK2 = 0x00;
 	STS  112,R30
-; 0000 0114 		OCR2A  = 0x00;	OCR2B  = 0x00;
+; 0000 0115 		OCR2A  = 0x00;	OCR2B  = 0x00;
 	STS  179,R30
 	STS  180,R30
-; 0000 0115 
-; 0000 0116 	// Crystal Oscillator division factor: 1
-; 0000 0117 		#pragma optsize-
-; 0000 0118 			CLKPR |= (1 << CLKPCE);
+; 0000 0116 
+; 0000 0117 	// Crystal Oscillator division factor: 1
+; 0000 0118 		#pragma optsize-
+; 0000 0119 			CLKPR |= (1 << CLKPCE);
 	LDS  R30,97
 	ORI  R30,0x80
 	STS  97,R30
-; 0000 0119 			CLKPR = 0x00;
+; 0000 011A 			CLKPR = 0x00;
 	LDI  R30,LOW(0)
 	STS  97,R30
-; 0000 011A 		#ifdef _OPTIMIZE_SIZE_
-; 0000 011B 			#pragma optsize+
-; 0000 011C 		#endif /* _OPTIMIZE_SIZE_ */
-; 0000 011D }
+; 0000 011B 		#ifdef _OPTIMIZE_SIZE_
+; 0000 011C 			#pragma optsize+
+; 0000 011D 		#endif /* _OPTIMIZE_SIZE_ */
+; 0000 011E }
 	RET
 ;
 ;void ReadSensorLineData (void) {
-; 0000 011F void ReadSensorLineData (void) {
+; 0000 0120 void ReadSensorLineData (void) {
 _ReadSensorLineData:
-; 0000 0120 	#ifdef READ_SENSOR_1
-; 0000 0121 		line_data[0] = READ_SENSOR_1;
+; 0000 0121 	#ifdef READ_SENSOR_1
+; 0000 0122 		line_data[0] = READ_SENSOR_1;
 	IN   R30,0x9
 	ANDI R30,LOW(0x4)
 	LDI  R26,LOW(_line_data)
 	LDI  R27,HIGH(_line_data)
 	CALL SUBOPT_0x8
-; 0000 0122 	#endif /* READ_SENSOR_1 */
-; 0000 0123 	#ifdef READ_SENSOR_2
-; 0000 0124 		line_data[1] = READ_SENSOR_2;
+; 0000 0123 	#endif /* READ_SENSOR_1 */
+; 0000 0124 	#ifdef READ_SENSOR_2
+; 0000 0125 		line_data[1] = READ_SENSOR_2;
 	__POINTW2MN _line_data,1
 	IN   R30,0x9
 	ANDI R30,LOW(0x10)
 	CALL SUBOPT_0x8
-; 0000 0125 	#endif /* READ_SENSOR_2 */
-; 0000 0126 	#ifdef READ_SENSOR_3
-; 0000 0127 		line_data[2] = READ_SENSOR_3;
+; 0000 0126 	#endif /* READ_SENSOR_2 */
+; 0000 0127 	#ifdef READ_SENSOR_3
+; 0000 0128 		line_data[2] = READ_SENSOR_3;
 	__POINTW2MN _line_data,2
 	IN   R30,0x6
 	ANDI R30,LOW(0x20)
 	CALL SUBOPT_0x8
-; 0000 0128 	#endif /* READ_SENSOR_3 */
-; 0000 0129 	#ifdef READ_SENSOR_4
-; 0000 012A 		line_data[3] = READ_SENSOR_4;
+; 0000 0129 	#endif /* READ_SENSOR_3 */
+; 0000 012A 	#ifdef READ_SENSOR_4
+; 0000 012B 		line_data[3] = READ_SENSOR_4;
 	__POINTW2MN _line_data,3
 	IN   R30,0x6
 	ANDI R30,LOW(0x10)
 	CALL SUBOPT_0x8
-; 0000 012B 	#endif /* READ_SENSOR_4 */
-; 0000 012C 	#ifdef READ_SENSOR_5
-; 0000 012D 		line_data[4] = READ_SENSOR_5;
+; 0000 012C 	#endif /* READ_SENSOR_4 */
+; 0000 012D 	#ifdef READ_SENSOR_5
+; 0000 012E 		line_data[4] = READ_SENSOR_5;
 	__POINTW2MN _line_data,4
 	IN   R30,0x6
 	ANDI R30,LOW(0x8)
 	CALL SUBOPT_0x8
-; 0000 012E 	#endif /* READ_SENSOR_5 */
-; 0000 012F 	#ifdef READ_SENSOR_6
-; 0000 0130 		line_data[5] = READ_SENSOR_6;
+; 0000 012F 	#endif /* READ_SENSOR_5 */
+; 0000 0130 	#ifdef READ_SENSOR_6
+; 0000 0131 		line_data[5] = READ_SENSOR_6;
 	__POINTW2MN _line_data,5
 	IN   R30,0x6
 	ANDI R30,LOW(0x4)
 	CALL SUBOPT_0x8
-; 0000 0131 	#endif /* READ_SENSOR_6 */
-; 0000 0132 	#ifdef READ_SENSOR_7
-; 0000 0133 		line_data[6] = READ_SENSOR_7;
+; 0000 0132 	#endif /* READ_SENSOR_6 */
+; 0000 0133 	#ifdef READ_SENSOR_7
+; 0000 0134 		line_data[6] = READ_SENSOR_7;
 	__POINTW2MN _line_data,6
 	IN   R30,0x6
 	ANDI R30,LOW(0x2)
 	CALL SUBOPT_0x8
-; 0000 0134 	#endif /* READ_SENSOR_7 */
-; 0000 0135 	#ifdef READ_SENSOR_8
-; 0000 0136 		line_data[7] = READ_SENSOR_8;
+; 0000 0135 	#endif /* READ_SENSOR_7 */
+; 0000 0136 	#ifdef READ_SENSOR_8
+; 0000 0137 		line_data[7] = READ_SENSOR_8;
 	__POINTW2MN _line_data,7
 	IN   R30,0x6
 	ANDI R30,LOW(0x1)
 	CALL SUBOPT_0x8
-; 0000 0137 	#endif /* READ_SENSOR_8 */
-; 0000 0138 	#ifdef READ_SENSOR_9
-; 0000 0139 		line_data[8] = READ_SENSOR_9;
-; 0000 013A 	#endif /* READ_SENSOR_9 */
-; 0000 013B 	#ifdef READ_SENSOR_10
-; 0000 013C 		line_data[9] = READ_SENSOR_10;
-; 0000 013D 	#endif /* READ_SENSOR_10 */
-; 0000 013E 	#ifdef READ_SENSOR_11
-; 0000 013F 		line_data[10] = READ_SENSOR_11;
-; 0000 0140 	#endif /* READ_SENSOR_11 */
-; 0000 0141 	#ifdef READ_SENSOR_12
-; 0000 0142 		line_data[11] = READ_SENSOR_12;
-; 0000 0143 	#endif /* READ_SENSOR_12 */
-; 0000 0144 	#ifdef READ_SENSOR_13
-; 0000 0145 		line_data[12] = READ_SENSOR_13;
-; 0000 0146 	#endif /* READ_SENSOR_13 */
-; 0000 0147 	#ifdef READ_SENSOR_14
-; 0000 0148 		line_data[13] = READ_SENSOR_14;
-; 0000 0149 	#endif /* READ_SENSOR_14 */
-; 0000 014A 	#ifdef READ_SENSOR_15
-; 0000 014B 		line_data[14] = READ_SENSOR_15;
-; 0000 014C 	#endif /* READ_SENSOR_15 */
-; 0000 014D 	#ifdef READ_SENSOR_16
-; 0000 014E 		line_data[15] = READ_SENSOR_16;
-; 0000 014F 	#endif /* READ_SENSOR_16 */
-; 0000 0150 }
+; 0000 0138 	#endif /* READ_SENSOR_8 */
+; 0000 0139 	#ifdef READ_SENSOR_9
+; 0000 013A 		line_data[8] = READ_SENSOR_9;
+; 0000 013B 	#endif /* READ_SENSOR_9 */
+; 0000 013C 	#ifdef READ_SENSOR_10
+; 0000 013D 		line_data[9] = READ_SENSOR_10;
+; 0000 013E 	#endif /* READ_SENSOR_10 */
+; 0000 013F 	#ifdef READ_SENSOR_11
+; 0000 0140 		line_data[10] = READ_SENSOR_11;
+; 0000 0141 	#endif /* READ_SENSOR_11 */
+; 0000 0142 	#ifdef READ_SENSOR_12
+; 0000 0143 		line_data[11] = READ_SENSOR_12;
+; 0000 0144 	#endif /* READ_SENSOR_12 */
+; 0000 0145 	#ifdef READ_SENSOR_13
+; 0000 0146 		line_data[12] = READ_SENSOR_13;
+; 0000 0147 	#endif /* READ_SENSOR_13 */
+; 0000 0148 	#ifdef READ_SENSOR_14
+; 0000 0149 		line_data[13] = READ_SENSOR_14;
+; 0000 014A 	#endif /* READ_SENSOR_14 */
+; 0000 014B 	#ifdef READ_SENSOR_15
+; 0000 014C 		line_data[14] = READ_SENSOR_15;
+; 0000 014D 	#endif /* READ_SENSOR_15 */
+; 0000 014E 	#ifdef READ_SENSOR_16
+; 0000 014F 		line_data[15] = READ_SENSOR_16;
+; 0000 0150 	#endif /* READ_SENSOR_16 */
+; 0000 0151 }
 	RET
 ;
 ;float CurrentRobotError (void) {
-; 0000 0152 float CurrentRobotError (void) {
+; 0000 0153 float CurrentRobotError (void) {
 _CurrentRobotError:
-; 0000 0153 	register uint8_t i = 0;
-; 0000 0154 	register float current_error = 0.0;
-; 0000 0155 
-; 0000 0156 	ReadSensorLineData ();
+; 0000 0154 	register uint8_t i = 0;
+; 0000 0155 	register float current_error = 0.0;
+; 0000 0156 
+; 0000 0157 	ReadSensorLineData ();
 	SBIW R28,4
 	LDI  R30,LOW(0)
 	ST   Y,R30
@@ -1829,24 +1830,26 @@ _CurrentRobotError:
 ;	current_error -> Y+1
 	LDI  R17,0
 	RCALL _ReadSensorLineData
-; 0000 0157 
-; 0000 0158 	for (i = 0; i < QTY_OF_SENSORS; i++) {
+; 0000 0158 
+; 0000 0159 	for (i = 0; i < QTY_OF_SENSORS; i++) {
 	LDI  R17,LOW(0)
 _0x15:
-	CPI  R17,8
-	BRSH _0x16
-; 0000 0159 	    if (line_data[i] == 0) {
+	MOV  R26,R17
+	CLR  R27
+	SBIW R26,8
+	BRGE _0x16
+; 0000 015A 	    if (line_data[i] != 0) {
 	MOV  R30,R17
 	LDI  R31,0
 	SUBI R30,LOW(-_line_data)
 	SBCI R31,HIGH(-_line_data)
 	LD   R30,Z
 	CPI  R30,0
-	BRNE _0x17
-; 0000 015A             // If the data on the [i]th sensor is zero,
-; 0000 015B             // then the sensor is located above the black line
-; 0000 015C             // Odd degree to preserve the sign '-'
-; 0000 015D             current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
+	BREQ _0x17
+; 0000 015B             // If the data on the [i]th sensor is zero,
+; 0000 015C             // then the sensor is located above the black line
+; 0000 015D             // Odd degree to preserve the sign '-'
+; 0000 015E             current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
 	MOV  R30,R17
 	CLR  R31
 	CLR  R22
@@ -1860,19 +1863,19 @@ _0x15:
 	__GETD2S 1
 	CALL __ADDF12
 	__PUTD1S 1
-; 0000 015E         }
-; 0000 015F 	}
+; 0000 015F         }
+; 0000 0160 	}
 _0x17:
 	SUBI R17,-1
 	RJMP _0x15
 _0x16:
-; 0000 0160 
-; 0000 0161 	return current_error;
+; 0000 0161 
+; 0000 0162 	return current_error;
 	__GETD1S 1
 	LDD  R17,Y+0
 	ADIW R28,5
 	RET
-; 0000 0162 }
+; 0000 0163 }
 
 	.CSEG
 _ftrunc:

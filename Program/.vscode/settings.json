@@ -15,5 +15,14 @@
         "robotposition.h": "c",
         "stddef.h": "c"
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "cSpell.words": [
+        "DDRB",
+        "DDRD",
+        "PINC",
+        "PIND",
+        "TCCR",
+        "TCNT",
+        "TIMSK"
+    ]
 }

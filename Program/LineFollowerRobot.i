@@ -124,7 +124,7 @@ typedef unsigned short flash_uintptr_t;
 typedef short eeprom_intptr_t;
 typedef unsigned short eeprom_uintptr_t;
 
-_Bool line_data[8						] = {0};					
+_Bool line_data[8U						] = {0};					
 
 void InitSys (void);
 void ReadSensorLineData (void);
@@ -245,10 +245,10 @@ register float current_error = 0.0;
 
 ReadSensorLineData ();
 
-for (i = 0; i < 8						; i++) {
-if (line_data[i] == 0) { 
+for (i = 0; i < 8U						; i++) {
+if (line_data[i] != 0) { 
 
-current_error += pow (8						 / 2 - 0.5 - i, 3);  
+current_error += pow (8U						 / 2 - 0.5 - i, 3);  
 }
 }
 

@@ -31,8 +31,8 @@
 	*						case it allows you to develop a higher speed."
 	*						(Credit: https://www.goodlancer.com/pid-control/).
 	*
-	*   @note	4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
-	*			6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
+	*   @note		4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
+	*				6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
 	*
 *****/
 
@@ -49,11 +49,12 @@
 
 #define		F_CPU				((uint32_t)20000000)	// Quartz resonator clock frequency
 
-#define		QTY_OF_SENSORS		8						// Quantity of sensors
+#define		QTY_OF_SENSORS		8U						// Quantity of sensors
 #define		AVG_SPEED			((uint8_t)155)			// Average speed of robot
 
 #define		MOTORS_NOT_PERFECT	true 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
-#if MOTORS_NOT_PERFECT									// There is nothing perfect ;)
+#if MOTORS_NOT_PERFECT
+	// There is nothing perfect ;)
 	#define	L_MOTOR_MISMATCH	((float)1.0)			// Coefficient of motor power difference
 	#define	R_MOTOR_MISMATCH	((float)1.07)			// Coefficient of motor power difference
 #endif /* MOTORS_NOT_PERFECT */
@@ -342,7 +343,7 @@ float CurrentRobotError (void) {
 	ReadSensorLineData ();
 
 	for (i = 0; i < QTY_OF_SENSORS; i++) {
-	    if (line_data[i] == 0) { 
+	    if (line_data[i] != 0) { 
             // If the data on the [i]th sensor is zero,
             // then the sensor is located above the black line 
             // Odd degree to preserve the sign '-' 
