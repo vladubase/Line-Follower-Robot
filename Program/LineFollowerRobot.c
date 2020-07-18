@@ -176,7 +176,7 @@ void main (void) {
 		}
 		I = error_sum * kI;								// sum of errors * kI
 		// Calculation of value D
-		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - first error) * kD
+		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - error in past) * kD
         	error_history[0]) * kD;
 
 		PID_total_correction = (P + I) + D;
@@ -343,11 +343,11 @@ float CurrentRobotError (void) {
 	ReadSensorLineData ();
 
 	for (i = 0; i < QTY_OF_SENSORS; i++) {
-	    if (line_data[i] != 0) { 
+	    if (line_data[i] != 0) {
             // If the data on the [i]th sensor is zero,
-            // then the sensor is located above the black line 
-            // Odd degree to preserve the sign '-' 
-            current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);  
+            // then the sensor is located above the black line
+            // Odd degree to preserve the sign '-'
+            current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
         }
 	}
 
