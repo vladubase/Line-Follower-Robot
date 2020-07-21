@@ -179,7 +179,7 @@ right_motor_speed = 0;
 (*(unsigned char *) 0xb3) = 0;
 (*(unsigned char *) 0xb4) = left_motor_speed * ((float)1.0)			;
 OCR0A = 0;
-OCR0B = right_motor_speed * ((float)1.07)			;
+OCR0B = right_motor_speed * ((float)1.07);
 
 delay_ms (((uint8_t)2)			);
 }
@@ -246,9 +246,9 @@ register float current_error = 0.0;
 ReadSensorLineData ();
 
 for (i = 0; i < 8U						; i++) {
-if (line_data[i] != 0) { 
+if (line_data[i] != 0) {
 
-current_error += pow (8U						 / 2 - 0.5 - i, 3);  
+current_error += pow (8U						 / 2 - 0.5 - i, 3);
 }
 }
 

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.30  C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineFollowerRobot.asm Tue Jul 14 21:56:01 2020
+AVRASM ver. 2.1.30  C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineFollowerRobot.asm Mon Jul 20 22:06:48 2020
 
                  
                  
@@ -1259,32 +1259,38 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
                  ;	*				It has a flexible settings system via #defines at the beginning of the .C main file.
                  ;	*				IO ports are configured through registers.
                  ;	*
-                 ;	*  	@attention 	"The usual procedure for setting up the PID regulator:
-                 ;	*					1. At a low speed, we adjust the P-controller (we select a value of kP such
-                 ;	*						that in the coolest turns the robot passes keeping the line close to its
-                 ;	*						extreme sensors). kD and kI are equal to zero, i.e. use a pure P-regulator;
-                 ;	*					2. Increase the speed, select the value of kD. If the robot went without
-                 ;	*						inertia when setting the P-controller, then the kP value can be left unchanged.
-                 ;	*						If the robot has already gone with inertia, as is usually the case
-                 ;	*						with fast robots, then the kP value will need to be lowered -
-                 ;	*						we will see this by the fact that the robot will cease to deviate
-                 ;	*						strongly from the line thanks to the help of the D-controller;
-                 ;	*					3. When the PD controller is configured, then I can be selected,
-                 ;	*						reducing the deviation of the robot from the line. The values ​​of
-                 ;	*						the coefficients kD and kP are usually also somewhat lower.
-                 ;	*						An i-controller is useful for racing where a line can make loops.
-                 ;	*						Deviation of the robot from a straight line is fraught with
-                 ;	*						the choice of the wrong direction of movement. When racing on tracks
-                 ;	*						without loops, the PD controller is often used, since in the general
-                 ;	*						case it allows you to develop a higher speed."
-                 ;	*						(Credit: https://www.goodlancer.com/pid-control/).
+                 ;	*	@attention 	Before program Microcontroller check follow:
+                 ;	*			@b		1. F_CPU - system clock of external quartz resonator (if needed clock division, see datasheet);
+                 ;	*			@b		2. QTY_OF_SENSORS and used bits (see "Defines" section and "InitSys" function);
+                 ;	*			@b		3. MOTORS_NOT_PERFECT parameter, if motors are not identical by speed, torque, gear ratio, etc.
+                 ;	*			@b		4. PID coefficients
+                 ;	*
+                 ;	*  	@attention 	The usual procedure for setting up the PID regulator:
+                 ;	*			@a		1. At a low speed, we adjust the P-controller (we select a value of kP such
+                 ;	*							that in the coolest turns the robot passes keeping the line close to its
+                 ;	*							extreme sensors). kD and kI are equal to zero, i.e. use a pure P-regulator;
+                 ;	*			@a		2. Increase the speed, select the value of kD. If the robot went without
+                 ;	*							inertia when setting the P-controller, then the kP value can be left unchanged.
+                 ;	*							If the robot has already gone with inertia, as is usually the case
+                 ;	*							with fast robots, then the kP value will need to be lowered -
+                 ;	*							we will see this by the fact that the robot will cease to deviate
+                 ;	*							strongly from the line thanks to the help of the D-controller;
+                 ;	*			@a		3. When the PD controller is configured, then I can be selected,
+                 ;	*							reducing the deviation of the robot from the line. The values ​​of
+                 ;	*							the coefficients kD and kP are usually also somewhat lower.
+                 ;	*							An i-controller is useful for racing where a line can make loops.
+                 ;	*							Deviation of the robot from a straight line is fraught with
+                 ;	*							the choice of the wrong direction of movement. When racing on tracks
+                 ;	*							without loops, the PD controller is often used, since in the general
+                 ;	*							case it allows you to develop a higher speed.
                  ;	*
                  ;	*   @note		4.25 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 4 low-level sensors.
                  ;	*				6 ms for main cycle (not counting MAIN_CYCLE_DELAY) with 15 low-level sensors.
                  ;	*
                  ;*****/
                  ;
-                 ;/**************************** Includes ****************************/
+                 ;
+                 ;/************************************** Includes **************************************/
                  ;
                  ;#include <mega328p.h>
                  	#ifndef __SLEEP_DEFINED__
@@ -1304,18 +1310,21 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
                  ;#include <stdbool.h>
                  ;#include <stdint.h>
                  ;
-                 ;/***************************** Defines ****************************/
                  ;
+                 ;/*************************************** Defines **************************************/
+                 ;
+                 ;// CLOCK
                  ;#define		F_CPU				((uint32_t)20000000)	// Quartz resonator clock frequency
                  ;
+                 ;// GENERAL PARAMETERS
                  ;#define		QTY_OF_SENSORS		8U						// Quantity of sensors
                  ;#define		AVG_SPEED			((uint8_t)155)			// Average speed of robot
                  ;
                  ;#define		MOTORS_NOT_PERFECT	true 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
                  ;#if MOTORS_NOT_PERFECT
                  ;	// There is nothing perfect ;)
-                 ;	#define	L_MOTOR_MISMATCH	((float)1.0)			// Coefficient of motor power difference
-                 ;	#define	R_MOTOR_MISMATCH	((float)1.07)			// Coefficient of motor power difference
+                 ;	#define	L_MOTOR_MISMATCH	((float)1.0)			// Coefficients of motor power difference
+                 ;	#define	R_MOTOR_MISMATCH	((float)1.07)
                  ;#endif /* MOTORS_NOT_PERFECT */
                  ;
                  ;// PID
@@ -1378,36 +1387,39 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
                  ;
                  ;//#define	READ_IR_SENSOR		PINx & (1 << DDxx)
                  ;
-                 ;/************************* Global Variables ***********************/
+                 ;
+                 ;/*********************************** Global Variables *********************************/
                  ;
                  ;bool line_data[QTY_OF_SENSORS] = {0};					// Store current values from sensor line
                  ;
-                 ;/*********************** Function  prototypes *********************/
+                 ;
+                 ;/********************************* Function  prototypes *******************************/
                  ;
                  ;void InitSys (void);
                  ;void ReadSensorLineData (void);
                  ;float CurrentRobotError (void);
                  ;
-                 ;/****************************** Main ******************************/
+                 ;
+                 ;/**************************************** Main ****************************************/
                  ;
                  ;void main (void) {
-                 ; 0000 0086 void main (void) {
+                 ; 0000 0092 void main (void) {
                  
                  	.CSEG
                  _main:
-                 ; 0000 0087 	// DEFINITION OF VARIABLES
-                 ; 0000 0088 	register float error_history[QTY_OF_ERR] = {0};		// Storing the values of recent errors
-                 ; 0000 0089 	register float error_sum = 0.0;						// Sum of errors in history
-                 ; 0000 008A 	register uint8_t i = 0;
-                 ; 0000 008B 	register float P = 0.0;
-                 ; 0000 008C 	register float I = 0.0;
-                 ; 0000 008D 	register float D = 0.0;
-                 ; 0000 008E 	register float PID_total_correction = 0.0;      	// Sum of P, I, D
-                 ; 0000 008F 	register int16_t left_motor_speed = 0;
-                 ; 0000 0090 	register int16_t right_motor_speed = 0;
-                 ; 0000 0091 
-                 ; 0000 0092 	// MICROCONTROLLER INITIALIZATION
-                 ; 0000 0093 	InitSys ();
+                 ; 0000 0093 	// DEFINITION OF VARIABLES
+                 ; 0000 0094 	register float error_history[QTY_OF_ERR] = {0};		// Storing the values of recent errors
+                 ; 0000 0095 	register float error_sum = 0.0;						// Sum of errors in history
+                 ; 0000 0096 	register uint8_t i = 0;
+                 ; 0000 0097 	register float P = 0.0;
+                 ; 0000 0098 	register float I = 0.0;
+                 ; 0000 0099 	register float D = 0.0;
+                 ; 0000 009A 	register float PID_total_correction = 0.0;      	// Sum of P, I, D
+                 ; 0000 009B 	register int16_t left_motor_speed = 0;
+                 ; 0000 009C 	register int16_t right_motor_speed = 0;
+                 ; 0000 009D 
+                 ; 0000 009E 	// MICROCONTROLLER INITIALIZATION
+                 ; 0000 009F 	InitSys ();
 000094 97ec      	SBIW R28,60
 000095 e38c      	LDI  R24,60
 000096 e0a0      	LDI  R26,LOW(0)
@@ -1434,23 +1446,23 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000a0 e050     +LDI R21 , HIGH ( 0 )
                  	__GETWRN 20,21,0
 0000a1 d0b6      	RCALL _InitSys
-                 ; 0000 0094 
-                 ; 0000 0095 	// Waiting for a signal on IR sensor
-                 ; 0000 0096 	#ifdef READ_IR_SENSOR
-                 ; 0000 0097 		while (READ_IR_SENSOR) {
-                 ; 0000 0098 			LED_1_ON;
-                 ; 0000 0099 			delay_ms (25);
-                 ; 0000 009A 			LED_1_OFF;
-                 ; 0000 009B 			delay_ms (25);
-                 ; 0000 009C 		}
-                 ; 0000 009D 	#endif /* READ_IR_SENSOR */
-                 ; 0000 009E 
-                 ; 0000 009F 	//delay_ms (5000);									// This delay is required by the competition rules
                  ; 0000 00A0 
-                 ; 0000 00A1 	// MAIN CYCLE
-                 ; 0000 00A2 	while (true) {
+                 ; 0000 00A1 	// Waiting for a signal on IR sensor
+                 ; 0000 00A2 	#ifdef READ_IR_SENSOR
+                 ; 0000 00A3 		while (READ_IR_SENSOR) {
+                 ; 0000 00A4 			LED_1_ON;
+                 ; 0000 00A5 			delay_ms (25);
+                 ; 0000 00A6 			LED_1_OFF;
+                 ; 0000 00A7 			delay_ms (25);
+                 ; 0000 00A8 		}
+                 ; 0000 00A9 	#endif /* READ_IR_SENSOR */
+                 ; 0000 00AA 
+                 ; 0000 00AB 	//delay_ms (5000);									// This delay is required by the competition rules
+                 ; 0000 00AC 
+                 ; 0000 00AD 	// MAIN CYCLE
+                 ; 0000 00AE 	while (true) {
                  _0x4:
-                 ; 0000 00A3 		error_sum = 0.0;
+                 ; 0000 00AF 		error_sum = 0.0;
 0000a2 e0e0      	LDI  R30,LOW(0)
                 +
 0000a3 8be8     +STD Y + 16 , R30
@@ -1458,14 +1470,14 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000a5 8bea     +STD Y + 16 + 2 , R30
 0000a6 8beb     +STD Y + 16 + 3 , R30
                  	__CLRD1S 16
-                 ; 0000 00A4 
-                 ; 0000 00A5 	    // Shift error values
-                 ; 0000 00A6 		for (i = 0; i < QTY_OF_ERR - 1; i++) {
+                 ; 0000 00B0 
+                 ; 0000 00B1 	    // Shift error values
+                 ; 0000 00B2 		for (i = 0; i < QTY_OF_ERR - 1; i++) {
 0000a7 e010      	LDI  R17,LOW(0)
                  _0x8:
 0000a8 3019      	CPI  R17,9
 0000a9 f4a8      	BRSH _0x9
-                 ; 0000 00A7 			error_history[i] = error_history[i + 1];
+                 ; 0000 00B3 			error_history[i] = error_history[i + 1];
 0000aa 940e 03e0 	CALL SUBOPT_0x0
 0000ac 0fea      	ADD  R30,R26
 0000ad 1ffb      	ADC  R31,R27
@@ -1481,11 +1493,11 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000b8 940e 0630 	CALL __GETD1P
 0000ba 01d0      	MOVW R26,R0
 0000bb 940e 0636 	CALL __PUTDP1
-                 ; 0000 00A8 		}
+                 ; 0000 00B4 		}
 0000bd 5f1f      	SUBI R17,-1
 0000be cfe9      	RJMP _0x8
                  _0x9:
-                 ; 0000 00A9 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
+                 ; 0000 00B5 		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
 0000bf d132      	RCALL _CurrentRobotError
                 +
 0000c0 afe8     +STD Y + 56 , R30
@@ -1493,9 +1505,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000c2 af6a     +STD Y + 56 + 2 , R22
 0000c3 af7b     +STD Y + 56 + 3 , R23
                  	__PUTD1S 56
-                 ; 0000 00AA 
-                 ; 0000 00AB 		// Calculation of value P
-                 ; 0000 00AC 		P = error_history[QTY_OF_ERR - 1] * kP;			// Current error * kP
+                 ; 0000 00B6 
+                 ; 0000 00B7 		// Calculation of value P
+                 ; 0000 00B8 		P = error_history[QTY_OF_ERR - 1] * kP;			// Current error * kP
                 +
 0000c4 ada8     +LDD R26 , Y + 56
 0000c5 adb9     +LDD R27 , Y + 56 + 1
@@ -1510,13 +1522,13 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000ce 876e     +STD Y + 12 + 2 , R22
 0000cf 877f     +STD Y + 12 + 3 , R23
                  	__PUTD1S 12
-                 ; 0000 00AD 		// Calculation of value I
-                 ; 0000 00AE 		for (i = 0; i < QTY_OF_ERR; i++) {
+                 ; 0000 00B9 		// Calculation of value I
+                 ; 0000 00BA 		for (i = 0; i < QTY_OF_ERR; i++) {
 0000d0 e010      	LDI  R17,LOW(0)
                  _0xB:
 0000d1 301a      	CPI  R17,10
 0000d2 f490      	BRSH _0xC
-                 ; 0000 00AF 			error_sum += error_history[i];
+                 ; 0000 00BB 			error_sum += error_history[i];
 0000d3 940e 03e0 	CALL SUBOPT_0x0
 0000d5 0fae      	ADD  R26,R30
 0000d6 1fbf      	ADC  R27,R31
@@ -1534,11 +1546,11 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000e1 8b6a     +STD Y + 16 + 2 , R22
 0000e2 8b7b     +STD Y + 16 + 3 , R23
                  	__PUTD1S 16
-                 ; 0000 00B0 		}
+                 ; 0000 00BC 		}
 0000e3 5f1f      	SUBI R17,-1
 0000e4 cfec      	RJMP _0xB
                  _0xC:
-                 ; 0000 00B1 		I = error_sum * kI;								// sum of errors * kI
+                 ; 0000 00BD 		I = error_sum * kI;								// sum of errors * kI
                 +
 0000e5 89a8     +LDD R26 , Y + 16
 0000e6 89b9     +LDD R27 , Y + 16 + 1
@@ -1553,9 +1565,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0000ef 876a     +STD Y + 8 + 2 , R22
 0000f0 877b     +STD Y + 8 + 3 , R23
                  	__PUTD1S 8
-                 ; 0000 00B2 		// Calculation of value D
-                 ; 0000 00B3 		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - first error) * kD
-                 ; 0000 00B4         	error_history[0]) * kD;
+                 ; 0000 00BE 		// Calculation of value D
+                 ; 0000 00BF 		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - error in past) * kD
+                 ; 0000 00C0         	error_history[0]) * kD;
                 +
 0000f1 89ac     +LDD R26 , Y + 20
 0000f2 89bd     +LDD R27 , Y + 20 + 1
@@ -1582,8 +1594,8 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 000103 836e     +STD Y + 4 + 2 , R22
 000104 837f     +STD Y + 4 + 3 , R23
                  	__PUTD1S 4
-                 ; 0000 00B5 
-                 ; 0000 00B6 		PID_total_correction = (P + I) + D;
+                 ; 0000 00C1 
+                 ; 0000 00C2 		PID_total_correction = (P + I) + D;
 000105 940e 03f1 	CALL SUBOPT_0x3
                 +
 000107 85ac     +LDD R26 , Y + 12
@@ -1595,45 +1607,45 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 00010d 940e 03f6 	CALL SUBOPT_0x4
 00010f 940e 0515 	CALL __ADDF12
 000111 940e 0645 	CALL __PUTD1S0
-                 ; 0000 00B7 
-                 ; 0000 00B8 		//
-                 ; 0000 00B9 		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
+                 ; 0000 00C3 
+                 ; 0000 00C4 		//
+                 ; 0000 00C5 		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
 000113 940e 03fb 	CALL SUBOPT_0x5
 000115 e9ab      	LDI  R26,LOW(155)
 000116 e0b0      	LDI  R27,HIGH(155)
 000117 1bae      	SUB  R26,R30
 000118 0bbf      	SBC  R27,R31
 000119 019d      	MOVW R18,R26
-                 ; 0000 00BA 		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
+                 ; 0000 00C6 		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
 00011a 940e 03fb 	CALL SUBOPT_0x5
 00011c 56e5      	SUBI R30,LOW(-155)
 00011d 4fff      	SBCI R31,HIGH(-155)
 00011e 01af      	MOVW R20,R30
-                 ; 0000 00BB 
-                 ; 0000 00BC 		// Validating a range of variables
-                 ; 0000 00BD 		if (left_motor_speed > 255)
+                 ; 0000 00C7 
+                 ; 0000 00C8 		// Validating a range of variables
+                 ; 0000 00C9 		if (left_motor_speed > 255)
                 +
 00011f 3020     +CPI R18 , LOW ( 256 )
 000120 e0e1     +LDI R30 , HIGH ( 256 )
 000121 073e     +CPC R19 , R30
                  	__CPWRN 18,19,256
 000122 f01c      	BRLT _0xD
-                 ; 0000 00BE 			left_motor_speed = 255;
+                 ; 0000 00CA 			left_motor_speed = 255;
                 +
 000123 ef2f     +LDI R18 , LOW ( 255 )
 000124 e030     +LDI R19 , HIGH ( 255 )
                  	__GETWRN 18,19,255
-                 ; 0000 00BF 		else if (left_motor_speed < 0)
+                 ; 0000 00CB 		else if (left_motor_speed < 0)
 000125 c004      	RJMP _0xE
                  _0xD:
 000126 2333      	TST  R19
 000127 f412      	BRPL _0xF
-                 ; 0000 00C0 			left_motor_speed = 0;
+                 ; 0000 00CC 			left_motor_speed = 0;
                 +
 000128 e020     +LDI R18 , LOW ( 0 )
 000129 e030     +LDI R19 , HIGH ( 0 )
                  	__GETWRN 18,19,0
-                 ; 0000 00C1 		if (right_motor_speed > 255)
+                 ; 0000 00CD 		if (right_motor_speed > 255)
                  _0xF:
                  _0xE:
                 +
@@ -1642,30 +1654,30 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 00012c 075e     +CPC R21 , R30
                  	__CPWRN 20,21,256
 00012d f01c      	BRLT _0x10
-                 ; 0000 00C2 			right_motor_speed = 255;
+                 ; 0000 00CE 			right_motor_speed = 255;
                 +
 00012e ef4f     +LDI R20 , LOW ( 255 )
 00012f e050     +LDI R21 , HIGH ( 255 )
                  	__GETWRN 20,21,255
-                 ; 0000 00C3 		else if (right_motor_speed < 0)
+                 ; 0000 00CF 		else if (right_motor_speed < 0)
 000130 c004      	RJMP _0x11
                  _0x10:
 000131 2355      	TST  R21
 000132 f412      	BRPL _0x12
-                 ; 0000 00C4 			right_motor_speed = 0;
+                 ; 0000 00D0 			right_motor_speed = 0;
                 +
 000133 e040     +LDI R20 , LOW ( 0 )
 000134 e050     +LDI R21 , HIGH ( 0 )
                  	__GETWRN 20,21,0
-                 ; 0000 00C5 
-                 ; 0000 00C6 		// Motors power difference compensation
-                 ; 0000 00C7 		#if MOTORS_NOT_PERFECT
-                 ; 0000 00C8 			OCR2A = 0;
+                 ; 0000 00D1 
+                 ; 0000 00D2 		// Motors power difference compensation
+                 ; 0000 00D3 		#if MOTORS_NOT_PERFECT
+                 ; 0000 00D4 			OCR2A = 0;
                  _0x12:
                  _0x11:
 000135 e0e0      	LDI  R30,LOW(0)
 000136 93e0 00b3 	STS  179,R30
-                 ; 0000 00C9 			OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
+                 ; 0000 00D5 			OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
 000138 01f9      	MOVW R30,R18
 000139 940e 0400 	CALL SUBOPT_0x6
 00013b 940e 0405 	CALL SUBOPT_0x7
@@ -1674,10 +1686,10 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 000140 e0b0      	LDI  R27,HIGH(180)
 000141 940e 04a2 	CALL __CFD1U
 000143 93ec      	ST   X,R30
-                 ; 0000 00CA 			OCR0A = 0;
+                 ; 0000 00D6 			OCR0A = 0;
 000144 e0e0      	LDI  R30,LOW(0)
 000145 bde7      	OUT  0x27,R30
-                 ; 0000 00CB 			OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
+                 ; 0000 00D7 			OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
 000146 01fa      	MOVW R30,R20
 000147 940e 0400 	CALL SUBOPT_0x6
                 +
@@ -1689,182 +1701,183 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 00014d 940e 0565 	CALL __MULF12
 00014f 940e 04a2 	CALL __CFD1U
 000151 bde8      	OUT  0x28,R30
-                 ; 0000 00CC 		#else
-                 ; 0000 00CD 			OCR2A = 0;
-                 ; 0000 00CE 			OCR2B = left_motor_speed;
-                 ; 0000 00CF 			OCR0A = 0;
-                 ; 0000 00D0 			OCR0B = right_motor_speed;
-                 ; 0000 00D1 		#endif /* MOTORS_NOT_PERFECT */
-                 ; 0000 00D2 
-                 ; 0000 00D3 		delay_ms (MAIN_CYCLE_DELAY);
+                 ; 0000 00D8 		#else
+                 ; 0000 00D9 			OCR2A = 0;
+                 ; 0000 00DA 			OCR2B = left_motor_speed;
+                 ; 0000 00DB 			OCR0A = 0;
+                 ; 0000 00DC 			OCR0B = right_motor_speed;
+                 ; 0000 00DD 		#endif /* MOTORS_NOT_PERFECT */
+                 ; 0000 00DE 
+                 ; 0000 00DF 		delay_ms (MAIN_CYCLE_DELAY);
 000152 e0a2      	LDI  R26,LOW(2)
 000153 e0b0      	LDI  R27,0
 000154 940e 0448 	CALL _delay_ms
-                 ; 0000 00D4 	}
+                 ; 0000 00E0 	}
 000156 cf4b      	RJMP _0x4
-                 ; 0000 00D5 }
+                 ; 0000 00E1 }
                  _0x13:
 000157 cfff      	RJMP _0x13
                  ;
-                 ;/*************************** Functions ****************************/
+                 ;
+                 ;/************************************* Functions **************************************/
                  ;
                  ;void InitSys (void) {
-                 ; 0000 00D9 void InitSys (void) {
+                 ; 0000 00E6 void InitSys (void) {
                  _InitSys:
-                 ; 0000 00DA 	// Motors
-                 ; 0000 00DB 	    // Output mode
-                 ; 0000 00DC 		DDRB |= (1 << DDB3);			            	// OC2A
+                 ; 0000 00E7 	// Motors
+                 ; 0000 00E8 	    // Output mode
+                 ; 0000 00E9 		DDRB |= (1 << DDB3);			            	// OC2A
 000158 9a23      	SBI  0x4,3
-                 ; 0000 00DD 		DDRD |= (1 << DDD6) |			            	// OC0A
-                 ; 0000 00DE 				(1 << DDD5) |			            	// OC0B
-                 ; 0000 00DF 				(1 << DDD3);			            	// OC2B
+                 ; 0000 00EA 		DDRD |= (1 << DDD6) |			            	// OC0A
+                 ; 0000 00EB 				(1 << DDD5) |			            	// OC0B
+                 ; 0000 00EC 				(1 << DDD3);			            	// OC2B
 000159 b1ea      	IN   R30,0xA
 00015a 66e8      	ORI  R30,LOW(0x68)
 00015b b9ea      	OUT  0xA,R30
-                 ; 0000 00E0 
-                 ; 0000 00E1 	// SensorLine
-                 ; 0000 00E2 	    // Input mode
-                 ; 0000 00E3 		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
+                 ; 0000 00ED 
+                 ; 0000 00EE 	// SensorLine
+                 ; 0000 00EF 	    // Input mode
+                 ; 0000 00F0 		DDRB &= ~((1 << DDB2) | (1 << DDB1) | (1 << DDB0));
 00015c b1e4      	IN   R30,0x4
 00015d 7fe8      	ANDI R30,LOW(0xF8)
 00015e b9e4      	OUT  0x4,R30
-                 ; 0000 00E4 		DDRD &= ~(1 << DDD7);
+                 ; 0000 00F1 		DDRD &= ~(1 << DDD7);
 00015f 9857      	CBI  0xA,7
-                 ; 0000 00E5 
-                 ; 0000 00E6 	// Infrared Sensor
-                 ; 0000 00E7 	    // Input mode
-                 ; 0000 00E8 		#ifdef READ_SENSOR_IR
-                 ; 0000 00E9 			DDRx &= ~(1 << DDxx);
-                 ; 0000 00EA 		#endif /* READ_SENSOR_IR */
-                 ; 0000 00EB 
-                 ; 0000 00EC 	// Timer/Counter(s) initialization
-                 ; 0000 00ED 		// Timer/Counter 0
-                 ; 0000 00EE 		// Fast PWM Mode
-                 ; 0000 00EF 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
-                 ; 0000 00F0 		// TOP = 0xFF
-                 ; 0000 00F1 		// Prescaler: 1:64
-                 ; 0000 00F2 		TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
+                 ; 0000 00F2 
+                 ; 0000 00F3 	// Infrared Sensor
+                 ; 0000 00F4 	    // Input mode
+                 ; 0000 00F5 		#ifdef READ_SENSOR_IR
+                 ; 0000 00F6 			DDRx &= ~(1 << DDxx);
+                 ; 0000 00F7 		#endif /* READ_SENSOR_IR */
+                 ; 0000 00F8 
+                 ; 0000 00F9 	// Timer/Counter(s) initialization
+                 ; 0000 00FA 		// Timer/Counter 0
+                 ; 0000 00FB 		// Fast PWM Mode
+                 ; 0000 00FC 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+                 ; 0000 00FD 		// TOP = 0xFF
+                 ; 0000 00FE 		// Prescaler: 1:64
+                 ; 0000 00FF 		TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
 000160 b5e4      	IN   R30,0x24
 000161 6ae3      	ORI  R30,LOW(0xA3)
 000162 bde4      	OUT  0x24,R30
-                 ; 0000 00F3 		TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
+                 ; 0000 0100 		TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
 000163 b5e4      	IN   R30,0x24
 000164 7ae3      	ANDI R30,LOW(0xA3)
 000165 bde4      	OUT  0x24,R30
-                 ; 0000 00F4 		TCCR0B |= (1 << CS01) | (1 << CS00);
+                 ; 0000 0101 		TCCR0B |= (1 << CS01) | (1 << CS00);
 000166 b5e5      	IN   R30,0x25
 000167 60e3      	ORI  R30,LOW(0x3)
 000168 bde5      	OUT  0x25,R30
-                 ; 0000 00F5 		TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
+                 ; 0000 0102 		TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
 000169 b5e5      	IN   R30,0x25
 00016a 70e3      	ANDI R30,LOW(0x3)
 00016b bde5      	OUT  0x25,R30
-                 ; 0000 00F6 		TCNT0  = 0x00;
+                 ; 0000 0103 		TCNT0  = 0x00;
 00016c e0e0      	LDI  R30,LOW(0)
 00016d bde6      	OUT  0x26,R30
-                 ; 0000 00F7 		TIMSK0 = 0x00;
+                 ; 0000 0104 		TIMSK0 = 0x00;
 00016e 93e0 006e 	STS  110,R30
-                 ; 0000 00F8 		OCR0A  = 0x00;	OCR0B  = 0x00;
+                 ; 0000 0105 		OCR0A  = 0x00;	OCR0B  = 0x00;
 000170 bde7      	OUT  0x27,R30
 000171 bde8      	OUT  0x28,R30
-                 ; 0000 00F9 
-                 ; 0000 00FA 		// Timer/Counter 1
-                 ; 0000 00FB 		// Fast PWM 10-bit Mode
-                 ; 0000 00FC 		// Clear OC1A/OC1B on Compare Match, set OC1A/OC1B at BOTTOM (non-inverting mode)
-                 ; 0000 00FD 		// TOP = 0x03FF
-                 ; 0000 00FE 		// Prescaler: 1:64
-                 ; 0000 00FF 		TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
+                 ; 0000 0106 
+                 ; 0000 0107 		// Timer/Counter 1
+                 ; 0000 0108 		// Fast PWM 10-bit Mode
+                 ; 0000 0109 		// Clear OC1A/OC1B on Compare Match, set OC1A/OC1B at BOTTOM (non-inverting mode)
+                 ; 0000 010A 		// TOP = 0x03FF
+                 ; 0000 010B 		// Prescaler: 1:64
+                 ; 0000 010C 		TCCR1A |= (1 << COM1A1) | (1 << COM1B1) | (1 << WGM11) | (1 << WGM10);
 000172 91e0 0080 	LDS  R30,128
 000174 6ae3      	ORI  R30,LOW(0xA3)
 000175 93e0 0080 	STS  128,R30
-                 ; 0000 0100 		TCCR1A &= ~((1 << COM1A0) | (1 << COM1B0) | (1 << 3) | (1 << 2));
+                 ; 0000 010D 		TCCR1A &= ~((1 << COM1A0) | (1 << COM1B0) | (1 << 3) | (1 << 2));
 000177 91e0 0080 	LDS  R30,128
 000179 7ae3      	ANDI R30,LOW(0xA3)
 00017a 93e0 0080 	STS  128,R30
-                 ; 0000 0101 		TCCR1B |= (1 << WGM12) | (1 << CS11) | (1 << CS10);
+                 ; 0000 010E 		TCCR1B |= (1 << WGM12) | (1 << CS11) | (1 << CS10);
 00017c 91e0 0081 	LDS  R30,129
 00017e 60eb      	ORI  R30,LOW(0xB)
 00017f 93e0 0081 	STS  129,R30
-                 ; 0000 0102 		TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << CS12));
+                 ; 0000 010F 		TCCR1B &= ~((1 << ICNC1) | (1 << ICES1) | (1 << 5) | (1 << WGM13) | (1 << CS12));
 000181 91e0 0081 	LDS  R30,129
 000183 70eb      	ANDI R30,LOW(0xB)
 000184 93e0 0081 	STS  129,R30
-                 ; 0000 0103 		TCCR1C = 0x00;
+                 ; 0000 0110 		TCCR1C = 0x00;
 000186 e0e0      	LDI  R30,LOW(0)
 000187 93e0 0082 	STS  130,R30
-                 ; 0000 0104 		TCNT1H = 0x00;	TCNT1L = 0x00;
+                 ; 0000 0111 		TCNT1H = 0x00;	TCNT1L = 0x00;
 000189 93e0 0085 	STS  133,R30
 00018b 93e0 0084 	STS  132,R30
-                 ; 0000 0105 		TIMSK1 = 0x00;
+                 ; 0000 0112 		TIMSK1 = 0x00;
 00018d 93e0 006f 	STS  111,R30
-                 ; 0000 0106 		ICR1H  = 0x00;	ICR1L  = 0x00;
+                 ; 0000 0113 		ICR1H  = 0x00;	ICR1L  = 0x00;
 00018f 93e0 0087 	STS  135,R30
 000191 93e0 0086 	STS  134,R30
-                 ; 0000 0107 		OCR1AH = 0x00;	OCR1AL = 0x00;
+                 ; 0000 0114 		OCR1AH = 0x00;	OCR1AL = 0x00;
 000193 93e0 0089 	STS  137,R30
 000195 93e0 0088 	STS  136,R30
-                 ; 0000 0108 		OCR1BH = 0x00;	OCR1BL = 0x00;
+                 ; 0000 0115 		OCR1BH = 0x00;	OCR1BL = 0x00;
 000197 93e0 008b 	STS  139,R30
 000199 93e0 008a 	STS  138,R30
-                 ; 0000 0109 
-                 ; 0000 010A 		// Timer/Counter 2
-                 ; 0000 010B 		// Fast PWM Mode
-                 ; 0000 010C 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
-                 ; 0000 010D 		// TOP = 0xFF
-                 ; 0000 010E 		// Prescaler: 1:64
-                 ; 0000 010F 		TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
+                 ; 0000 0116 
+                 ; 0000 0117 		// Timer/Counter 2
+                 ; 0000 0118 		// Fast PWM Mode
+                 ; 0000 0119 		// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
+                 ; 0000 011A 		// TOP = 0xFF
+                 ; 0000 011B 		// Prescaler: 1:64
+                 ; 0000 011C 		TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
 00019b 91e0 00b0 	LDS  R30,176
 00019d 6ae3      	ORI  R30,LOW(0xA3)
 00019e 93e0 00b0 	STS  176,R30
-                 ; 0000 0110 		TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
+                 ; 0000 011D 		TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
 0001a0 91e0 00b0 	LDS  R30,176
 0001a2 7ae3      	ANDI R30,LOW(0xA3)
 0001a3 93e0 00b0 	STS  176,R30
-                 ; 0000 0111 		TCCR2B |= (1 << CS22);
+                 ; 0000 011E 		TCCR2B |= (1 << CS22);
 0001a5 91e0 00b1 	LDS  R30,177
 0001a7 60e4      	ORI  R30,4
 0001a8 93e0 00b1 	STS  177,R30
-                 ; 0000 0112 		TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
+                 ; 0000 011F 		TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
 0001aa 91e0 00b1 	LDS  R30,177
 0001ac 70e4      	ANDI R30,LOW(0x4)
 0001ad 93e0 00b1 	STS  177,R30
-                 ; 0000 0113 		TCNT2  = 0x00;
+                 ; 0000 0120 		TCNT2  = 0x00;
 0001af e0e0      	LDI  R30,LOW(0)
 0001b0 93e0 00b2 	STS  178,R30
-                 ; 0000 0114 		TIMSK2 = 0x00;
+                 ; 0000 0121 		TIMSK2 = 0x00;
 0001b2 93e0 0070 	STS  112,R30
-                 ; 0000 0115 		OCR2A  = 0x00;	OCR2B  = 0x00;
+                 ; 0000 0122 		OCR2A  = 0x00;	OCR2B  = 0x00;
 0001b4 93e0 00b3 	STS  179,R30
 0001b6 93e0 00b4 	STS  180,R30
-                 ; 0000 0116 
-                 ; 0000 0117 	// Crystal Oscillator division factor: 1
-                 ; 0000 0118 		#pragma optsize-
-                 ; 0000 0119 			CLKPR |= (1 << CLKPCE);
+                 ; 0000 0123 
+                 ; 0000 0124 	// Crystal Oscillator division factor: 1
+                 ; 0000 0125 		#pragma optsize-
+                 ; 0000 0126 			CLKPR |= (1 << CLKPCE);
 0001b8 91e0 0061 	LDS  R30,97
 0001ba 68e0      	ORI  R30,0x80
 0001bb 93e0 0061 	STS  97,R30
-                 ; 0000 011A 			CLKPR = 0x00;
+                 ; 0000 0127 			CLKPR = 0x00;
 0001bd e0e0      	LDI  R30,LOW(0)
 0001be 93e0 0061 	STS  97,R30
-                 ; 0000 011B 		#ifdef _OPTIMIZE_SIZE_
-                 ; 0000 011C 			#pragma optsize+
-                 ; 0000 011D 		#endif /* _OPTIMIZE_SIZE_ */
-                 ; 0000 011E }
+                 ; 0000 0128 		#ifdef _OPTIMIZE_SIZE_
+                 ; 0000 0129 			#pragma optsize+
+                 ; 0000 012A 		#endif /* _OPTIMIZE_SIZE_ */
+                 ; 0000 012B }
 0001c0 9508      	RET
                  ;
                  ;void ReadSensorLineData (void) {
-                 ; 0000 0120 void ReadSensorLineData (void) {
+                 ; 0000 012D void ReadSensorLineData (void) {
                  _ReadSensorLineData:
-                 ; 0000 0121 	#ifdef READ_SENSOR_1
-                 ; 0000 0122 		line_data[0] = READ_SENSOR_1;
+                 ; 0000 012E 	#ifdef READ_SENSOR_1
+                 ; 0000 012F 		line_data[0] = READ_SENSOR_1;
 0001c1 b1e9      	IN   R30,0x9
 0001c2 70e4      	ANDI R30,LOW(0x4)
 0001c3 e0a0      	LDI  R26,LOW(_line_data)
 0001c4 e0b3      	LDI  R27,HIGH(_line_data)
 0001c5 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0123 	#endif /* READ_SENSOR_1 */
-                 ; 0000 0124 	#ifdef READ_SENSOR_2
-                 ; 0000 0125 		line_data[1] = READ_SENSOR_2;
+                 ; 0000 0130 	#endif /* READ_SENSOR_1 */
+                 ; 0000 0131 	#ifdef READ_SENSOR_2
+                 ; 0000 0132 		line_data[1] = READ_SENSOR_2;
                 +
 0001c7 e0a1     +LDI R26 , LOW ( _line_data + ( 1 ) )
 0001c8 e0b3     +LDI R27 , HIGH ( _line_data + ( 1 ) )
@@ -1872,9 +1885,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001c9 b1e9      	IN   R30,0x9
 0001ca 71e0      	ANDI R30,LOW(0x10)
 0001cb 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0126 	#endif /* READ_SENSOR_2 */
-                 ; 0000 0127 	#ifdef READ_SENSOR_3
-                 ; 0000 0128 		line_data[2] = READ_SENSOR_3;
+                 ; 0000 0133 	#endif /* READ_SENSOR_2 */
+                 ; 0000 0134 	#ifdef READ_SENSOR_3
+                 ; 0000 0135 		line_data[2] = READ_SENSOR_3;
                 +
 0001cd e0a2     +LDI R26 , LOW ( _line_data + ( 2 ) )
 0001ce e0b3     +LDI R27 , HIGH ( _line_data + ( 2 ) )
@@ -1882,9 +1895,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001cf b1e6      	IN   R30,0x6
 0001d0 72e0      	ANDI R30,LOW(0x20)
 0001d1 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0129 	#endif /* READ_SENSOR_3 */
-                 ; 0000 012A 	#ifdef READ_SENSOR_4
-                 ; 0000 012B 		line_data[3] = READ_SENSOR_4;
+                 ; 0000 0136 	#endif /* READ_SENSOR_3 */
+                 ; 0000 0137 	#ifdef READ_SENSOR_4
+                 ; 0000 0138 		line_data[3] = READ_SENSOR_4;
                 +
 0001d3 e0a3     +LDI R26 , LOW ( _line_data + ( 3 ) )
 0001d4 e0b3     +LDI R27 , HIGH ( _line_data + ( 3 ) )
@@ -1892,9 +1905,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001d5 b1e6      	IN   R30,0x6
 0001d6 71e0      	ANDI R30,LOW(0x10)
 0001d7 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 012C 	#endif /* READ_SENSOR_4 */
-                 ; 0000 012D 	#ifdef READ_SENSOR_5
-                 ; 0000 012E 		line_data[4] = READ_SENSOR_5;
+                 ; 0000 0139 	#endif /* READ_SENSOR_4 */
+                 ; 0000 013A 	#ifdef READ_SENSOR_5
+                 ; 0000 013B 		line_data[4] = READ_SENSOR_5;
                 +
 0001d9 e0a4     +LDI R26 , LOW ( _line_data + ( 4 ) )
 0001da e0b3     +LDI R27 , HIGH ( _line_data + ( 4 ) )
@@ -1902,9 +1915,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001db b1e6      	IN   R30,0x6
 0001dc 70e8      	ANDI R30,LOW(0x8)
 0001dd 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 012F 	#endif /* READ_SENSOR_5 */
-                 ; 0000 0130 	#ifdef READ_SENSOR_6
-                 ; 0000 0131 		line_data[5] = READ_SENSOR_6;
+                 ; 0000 013C 	#endif /* READ_SENSOR_5 */
+                 ; 0000 013D 	#ifdef READ_SENSOR_6
+                 ; 0000 013E 		line_data[5] = READ_SENSOR_6;
                 +
 0001df e0a5     +LDI R26 , LOW ( _line_data + ( 5 ) )
 0001e0 e0b3     +LDI R27 , HIGH ( _line_data + ( 5 ) )
@@ -1912,9 +1925,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001e1 b1e6      	IN   R30,0x6
 0001e2 70e4      	ANDI R30,LOW(0x4)
 0001e3 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0132 	#endif /* READ_SENSOR_6 */
-                 ; 0000 0133 	#ifdef READ_SENSOR_7
-                 ; 0000 0134 		line_data[6] = READ_SENSOR_7;
+                 ; 0000 013F 	#endif /* READ_SENSOR_6 */
+                 ; 0000 0140 	#ifdef READ_SENSOR_7
+                 ; 0000 0141 		line_data[6] = READ_SENSOR_7;
                 +
 0001e5 e0a6     +LDI R26 , LOW ( _line_data + ( 6 ) )
 0001e6 e0b3     +LDI R27 , HIGH ( _line_data + ( 6 ) )
@@ -1922,9 +1935,9 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001e7 b1e6      	IN   R30,0x6
 0001e8 70e2      	ANDI R30,LOW(0x2)
 0001e9 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0135 	#endif /* READ_SENSOR_7 */
-                 ; 0000 0136 	#ifdef READ_SENSOR_8
-                 ; 0000 0137 		line_data[7] = READ_SENSOR_8;
+                 ; 0000 0142 	#endif /* READ_SENSOR_7 */
+                 ; 0000 0143 	#ifdef READ_SENSOR_8
+                 ; 0000 0144 		line_data[7] = READ_SENSOR_8;
                 +
 0001eb e0a7     +LDI R26 , LOW ( _line_data + ( 7 ) )
 0001ec e0b3     +LDI R27 , HIGH ( _line_data + ( 7 ) )
@@ -1932,41 +1945,41 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 0001ed b1e6      	IN   R30,0x6
 0001ee 70e1      	ANDI R30,LOW(0x1)
 0001ef 940e 040a 	CALL SUBOPT_0x8
-                 ; 0000 0138 	#endif /* READ_SENSOR_8 */
-                 ; 0000 0139 	#ifdef READ_SENSOR_9
-                 ; 0000 013A 		line_data[8] = READ_SENSOR_9;
-                 ; 0000 013B 	#endif /* READ_SENSOR_9 */
-                 ; 0000 013C 	#ifdef READ_SENSOR_10
-                 ; 0000 013D 		line_data[9] = READ_SENSOR_10;
-                 ; 0000 013E 	#endif /* READ_SENSOR_10 */
-                 ; 0000 013F 	#ifdef READ_SENSOR_11
-                 ; 0000 0140 		line_data[10] = READ_SENSOR_11;
-                 ; 0000 0141 	#endif /* READ_SENSOR_11 */
-                 ; 0000 0142 	#ifdef READ_SENSOR_12
-                 ; 0000 0143 		line_data[11] = READ_SENSOR_12;
-                 ; 0000 0144 	#endif /* READ_SENSOR_12 */
-                 ; 0000 0145 	#ifdef READ_SENSOR_13
-                 ; 0000 0146 		line_data[12] = READ_SENSOR_13;
-                 ; 0000 0147 	#endif /* READ_SENSOR_13 */
-                 ; 0000 0148 	#ifdef READ_SENSOR_14
-                 ; 0000 0149 		line_data[13] = READ_SENSOR_14;
-                 ; 0000 014A 	#endif /* READ_SENSOR_14 */
-                 ; 0000 014B 	#ifdef READ_SENSOR_15
-                 ; 0000 014C 		line_data[14] = READ_SENSOR_15;
-                 ; 0000 014D 	#endif /* READ_SENSOR_15 */
-                 ; 0000 014E 	#ifdef READ_SENSOR_16
-                 ; 0000 014F 		line_data[15] = READ_SENSOR_16;
-                 ; 0000 0150 	#endif /* READ_SENSOR_16 */
-                 ; 0000 0151 }
+                 ; 0000 0145 	#endif /* READ_SENSOR_8 */
+                 ; 0000 0146 	#ifdef READ_SENSOR_9
+                 ; 0000 0147 		line_data[8] = READ_SENSOR_9;
+                 ; 0000 0148 	#endif /* READ_SENSOR_9 */
+                 ; 0000 0149 	#ifdef READ_SENSOR_10
+                 ; 0000 014A 		line_data[9] = READ_SENSOR_10;
+                 ; 0000 014B 	#endif /* READ_SENSOR_10 */
+                 ; 0000 014C 	#ifdef READ_SENSOR_11
+                 ; 0000 014D 		line_data[10] = READ_SENSOR_11;
+                 ; 0000 014E 	#endif /* READ_SENSOR_11 */
+                 ; 0000 014F 	#ifdef READ_SENSOR_12
+                 ; 0000 0150 		line_data[11] = READ_SENSOR_12;
+                 ; 0000 0151 	#endif /* READ_SENSOR_12 */
+                 ; 0000 0152 	#ifdef READ_SENSOR_13
+                 ; 0000 0153 		line_data[12] = READ_SENSOR_13;
+                 ; 0000 0154 	#endif /* READ_SENSOR_13 */
+                 ; 0000 0155 	#ifdef READ_SENSOR_14
+                 ; 0000 0156 		line_data[13] = READ_SENSOR_14;
+                 ; 0000 0157 	#endif /* READ_SENSOR_14 */
+                 ; 0000 0158 	#ifdef READ_SENSOR_15
+                 ; 0000 0159 		line_data[14] = READ_SENSOR_15;
+                 ; 0000 015A 	#endif /* READ_SENSOR_15 */
+                 ; 0000 015B 	#ifdef READ_SENSOR_16
+                 ; 0000 015C 		line_data[15] = READ_SENSOR_16;
+                 ; 0000 015D 	#endif /* READ_SENSOR_16 */
+                 ; 0000 015E }
 0001f1 9508      	RET
                  ;
                  ;float CurrentRobotError (void) {
-                 ; 0000 0153 float CurrentRobotError (void) {
+                 ; 0000 0160 float CurrentRobotError (void) {
                  _CurrentRobotError:
-                 ; 0000 0154 	register uint8_t i = 0;
-                 ; 0000 0155 	register float current_error = 0.0;
-                 ; 0000 0156 
-                 ; 0000 0157 	ReadSensorLineData ();
+                 ; 0000 0161 	register uint8_t i = 0;
+                 ; 0000 0162 	register float current_error = 0.0;
+                 ; 0000 0163 
+                 ; 0000 0164 	ReadSensorLineData ();
 0001f2 9724      	SBIW R28,4
 0001f3 e0e0      	LDI  R30,LOW(0)
 0001f4 83e8      	ST   Y,R30
@@ -1978,15 +1991,15 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
                  ;	current_error -> Y+1
 0001f9 e010      	LDI  R17,0
 0001fa dfc6      	RCALL _ReadSensorLineData
-                 ; 0000 0158 
-                 ; 0000 0159 	for (i = 0; i < QTY_OF_SENSORS; i++) {
+                 ; 0000 0165 
+                 ; 0000 0166 	for (i = 0; i < QTY_OF_SENSORS; i++) {
 0001fb e010      	LDI  R17,LOW(0)
                  _0x15:
 0001fc 2fa1      	MOV  R26,R17
 0001fd 27bb      	CLR  R27
 0001fe 9718      	SBIW R26,8
 0001ff f53c      	BRGE _0x16
-                 ; 0000 015A 	    if (line_data[i] != 0) {
+                 ; 0000 0167 	    if (line_data[i] != 0) {
 000200 2fe1      	MOV  R30,R17
 000201 e0f0      	LDI  R31,0
 000202 50e0      	SUBI R30,LOW(-_line_data)
@@ -1994,10 +2007,10 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 000204 81e0      	LD   R30,Z
 000205 30e0      	CPI  R30,0
 000206 f0f1      	BREQ _0x17
-                 ; 0000 015B             // If the data on the [i]th sensor is zero,
-                 ; 0000 015C             // then the sensor is located above the black line
-                 ; 0000 015D             // Odd degree to preserve the sign '-'
-                 ; 0000 015E             current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
+                 ; 0000 0168             // If the data on the [i]th sensor is zero,
+                 ; 0000 0169             // then the sensor is located above the black line
+                 ; 0000 016A             // Odd degree to preserve the sign '-'
+                 ; 0000 016B             current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
 000207 2fe1      	MOV  R30,R17
 000208 27ff      	CLR  R31
 000209 2766      	CLR  R22
@@ -2031,14 +2044,14 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 000223 836b     +STD Y + 1 + 2 , R22
 000224 837c     +STD Y + 1 + 3 , R23
                  	__PUTD1S 1
-                 ; 0000 015F         }
-                 ; 0000 0160 	}
+                 ; 0000 016C         }
+                 ; 0000 016D 	}
                  _0x17:
 000225 5f1f      	SUBI R17,-1
 000226 cfd5      	RJMP _0x15
                  _0x16:
-                 ; 0000 0161 
-                 ; 0000 0162 	return current_error;
+                 ; 0000 016E 
+                 ; 0000 016F 	return current_error;
                 +
 000227 81e9     +LDD R30 , Y + 1
 000228 81fa     +LDD R31 , Y + 1 + 1
@@ -2048,7 +2061,7 @@ C:\Users\vladu\OneDrive\Documents\!Projects\LineFollowerRobot\Program\List\LineF
 00022b 8118      	LDD  R17,Y+0
 00022c 9625      	ADIW R28,5
 00022d 9508      	RET
-                 ; 0000 0163 }
+                 ; 0000 0170 }
                  
                  	.CSEG
                  _ftrunc:
