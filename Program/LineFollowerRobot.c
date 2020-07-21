@@ -12,10 +12,10 @@
 	*				IO ports are configured through registers.
 	*	
 	*	@attention 	Before program Microcontroller check follow:
-	*			@b		F_CPU - system clock of external quartz resonator (if needed clock division, see datasheet);
-	*			@b		QTY_OF_SENSORS and used bits (see "Defines" section and "InitSys" function);
-	*			@b		MOTORS_NOT_PERFECT parameter, if motors are not identical by speed, torque, gear ratio, etc.
-	*			@b		PID coefficients
+	*			@b		1. F_CPU - system clock of external quartz resonator (if needed clock division, see datasheet);
+	*			@b		2. QTY_OF_SENSORS and used bits (see "Defines" section and "InitSys" function);
+	*			@b		3. MOTORS_NOT_PERFECT parameter, if motors are not identical by speed, torque, gear ratio, etc.
+	*			@b		4. PID coefficients
 	*
 	*  	@attention 	The usual procedure for setting up the PID regulator:
 	*			@a		1. At a low speed, we adjust the P-controller (we select a value of kP such 
