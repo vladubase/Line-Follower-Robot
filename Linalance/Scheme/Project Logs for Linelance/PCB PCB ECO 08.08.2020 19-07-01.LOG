@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=PA7 Pin=R8-1
+Removed Pin From Net: NetName=PA5 Pin=R12-1
+Removed Pin From Net: NetName=PA7 Pin=U5-1
+Removed Pin From Net: NetName=PA5 Pin=U7-1
+Added Pin To Net: NetName=PA5 Pin=R8-1
+Added Pin To Net: NetName=PA7 Pin=R12-1
+Added Pin To Net: NetName=PA5 Pin=U5-1
+Added Pin To Net: NetName=PA7 Pin=U7-1
+Added Member To Class: ClassName=Schematic_page3 Member=Component R13 2.2 k

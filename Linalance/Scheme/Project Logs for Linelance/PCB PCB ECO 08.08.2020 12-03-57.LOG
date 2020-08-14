@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=NetR3_2 Pin=SF1-3
+Removed Pin From Net: NetName=GND Pin=SF2-3
+Added Component: Designator=Q1(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/2N7002/2N7002NCT-ND/244664"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MOSFET N-CH 60V 115MA SOT-23"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=PWM Pin=Q1-1
+Added Pin To Net: NetName=AGND Pin=Q1-2
+Added Pin To Net: NetName=AVCC_3V3 Pin=Q1-3
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q1 2N7002

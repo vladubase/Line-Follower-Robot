@@ -1,0 +1,11 @@
+Added Component: Designator=U2(SOT-23-5)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/analog-devices-inc/AD8601WDRTZ-REEL7/AD8601WDRTZ-REEL7TR-ND/2237618"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Analog Devices Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "AD8601WDRTZ-REEL7"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=V_REF Pin=U2-1
+Added Pin To Net: NetName=AGND Pin=U2-2
+Added Pin To Net: NetName=NetC18_1 Pin=U2-3
+Added Pin To Net: NetName=V_REF Pin=U2-4
+Added Pin To Net: NetName=AVCC_3V3 Pin=U2-5
+Added Member To Class: ClassName=Schematic_page3 Member=Component U2 AD8601WDRTZ-REEL7

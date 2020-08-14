@@ -1,0 +1,26 @@
+Removed Pin From Net: NetName=PA5 Pin=R12-1
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN1-1
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN1-2
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN1-3
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN1-4
+Removed Pin From Net: NetName=U3_2IN- Pin=RN1-5
+Removed Pin From Net: NetName=U3_1IN- Pin=RN1-6
+Removed Pin From Net: NetName=U3_3IN- Pin=RN1-7
+Removed Pin From Net: NetName=U3_4IN- Pin=RN1-8
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN2-1
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN2-2
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN2-3
+Removed Pin From Net: NetName=AVCC_3V3 Pin=RN2-4
+Removed Pin From Net: NetName=U4_2IN- Pin=RN2-5
+Removed Pin From Net: NetName=U4_1IN- Pin=RN2-6
+Removed Pin From Net: NetName=U4_3IN- Pin=RN2-7
+Removed Pin From Net: NetName=U4_4IN- Pin=RN2-8
+Removed Pin From Net: NetName=NetR1_2 Pin=SF1-3
+Removed Pin From Net: NetName=GND Pin=SF2-3
+Change Component Designator: OldDesignator=R12 NewDesignator=R14
+Change Component Designator: OldDesignator=R13 NewDesignator=R12
+Added Pin To Net: NetName=PA4 Pin=R14-1
+Added Member To Class: ClassName=Schematic_page3 Member=Component R12 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R13 2.2 k
+Added Member To Class: ClassName=Schematic_page3 Member=Component R14 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component U8 TCRT5000
