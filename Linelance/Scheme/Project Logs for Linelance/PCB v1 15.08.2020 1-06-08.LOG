@@ -1,0 +1,262 @@
+Change Component Comment : Designator=D1 Old Comment= New Comment=PMEG2010AEB
+Change Component Comment : Designator=Y1 Old Comment=Comment New Comment=24.0000MHZ
+Change Component Comment : Designator=R1 Old Comment=Comment New Comment=430 1%
+Change Component Comment : Designator=P1 Old Comment=Comment New Comment=Header 6
+Change component parameters: Designator = "Q2" ("Q2"); Footprint = "SOT-23-3"; UniqueID = "\VFEHOWUE" ("\VFEHOWUE")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q3" ("Q3"); Footprint = "SOT-23-3"; UniqueID = "\OAYZCNTM" ("\OAYZCNTM")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q4" ("Q4"); Footprint = "SOT-23-3"; UniqueID = "\YMIYNRDD" ("\YMIYNRDD")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q5" ("Q5"); Footprint = "SOT-23-3"; UniqueID = "\RJWIKSWF" ("\RJWIKSWF")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q6" ("Q6"); Footprint = "SOT-23-3"; UniqueID = "\YGWIBVKW" ("\YGWIBVKW")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q7" ("Q7"); Footprint = "SOT-23-3"; UniqueID = "\YUMOGQXO" ("\YUMOGQXO")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q8" ("Q8"); Footprint = "SOT-23-3"; UniqueID = "\DMFQKASV" ("\DMFQKASV")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q9" ("Q9"); Footprint = "SOT-23-3"; UniqueID = "\DUWHZMJY" ("\DUWHZMJY")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/mmbfj201"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U1" ("U1"); Footprint = "TSSOP-20"; UniqueID = "\TDFVOQSA" ("\TDFVOQSA")
+Change component parameters (AddParameter): Name = "Case"; Value = "TSSOP-20"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/stm32f030f4p6"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "STM32F030F4P6TR"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U2" ("U2"); Footprint = "SOT-23-5"; UniqueID = "\HNMIXNJZ" ("\HNMIXNJZ")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-5"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/ad8601artz-reel7"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Analog Devices Inc."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "AD8601WDRTZ-REEL7"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U3" ("U3"); Footprint = "SOIC-14"; UniqueID = "\FVEURINU" ("\FVEURINU")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-14"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/lm3900d"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "LM3900D"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U4" ("U4"); Footprint = "SOIC-14"; UniqueID = "\KMIVPEKM" ("\KMIVPEKM")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-14"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/lm3900d"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "LM3900D"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C4" ("C4"); Footprint = "TANT-A"; UniqueID = "\EZTGDEKQ" ("\EZTGDEKQ")
+Change component parameters (AddParameter): Name = "Case"; Value = "SMD A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product0/12712"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "2.2 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q1" ("Q1"); Footprint = "SOT-23-3"; UniqueID = "\CVSTBYZY" ("\CVSTBYZY")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/2n7002k-t1-ge3-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Vishay"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "MOSFET N-CH 60V 115MA SOT-23"; VariantName = "[No Variations]"
+Change component parameters: Designator = "L4" ("L4"); Footprint = "IND1206"; UniqueID = "\GRVWIKWL" ("\GRVWIKWL")
+Change component parameters (AddParameter): Name = "Case"; Value = "IND1206"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/lqh31cn101k03l"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100 uH"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2" ("R2"); Footprint = "R0603"; UniqueID = "\OEJMMDBE" ("\OEJMMDBE")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3" ("R3"); Footprint = "R0603"; UniqueID = "\OYMVWATV" ("\OYMVWATV")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4" ("R4"); Footprint = "R0603"; UniqueID = "\KFFFVOLN" ("\KFFFVOLN")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5" ("R5"); Footprint = "R0603"; UniqueID = "\AZSLFOTK" ("\AZSLFOTK")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6" ("R6"); Footprint = "R0603"; UniqueID = "\ZCTCZBNR" ("\ZCTCZBNR")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7" ("R7"); Footprint = "R0603"; UniqueID = "\IDMZVFWG" ("\IDMZVFWG")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://belchip.by/product/?selected_product=30985"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C6" ("C6"); Footprint = "C0603"; UniqueID = "\THHTAZVX" ("\THHTAZVX")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C7" ("C7"); Footprint = "C0603"; UniqueID = "\NNJXPYWS" ("\NNJXPYWS")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h103k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.01 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C8" ("C8"); Footprint = "C0603"; UniqueID = "\MNVYPPUX" ("\MNVYPPUX")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm1885c1h101j"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "NP0 5% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100 pF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P1" ("P1"); Footprint = "HDR1X6"; UniqueID = "\LUMWIMDI" ("\LUMWIMDI")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C1" ("C1"); Footprint = "TANT-A"; UniqueID = "\MLJZLGAE" ("\MLJZLGAE")
+Change component parameters (AddParameter): Name = "Case"; Value = "SMD A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product0/12712"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "2.2 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C2" ("C2"); Footprint = "C0603"; UniqueID = "\JBXDRRDE" ("\JBXDRRDE")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C3" ("C3"); Footprint = "C0603"; UniqueID = "\HEEVXHNW" ("\HEEVXHNW")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C5" ("C5"); Footprint = "C0603"; UniqueID = "\GHBLDDYO" ("\GHBLDDYO")
+Change component parameters (AddParameter): Name = "Case"; Value = "C0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h103k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.01 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C11" ("C11"); Footprint = "C0603"; UniqueID = "\BJXIKYUQ" ("\BJXIKYUQ")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r61c105k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X5R 10% 16V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C12" ("C12"); Footprint = "C0603"; UniqueID = "\UWGPXQWU" ("\UWGPXQWU")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C13" ("C13"); Footprint = "C0603"; UniqueID = "\PJWUHFAN" ("\PJWUHFAN")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm1885c1h101j"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "NP0 5% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100 pF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C14" ("C14"); Footprint = "C0603"; UniqueID = "\LPAPEAPT" ("\LPAPEAPT")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r61c105k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X5R 10% 16V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C15" ("C15"); Footprint = "C0603"; UniqueID = "\YPGJMNYW" ("\YPGJMNYW")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product0/9000143994"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.01 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C16" ("C16"); Footprint = "C0603"; UniqueID = "\GYKOVMHA" ("\GYKOVMHA")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C17" ("C17"); Footprint = "C0603"; UniqueID = "\JNLKVWWF" ("\JNLKVWWF")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C18" ("C18"); Footprint = "C0603"; UniqueID = "\LDPPSHUM" ("\LDPPSHUM")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product0/9000193550"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X5R 10% 10V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "4.7 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C19" ("C19"); Footprint = "C0603"; UniqueID = "\ISJMSDWK" ("\ISJMSDWK")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C20" ("C20"); Footprint = "C0603"; UniqueID = "\DSHVNGIK" ("\DSHVNGIK")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm188r71h104k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "X7R 10% 50V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "D1" ("D1"); Footprint = "SOD-523"; UniqueID = "\PBAZQFFK" ("\PBAZQFFK")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOD-523"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/pmeg2010aeb.115"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Nexperia"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "PMEG2010AEB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C9" ("C9"); Footprint = "C0603"; UniqueID = "\KXXPVTJD" ("\KXXPVTJD")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm1885c2a150j"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "NP0 5% 100V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "15 pF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C10" ("C10"); Footprint = "C0603"; UniqueID = "\NPSFLNGA" ("\NPSFLNGA")
+Change component parameters (AddParameter): Name = "Case"; Value = "Ñ0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/grm1885c2a150j"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Murata Manufacturing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "NP0 5% 100V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "15 pF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1" ("R1"); Footprint = "R0603"; UniqueID = "\TATNPGCI" ("\TATNPGCI")
+Change component parameters (AddParameter): Name = "Case"; Value = "R0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product0/9000079667"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "430 1%"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Y1" ("Y1"); Footprint = "TSX-3225"; UniqueID = "\KOGZIRBB" ("\KOGZIRBB")
+Change component parameters (AddParameter): Name = "Case"; Value = "TSX-3225"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/epson/TSX-3225-24-0000MF20G-AC0/SER4185TR-ND/2819192"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "EPSON"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "TSX-3225 24.0000MF20G-AC0"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "24.0000MHZ"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SDA Pin=P1-1
+Added Pin To Net: NetName=SCL Pin=P1-2
+Added Pin To Net: NetName=VCC_5V_IN Pin=P1-3
+Added Pin To Net: NetName=SWDIO Pin=P1-4
+Added Pin To Net: NetName=SWCLK Pin=P1-5
+Added Pin To Net: NetName=GND Pin=P1-6
+Added Pin To Net: NetName=NetR1_2 Pin=R1-1
+Added Pin To Net: NetName=OSC_OUT Pin=R1-2
+Added Pin To Net: NetName=VDD Pin=R3-1
+Change Net Name : Old Net Name=NetR1_2 New Net Name=NetC9_1

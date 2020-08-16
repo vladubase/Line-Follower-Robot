@@ -1,0 +1,4 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C11
+Change Component Designator: OldDesignator=SF? NewDesignator=SF1
+Change Component Designator: OldDesignator=SF? NewDesignator=SF2
+Added Member To Class: ClassName=Schematic_page2 Member=Component SF2 Button

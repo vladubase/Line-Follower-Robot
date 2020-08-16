@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=NetR3_2 Pin=SF1-3
+Removed Pin From Net: NetName=GND Pin=SF2-3
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q1 2N7002
+Added Member To Class: ClassName=Schematic_page3 Member=Component U5 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U6 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U7 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U8 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U9 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U10 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U11 TCRT5000
+Added Member To Class: ClassName=Schematic_page3 Member=Component U12 TCRT5000
