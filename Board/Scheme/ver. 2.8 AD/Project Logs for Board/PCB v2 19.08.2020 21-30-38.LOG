@@ -1,0 +1,9 @@
+Change Component DesignItemId : Designator=U2 Old DesignItemId=SN75453BP New DesignItemId=CD40107BM
+Change Component Footprint: Designator=U2 Old Footprint=PDIP-8 New Footprint=SOIC-8
+Change Component Comment : Designator=U2 Old Comment= New Comment=CD40107BM
+Change Component Description : Designator=U2 Old Description=Peripheral Driver 2 Element 2 Bit per Element Open Collector Output 8-PDIP New Description=NAND Gate IC 2 Channel Open Drain 8-SOIC
+Change component parameters: Designator = "U2" ("U2"); Footprint = "PDIP-8"; UniqueID = "\XRATXIXZ" ("\XRATXIXZ")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-8"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.chipdip.by/product/cd40107bm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = "CD40107BM"; VariantName = "[No Variations]"
