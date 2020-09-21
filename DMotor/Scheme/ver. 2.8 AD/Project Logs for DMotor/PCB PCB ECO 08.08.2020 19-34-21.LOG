@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=PA4 Pin=R7-1
+Removed Pin From Net: NetName=PA2 Pin=R11-1
+Removed Pin From Net: NetName=PA3 Pin=R12-1
+Removed Pin From Net: NetName=PA4 Pin=U5-1
+Removed Pin From Net: NetName=PA2 Pin=U9-1
+Removed Pin From Net: NetName=PA3 Pin=U10-1
+Added Pin To Net: NetName=PA7 Pin=R7-1
+Added Pin To Net: NetName=PA3 Pin=R11-1
+Added Pin To Net: NetName=PA2 Pin=R12-1
+Added Pin To Net: NetName=PA7 Pin=U5-1
+Added Pin To Net: NetName=PA3 Pin=U9-1
+Added Pin To Net: NetName=PA2 Pin=U10-1
+Added Member To Class: ClassName=Schematic_page3 Member=Component R7 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R8 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R9 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R11 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R12 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R13 200 R
+Added Member To Class: ClassName=Schematic_page3 Member=Component R14 200 R

@@ -1,0 +1,55 @@
+/**************************** Includes ****************************/
+
+#include "main.h"
+
+/************************ Global Variables ************************/
+
+unsigned short int SensorLineData = 0x0000;
+float AngleOfRotation = 0.0;
+
+/****************************** Main ******************************/
+
+void main (void) {
+
+	InitSys ();
+
+	// Waiting for a signal on IR sensor
+	#ifdef SensorIR
+		while (1){
+			PORTx |= (1 << x);
+				delay_ms(250);
+			PORTx &= ~(1 << x);
+				delay_ms(250);
+			if (SensorIR == 1) {
+				break;
+			}
+		}
+	#endif
+
+	delay_ms (1000);
+	MoveForvard ();
+
+	while (1) {
+
+		ReadSensorLineData ();
+		FindRotationAngle ();
+
+		if (AngleOfRotation >= AngleDegToRad (5)) {
+			while (AngleOfRotation > AngleDegToRad (-3) && AngleOfRotation < AngleDegToRad (3)) {
+				MoveLeft ();
+			}
+		}
+		else if (AngleOfRotation <= AngleDegToRad (-5)) {
+			while (AngleOfRotation > AngleDegToRad (-3) && AngleOfRotation < AngleDegToRad (3)) {
+				MoveRight ();
+			}
+		}
+		else {
+			MoveForvard ();
+		}
+
+    }
+
+	MoveStop ();
+
+}

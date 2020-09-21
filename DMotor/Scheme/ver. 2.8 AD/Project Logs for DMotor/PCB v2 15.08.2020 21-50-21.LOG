@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=VCC_5V_IN Pin=L1-1
+Removed Member From Class: ClassName=Schematic_page1 Member=L1
+Added Pin To Net: NetName=VCC_5V_IN Pin=C3-1
+Added Pin To Net: NetName=VCC_5V_IN Pin=DA1-1

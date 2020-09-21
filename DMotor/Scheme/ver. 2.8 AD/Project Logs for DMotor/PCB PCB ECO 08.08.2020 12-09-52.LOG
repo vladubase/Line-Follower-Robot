@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=PWM Pin=Q1-1
+Removed Pin From Net: NetName=PWM Pin=R7-1
+Removed Pin From Net: NetName=PWM Pin=R8-2
+Added Pin To Net: NetName=V_REF Pin=Q1-1
+Added Pin To Net: NetName=V_REF Pin=R7-1
+Added Pin To Net: NetName=V_REF Pin=R8-2

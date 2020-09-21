@@ -1,5 +1,0 @@
-VERSION:3 SOURCE_TIMESTAMP:508C61B0
-NODE:I LEVEL:0 LINE:3 "C:\Users\vladu\OneDrive\Documents\!Projects\!Line Follower Robot\Program\inc\mega328p.h"
-NODE:I LEVEL:0 LINE:4 "C:\Users\vladu\OneDrive\Documents\!Projects\!Line Follower Robot\Program\inc\mega328p_bits.h"
-NODE:I LEVEL:0 LINE:5 "C:\Users\vladu\OneDrive\Documents\!Projects\!Line Follower Robot\Program\inc\InitSys.h"
-NODE:F LEVEL:0 LINE:9 "ReadSensorLineData(unsigned int lineData)"
