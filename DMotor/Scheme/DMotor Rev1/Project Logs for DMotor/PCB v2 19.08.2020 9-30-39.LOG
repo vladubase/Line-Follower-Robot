@@ -1,0 +1,19 @@
+Removed Member From Class: ClassName=Schematic_page1 Member=C17
+Removed Member From Class: ClassName=Schematic_page2 Member=C19
+Added Pin To Net: NetName=VCC Pin=C4-1
+Added Pin To Net: NetName=VCC Pin=C5-1
+Added Pin To Net: NetName=VCC Pin=C6-1
+Added Pin To Net: NetName=VCC Pin=C7-1
+Added Pin To Net: NetName=VCC Pin=C8-1
+Added Pin To Net: NetName=VCC Pin=C9-1
+Added Pin To Net: NetName=VCC Pin=C10-1
+Added Pin To Net: NetName=VCC Pin=C11-1
+Added Pin To Net: NetName=VCC Pin=DA1-3
+Added Member To Class: ClassName=Schematic_page1 Member=Component C9 4.7uF
+Added Member To Class: ClassName=Schematic_page1 Member=Component C10 0.1uF
+Added Member To Class: ClassName=Schematic_page1 Member=Component C11 0.1uF
+Added Member To Class: ClassName=Schematic_page1 Member=Component C13 0.1uF
+Added Member To Class: ClassName=Schematic_page1 Member=Component C14 0.01uF
+Added Member To Class: ClassName=Schematic_page2 Member=Component C16 22pF 1%
+Added Member To Class: ClassName=Schematic_page2 Member=Component C18 0.1uF
+Added Member To Class: ClassName=Schematic_page3 Member=Component C20 0.1uF

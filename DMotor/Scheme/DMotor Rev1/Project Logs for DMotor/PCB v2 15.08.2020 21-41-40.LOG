@@ -1,0 +1,157 @@
+Removed Member From Class: ClassName=Schematic_page3 Member=C14
+Removed Member From Class: ClassName=Schematic_page3 Member=C15
+Removed Member From Class: ClassName=Schematic_page3 Member=C16
+Change Component Comment : Designator=C20 Old Comment=0.1 uF New Comment=
+Change Component Comment : Designator=C21 Old Comment=0.1 uF New Comment=
+Change Component Comment : Designator=C22 Old Comment=0.1 uF New Comment=
+Change Component Comment : Designator=R2 Old Comment=1 M New Comment=
+Change Component Comment : Designator=R1 Old Comment=10 k New Comment=
+Change Component Comment : Designator=R3 Old Comment=10 k New Comment=
+Change Component Comment : Designator=R6 Old Comment=10 k New Comment=
+Change Component Comment : Designator=R7 Old Comment=10 k New Comment=
+Change Component Comment : Designator=Y1 Old Comment=20.000 MHz New Comment=
+Change Component Comment : Designator=R5 Old Comment=330 New Comment=
+Change Component Comment : Designator=Q1 Old Comment=IRF7307 New Comment=
+Change Component Comment : Designator=Q2 Old Comment=IRF7307 New Comment=
+Change Component Comment : Designator=Q3 Old Comment=IRF7307 New Comment=
+Change Component Comment : Designator=Q4 Old Comment=IRF7307 New Comment=
+Change Component Comment : Designator=VT1 Old Comment=IRLML6344TRPBF New Comment=
+Change Component Comment : Designator=VT2 Old Comment=IRLML6344TRPBF New Comment=
+Change component parameters: Designator = "Q1" ("Q1"); Footprint = "SOIC-8"; UniqueID = "\FBAQUZFP" ("\FBAQUZFP")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-8"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRF7307TRPBF/IRF7307PBFCT-ND/812597"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q2" ("Q2"); Footprint = "SOIC-8"; UniqueID = "\AGOZMOYG" ("\AGOZMOYG")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-8"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRF7307TRPBF/IRF7307PBFCT-ND/812597"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q3" ("Q3"); Footprint = "SOIC-8"; UniqueID = "\OMHBLSTA" ("\OMHBLSTA")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-8"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRF7307TRPBF/IRF7307PBFCT-ND/812597"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q4" ("Q4"); Footprint = "SOIC-8"; UniqueID = "\TCPIFBWP" ("\TCPIFBWP")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOIC-8"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRF7307TRPBF/IRF7307PBFCT-ND/812597"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT1" ("VT1"); Footprint = "SOT-23-3"; UniqueID = "\IQKPLWVC" ("\IQKPLWVC")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRLML6344TRPBF/IRLML6344TRPBFCT-ND/2538168"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT2" ("VT2"); Footprint = "SOT-23-3"; UniqueID = "\AWSVSWIL" ("\AWSVSWIL")
+Change component parameters (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/infineon-technologies/IRLML6344TRPBF/IRLML6344TRPBFCT-ND/2538168"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C20" ("C20"); Footprint = "C0603"; UniqueID = "\SFNQQCYF" ("\SFNQQCYF")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C21" ("C21"); Footprint = "C0603"; UniqueID = "\JEOOYXQX" ("\JEOOYXQX")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C22" ("C22"); Footprint = "C0603"; UniqueID = "\HFOYKHFB" ("\HFOYKHFB")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1" ("R1"); Footprint = "R0603"; UniqueID = "\GHPWPVBN" ("\GHPWPVBN")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2" ("R2"); Footprint = "R0603"; UniqueID = "\KRMHPQOD" ("\KRMHPQOD")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3" ("R3"); Footprint = "R0603"; UniqueID = "\GFGYRNSM" ("\GFGYRNSM")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5" ("R5"); Footprint = "R0603"; UniqueID = "\DLBBSGOW" ("\DLBBSGOW")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6" ("R6"); Footprint = "R0603"; UniqueID = "\EZHUQUSB" ("\EZHUQUSB")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7" ("R7"); Footprint = "R0603"; UniqueID = "\VKRCGANV" ("\VKRCGANV")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "Y1" ("Y1"); Footprint = "HC-49S"; UniqueID = "\DNGKLGTQ" ("\DNGKLGTQ")
+Change component parameters (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C17(C0603)
+Add component (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "22 pF"; VariantName = "[No Variations]"
+Added Component: Designator=C18(C0603)
+Add component (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "22 pF"; VariantName = "[No Variations]"
+Added Component: Designator=C19(C0603)
+Add component (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Added Component: Designator=R4(R0603)
+Add component (AddParameter): Name = "Case"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10 k"; VariantName = "[No Variations]"
+Added Component: Designator=SF1(KMR221GLFS)
+Add component (AddParameter): Name = "Case"; Value = "KMR221GLFS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/c-k/KMR221GLFS/401-1427-1-ND/550466"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "C&K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "KMR221GLFS"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=OSC_IN Pin=C17-1
+Added Pin To Net: NetName=OSC_GND Pin=C17-2
+Added Pin To Net: NetName=OSC_OUT Pin=C18-1
+Added Pin To Net: NetName=OSC_GND Pin=C18-2
+Added Pin To Net: NetName=PC6 (RE\S\E\T\) Pin=C19-1
+Added Pin To Net: NetName=AGND Pin=C19-2
+Added Pin To Net: NetName=VCC Pin=R4-1
+Added Pin To Net: NetName=PC6 (RE\S\E\T\) Pin=R4-2
+Added Pin To Net: NetName=NetR5_2 Pin=SF1-1
+Added Pin To Net: NetName=NetR5_2 Pin=SF1-2
+Added Pin To Net: NetName=AGND Pin=SF1-4
+Added Member To Class: ClassName=Schematic_page1 Member=Component C13 1 uF
+Added Member To Class: ClassName=Schematic_page2 Member=Component C17 22 pF
+Added Member To Class: ClassName=Schematic_page2 Member=Component C18 22 pF
+Added Member To Class: ClassName=Schematic_page2 Member=Component C19 0.1 uF
+Added Member To Class: ClassName=Schematic_page3 Member=Component C20
+Added Member To Class: ClassName=Schematic_page3 Member=Component C21
+Added Member To Class: ClassName=Schematic_page3 Member=Component C22
+Added Member To Class: ClassName=Schematic_page2 Member=Component R4 10 k
+Added Member To Class: ClassName=Schematic_page2 Member=Component SF1 Button

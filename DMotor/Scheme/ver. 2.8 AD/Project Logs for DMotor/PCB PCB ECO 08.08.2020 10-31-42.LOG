@@ -1,5 +1,0 @@
-Removed Pin From Net: NetName=GND Pin=C9-2
-Removed Pin From Net: NetName=OSC_IN Pin=C10-2
-Added Pin To Net: NetName=OSC_GND Pin=C9-2
-Added Pin To Net: NetName=OSC_GND Pin=C10-2
-Added Net: Name=OSC_GND

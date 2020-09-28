@@ -1,0 +1,74 @@
+Removed Pin From Net: NetName=NetR3_2 Pin=SF1-3
+Removed Pin From Net: NetName=GND Pin=SF2-3
+Added Component: Designator=Q2(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q3(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q4(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q5(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q6(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q7(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q8(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Component: Designator=Q9(SOT-23-3)
+Add component (AddParameter): Name = "Case"; Value = "SOT-23-3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "HelpURL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/MMBFJ201/MMBFJ201TR-ND/1049584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manifacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Model"; Value = "MMBFJ201"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=U3_1OUT Pin=Q2-1
+Added Pin To Net: NetName=NetQ2_2 Pin=Q2-2
+Added Pin To Net: NetName=U3_1IN- Pin=Q2-3
+Added Pin To Net: NetName=U3_2OUT Pin=Q3-1
+Added Pin To Net: NetName=NetQ3_2 Pin=Q3-2
+Added Pin To Net: NetName=U3_2IN- Pin=Q3-3
+Added Pin To Net: NetName=U3_3OUT Pin=Q4-1
+Added Pin To Net: NetName=NetQ4_2 Pin=Q4-2
+Added Pin To Net: NetName=U3_3IN- Pin=Q4-3
+Added Pin To Net: NetName=U3_4OUT Pin=Q5-1
+Added Pin To Net: NetName=NetQ5_2 Pin=Q5-2
+Added Pin To Net: NetName=U3_4IN- Pin=Q5-3
+Added Pin To Net: NetName=U4_1OUT Pin=Q6-1
+Added Pin To Net: NetName=NetQ6_2 Pin=Q6-2
+Added Pin To Net: NetName=U4_1IN- Pin=Q6-3
+Added Pin To Net: NetName=U4_2OUT Pin=Q7-1
+Added Pin To Net: NetName=NetQ7_2 Pin=Q7-2
+Added Pin To Net: NetName=U4_2IN- Pin=Q7-3
+Added Pin To Net: NetName=U4_3OUT Pin=Q8-1
+Added Pin To Net: NetName=NetQ8_2 Pin=Q8-2
+Added Pin To Net: NetName=U4_3IN- Pin=Q8-3
+Added Pin To Net: NetName=U4_4OUT Pin=Q9-1
+Added Pin To Net: NetName=NetQ9_2 Pin=Q9-2
+Added Pin To Net: NetName=U4_4IN- Pin=Q9-3
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q2 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q3 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q4 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q5 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q6 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q7 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q8 MMBFJ201
+Added Member To Class: ClassName=Schematic_page3 Member=Component Q9 MMBFJ201

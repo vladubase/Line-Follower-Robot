@@ -1,8 +1,0 @@
-Removed Pin From Net: NetName=V_REF Pin=Q1-1
-Removed Pin From Net: NetName=AVCC_3V3 Pin=R2-1
-Removed Pin From Net: NetName=V_REF Pin=R6-2
-Added Pin To Net: NetName=VCC_3V3 Pin=R2-1
-Added Pin To Net: NetName=PWM Pin=Q1-1
-Added Pin To Net: NetName=PWM Pin=R5-1
-Added Pin To Net: NetName=PWM Pin=R6-2
-Added Net: Name=PWM
