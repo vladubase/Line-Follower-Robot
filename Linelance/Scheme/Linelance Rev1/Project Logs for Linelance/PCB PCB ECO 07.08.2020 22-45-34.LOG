@@ -1,6 +1,0 @@
-Added Pin To Net: NetName=VCC_5V_IN Pin=C2-1
-Added Pin To Net: NetName=VCC_5V_IN Pin=D1-1
-Added Pin To Net: NetName=VCC_5V_IN Pin=L1-1
-Added Member To Class: ClassName=Schematic_page2 Member=Component C12 0.1 uF
-Added Member To Class: ClassName=Schematic_page2 Member=Component C14 1 uF
-Added Member To Class: ClassName=Schematic_page2 Member=Component C16 0.1 uF

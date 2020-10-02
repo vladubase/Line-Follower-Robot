@@ -1,2 +1,0 @@
-Removed Pin From Net: NetName=VDD Pin=U1-16
-Added Pin To Net: NetName=VCC_3V3 Pin=U1-16

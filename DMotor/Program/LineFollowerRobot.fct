@@ -1,6 +1,0 @@
-main DSTACK_USAGE:60 DSTACK_LEVEL:60 FILE:"LineFollowerRobot.c" LINE:146
-CurrentRobotError DSTACK_USAGE:5 DSTACK_LEVEL:65 FILE:"LineFollowerRobot.c" LINE:352
-pow DSTACK_USAGE:12 DSTACK_LEVEL:77 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:740
-exp DSTACK_USAGE:14 DSTACK_LEVEL:91 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:724
-floor DSTACK_USAGE:4 DSTACK_LEVEL:95 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:659
-ftrunc DSTACK_USAGE:4 DSTACK_LEVEL:99 FILE:"C:\Program Files (x86)\CodeVisionAVR\lib\math.lib" LINE:544
