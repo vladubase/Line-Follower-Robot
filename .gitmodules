@@ -1,3 +1,6 @@
 [submodule "DMotor"]
 	path = DMotor
 	url = https://github.com/vladubase/DMotor.git
+[submodule "Linelance"]
+	path = Linelance
+	url = https://github.com/vladubase/Linelance.git
