@@ -1,0 +1,3 @@
+[submodule "DMotor"]
+	path = DMotor
+	url = https://github.com/vladubase/DMotor.git
