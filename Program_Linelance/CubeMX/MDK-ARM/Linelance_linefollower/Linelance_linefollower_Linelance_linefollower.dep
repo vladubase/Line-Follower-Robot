@@ -1,0 +1,157 @@
+Dependencies for Project 'Linelance_linefollower', Target 'Linelance_linefollower': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (startup_stm32f030x6.s)(0x5F8DA15F)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"--pd "__UVISION_VERSION SETA 532" --pd "_RTE_ SETA 1" --pd "STM32F030x6 SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f030x6.lst --xref -o linelance_linefollower\startup_stm32f030x6.o --depend linelance_linefollower\startup_stm32f030x6.d)
+F (../Src/main.c)(0x5F8DA15B)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\main.o --omf_browse linelance_linefollower\main.crf --depend linelance_linefollower\main.d)
+I (../Inc/main.h)(0x5F8DA15B)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_i2c.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crs.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5F8DA154)
+F (../Src/stm32f0xx_it.c)(0x5F8DA15A)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_it.o --omf_browse linelance_linefollower\stm32f0xx_it.crf --depend linelance_linefollower\stm32f0xx_it.d)
+I (../Inc/main.h)(0x5F8DA15B)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_i2c.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crs.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5F8DA154)
+I (../Inc/stm32f0xx_it.h)(0x5F8DA15A)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_gpio.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_gpio.o --omf_browse linelance_linefollower\stm32f0xx_ll_gpio.crf --depend linelance_linefollower\stm32f0xx_ll_gpio.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_adc.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_adc.o --omf_browse linelance_linefollower\stm32f0xx_ll_adc.crf --depend linelance_linefollower\stm32f0xx_ll_adc.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_dma.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_dma.o --omf_browse linelance_linefollower\stm32f0xx_ll_dma.crf --depend linelance_linefollower\stm32f0xx_ll_dma.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rcc.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_rcc.o --omf_browse linelance_linefollower\stm32f0xx_ll_rcc.crf --depend linelance_linefollower\stm32f0xx_ll_rcc.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_utils.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_utils.o --omf_browse linelance_linefollower\stm32f0xx_ll_utils.crf --depend linelance_linefollower\stm32f0xx_ll_utils.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5F8DA154)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_exti.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_exti.o --omf_browse linelance_linefollower\stm32f0xx_ll_exti.crf --depend linelance_linefollower\stm32f0xx_ll_exti.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_i2c.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_i2c.o --omf_browse linelance_linefollower\stm32f0xx_ll_i2c.crf --depend linelance_linefollower\stm32f0xx_ll_i2c.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_i2c.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_pwr.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_pwr.o --omf_browse linelance_linefollower\stm32f0xx_ll_pwr.crf --depend linelance_linefollower\stm32f0xx_ll_pwr.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_tim.c)(0x5F8DA154)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\stm32f0xx_ll_tim.o --omf_browse linelance_linefollower\stm32f0xx_ll_tim.crf --depend linelance_linefollower\stm32f0xx_ll_tim.d)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h)(0x5F8DA154)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5F8DA154)
+F (../Src/system_stm32f0xx.c)(0x5F8DA12F)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Linelance_linefollower-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DHSE_VALUE="24000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1" -DINSTRUCTION_CACHE_ENABLE="0" -DDATA_CACHE_ENABLE="0" -DSTM32F030x6-o linelance_linefollower\system_stm32f0xx.o --omf_browse linelance_linefollower\system_stm32f0xx.crf --depend linelance_linefollower\system_stm32f0xx.d)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h)(0x5F8DA12F)
+I (../Drivers/CMSIS/Include/core_cm0.h)(0x5F8DA131)
+I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F8DA131)
+I (../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5F8DA12F)

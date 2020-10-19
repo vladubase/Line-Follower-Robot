@@ -1,0 +1,18 @@
+--cpu Cortex-M0
+"linelance_linefollower\startup_stm32f030x6.o"
+"linelance_linefollower\main.o"
+"linelance_linefollower\stm32f0xx_it.o"
+"linelance_linefollower\stm32f0xx_ll_gpio.o"
+"linelance_linefollower\stm32f0xx_ll_adc.o"
+"linelance_linefollower\stm32f0xx_ll_dma.o"
+"linelance_linefollower\stm32f0xx_ll_rcc.o"
+"linelance_linefollower\stm32f0xx_ll_utils.o"
+"linelance_linefollower\stm32f0xx_ll_exti.o"
+"linelance_linefollower\stm32f0xx_ll_i2c.o"
+"linelance_linefollower\stm32f0xx_ll_pwr.o"
+"linelance_linefollower\stm32f0xx_ll_tim.o"
+"linelance_linefollower\system_stm32f0xx.o"
+--library_type=microlib --strict --scatter "Linelance_linefollower\Linelance_linefollower.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Linelance_linefollower.map" -o Linelance_linefollower\Linelance_linefollower.axf

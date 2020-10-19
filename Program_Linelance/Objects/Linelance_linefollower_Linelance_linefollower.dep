@@ -1,0 +1,24 @@
+Dependencies for Project 'Linelance_linefollower', Target 'Linelance_linefollower': (DO NOT MODIFY !)
+CompilerVersion: 6140001::V6.14.1::ARMCLANG
+F (.\Startup\startup_stm32f030x6.s)(0x5F8DA3CF)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto -c-gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_Linelance_linefollower-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include"-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-Wa,armasm,--pd,"__UVISION_VERSION SETA 532" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F030x6 SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup_stm32f030x6.o)
+F (.\CMSIS\src\system_stm32f0xx.c)(0x5F8DA12F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Program_Linelance -I ./CMSIS/inc -I ./Code/inc-I./RTE/_Linelance_linefollower-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include"-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_-o ./objects/system_stm32f0xx.o -MD)
+I (CMSIS\inc\stm32f0xx.h)(0x5F8C981E)
+I (CMSIS\inc\core_cm0.h)(0x5F8CA278)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F5158DE)
+I (CMSIS\inc\cmsis_version.h)(0x5E8F2B89)
+I (CMSIS\inc\cmsis_compiler.h)(0x5E8F2B89)
+I (CMSIS\inc\cmsis_armclang.h)(0x5E8F2B89)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D093C)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D0968)
+I (CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
+F (.\Code\src\main.c)(0x5F8DA557)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Program_Linelance -I ./CMSIS/inc -I ./Code/inc-I./RTE/_Linelance_linefollower-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include"-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-D__UVISION_VERSION="532" -D_RTE_ -DSTM32F030x6 -D_RTE_-o ./objects/main.o -MD)
+I (CMSIS\inc\stm32f0xx.h)(0x5F8C981E)
+I (CMSIS\inc\core_cm0.h)(0x5F8CA278)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F5158DE)
+I (CMSIS\inc\cmsis_version.h)(0x5E8F2B89)
+I (CMSIS\inc\cmsis_compiler.h)(0x5E8F2B89)
+I (CMSIS\inc\cmsis_armclang.h)(0x5E8F2B89)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D093C)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D0968)
+I (CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\stdbool.h)(0x5F5158DE)
