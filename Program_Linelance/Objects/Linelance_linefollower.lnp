@@ -1,5 +1,5 @@
 --cpu Cortex-M0
-".\objects\startup_stm32f030x6.o"
+".\objects\startup_stm32f030.o"
 ".\objects\system_stm32f0xx.o"
 ".\objects\main.o"
 --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

@@ -328,8 +328,8 @@
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>5</v6Lang>
-            <v6LangP>8</v6LangP>
+            <v6Lang>3</v6Lang>
+            <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -384,9 +384,9 @@
           <GroupName>Startup</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32f030x6.s</FileName>
+              <FileName>startup_stm32f030.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Startup\startup_stm32f030x6.s</FilePath>
+              <FilePath>.\Startup\startup_stm32f030.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -410,23 +410,13 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
     <apis/>
-    <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.4.0" condition="ARMv6_7_8-M Device">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
-        <targetInfos>
-          <targetInfo name="Linelance_linefollower"/>
-        </targetInfos>
-      </component>
-    </components>
+    <components/>
     <files/>
   </RTE>
 
