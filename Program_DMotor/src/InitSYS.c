@@ -10,7 +10,7 @@
 
 /************************************** Includes **************************************/
 
-#include "InitSYS.h"
+#include "../inc/InitSYS.h"
 
 
 /************************************** Function **************************************/
@@ -20,8 +20,8 @@ void InitSYS (void) {
 	// Output mode
 	DDRB |= (1 << DDB3);					// OC2A
 	DDRD |= (1 << DDD6) |					// OC0A
-	(1 << DDD5) |							// OC0B
-	(1 << DDD3);							// OC2B
+			(1 << DDD5) |					// OC0B
+			(1 << DDD3);					// OC2B
 
 	// SensorLine
 	// Input mode

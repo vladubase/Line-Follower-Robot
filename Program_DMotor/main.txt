@@ -62,7 +62,7 @@ void main (void) {
 	register int16_t right_motor_speed = 0;
 
 	// MICROCONTROLLER INITIALIZATION
-	//InitSYS ();
+	InitSYS ();
 	
 
 	// Waiting for a signal on IR sensor

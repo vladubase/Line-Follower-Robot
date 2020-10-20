@@ -13,6 +13,7 @@
 
 /************************************** Includes **************************************/
 
+#include <avr/io.h>
 #include <util/delay.h>
 #include <math.h>
 #include <stdbool.h>
@@ -47,62 +48,12 @@
 #define		QTY_OF_ERR			((uint8_t)	10)			// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms
 #define		MAIN_CYCLE_DELAY	((uint8_t)	2)			// The main cycle delay (in ms) for correct work of D-regulation
 
-// Sensor order in the right --> direction
-#if (QTY_OF_SENSORS >= 1)
-#define	READ_SENSOR_1		PIND & (1 << DDD2)
-#endif /* QTY_OF_SENSORS >= 1 */
-#if QTY_OF_SENSORS >= 2
-#define	READ_SENSOR_2		PIND & (1 << DDD4)
-#endif /* QTY_OF_SENSORS >= 2 */
-#if QTY_OF_SENSORS >= 3
-#define	READ_SENSOR_3		PINC & (1 << DDC5)
-#endif /* QTY_OF_SENSORS >= 3 */
-#if QTY_OF_SENSORS >= 4
-#define	READ_SENSOR_4		PINC & (1 << DDC4)
-#endif /* QTY_OF_SENSORS >= 4 */
-#if QTY_OF_SENSORS >= 5
-#define	READ_SENSOR_5		PINC & (1 << DDC3)
-#endif /* QTY_OF_SENSORS >= 5 */
-#if QTY_OF_SENSORS >= 6
-#define	READ_SENSOR_6		PINC & (1 << DDC2)
-#endif /* QTY_OF_SENSORS >= 6 */
-#if QTY_OF_SENSORS >= 7
-#define	READ_SENSOR_7		PINC & (1 << DDC1)
-#endif /* QTY_OF_SENSORS >= 7 */
-#if QTY_OF_SENSORS >= 8
-#define	READ_SENSOR_8		PINC & (1 << DDC0)
-#endif /* QTY_OF_SENSORS >= 8 */
-#if QTY_OF_SENSORS >= 9
-#define	READ_SENSOR_9		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 9 */
-#if QTY_OF_SENSORS >= 10
-#define	READ_SENSOR_10		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 10 */
-#if QTY_OF_SENSORS >= 11
-#define	READ_SENSOR_11		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 11 */
-#if QTY_OF_SENSORS >= 12
-#define	READ_SENSOR_12		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 12 */
-#if QTY_OF_SENSORS >= 13
-#define	READ_SENSOR_13		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 13 */
-#if QTY_OF_SENSORS >= 14
-#define	READ_SENSOR_14		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 14 */
-#if QTY_OF_SENSORS >= 15
-#define	READ_SENSOR_15		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 15 */
-#if QTY_OF_SENSORS >= 16
-#define	READ_SENSOR_16		PINx & (1 << DDxx)
-#endif /* QTY_OF_SENSORS >= 16 */
-
 //#define	READ_IR_SENSOR		PINx & (1 << DDxx)
 
 
 /*********************************** Global Variables *********************************/
 
-bool line_data[QTY_OF_SENSORS] = {0};					// Store current values from sensor line
+float line_data[QTY_OF_SENSORS] = {0};					// Store current values from sensor line
 
 
 #endif /* _MAIN_H_ */

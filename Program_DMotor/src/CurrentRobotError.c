@@ -10,7 +10,7 @@
 
 /************************************** Includes **************************************/
 
-#include "ReadSensorLineData.h"
+#include "../inc/CurrentRobotError.h"
 
 
 /************************************** Function **************************************/
@@ -20,7 +20,7 @@ float CurrentRobotError (void) {
 	register float current_error = 0.0;
 	
 	ReadSensorLineData ();
-
+	
 	for (i = 0; i < QTY_OF_SENSORS; i++) {
 		if (line_data[i] != 0) {
 			// If the data on the i-th sensor is zero,
