@@ -4,8 +4,8 @@
 	*
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>.
-	*	@version	V1.0
-	*	@date 		Created on 2020.10.18.
+	*	@version	V1.1
+	*	@date 		26-October-2020
 	*
 	*	@brief 		This program is controlling the Line following robot using PID regulator.
 	*				It has a flexible settings system via #defines at the beginning of the .C main file.
@@ -51,83 +51,93 @@
 
 void main (void) {
 	// DEFINITION OF VARIABLES
-	float error_history[QTY_OF_ERR] = {0};				// Storing the values of recent errors
-	register float error_sum = 0.0;						// Sum of errors in history
-	register uint8_t i = 0;
-	register float P = 0.0;
-	register float I = 0.0;
-	register float D = 0.0;
-	register float PID_total_correction = 0.0;      	// Sum of P, I, D
-	register int16_t left_motor_speed = 0;
-	register int16_t right_motor_speed = 0;
+		float error_history[QTY_OF_ERR] = {0};				// Storing the values of recent errors
+		register float error_sum = 0.0,						// Sum of errors in history
+				 float PID_total_correction = 0.0,      	// Sum of P, I, D
+				 float current_error = 0.0;
+		register uint8_t i = 0;
+		register int16_t left_motor_speed = 0,
+				 int16_t right_motor_speed = 0;
 
 	// MICROCONTROLLER INITIALIZATION
-	//InitSYS ();
+		InitSYS ();
 	
 
-	// Waiting for a signal on IR sensor
-	#ifdef READ_IR_SENSOR
-		while (READ_IR_SENSOR) {
-			LED_1_ON;
-			_delay_ms (25);
-			LED_1_OFF;
-			_delay_ms (25);
-		}
-	#endif /* READ_IR_SENSOR */
+	// WAITING FOR A SIGNAL ON IR SENSOR
+		#ifdef READ_IR_SENSOR
+			while (READ_IR_SENSOR) {
+				LED_1_ON;
+				_delay_ms (25);
+				LED_1_OFF;
+				_delay_ms (25);
+			}
+		#endif /* READ_IR_SENSOR */
 
-	//delay_ms (5000);									// This delay is required by the competition rules
+	_delay_ms (5000);									// This delay is required by the competition rules
 	
 	
 	// MAIN CYCLE
-	while (true) {
-		error_sum = 0.0;
-
-	    // Shift error values
-		for (i = 0; i < QTY_OF_ERR - 1; i++) {
-			error_history[i] = error_history[i + 1];
+		while (true) {
+			error_sum = 0.0;
+			current_error = 0.0;
+			PID_total_correction = 0.0;
+			
+			ReadSensorLineData ();
+			
+		    // Shift error values
+			for (i = 0; i < QTY_OF_ERR - 1; i++) {
+				error_history[i] = error_history[i + 1];
+				
+				if (line_data[i] != 0) {
+					// If the data on the i-th sensor is zero,
+					// then the sensor is located above the black line.
+					// Odd degree to preserve the sign '-'
+					current_error += pow (QTY_OF_SENSORS / 2 - 0.5 - i, 3);
+				}
+			}
+			error_history[QTY_OF_ERR - 1] = current_error;
+	
+			// Calculation of value P.
+			PID_total_correction += kP * error_history[QTY_OF_ERR - 1];		// P = kP * current error
+			
+			// Calculation of value I.
+			for (i = 0; i < QTY_OF_ERR; i++) {
+				error_sum += error_history[i];
+			}
+			PID_total_correction += kI * error_sum;							// I = kI * sum of errors
+			
+			// Calculation of value D.
+			PID_total_correction += kD *									// D = kD * (current error - error in past).
+				(error_history[QTY_OF_ERR - 1] - error_history[0]);
+			
+	
+			// 
+			left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
+			right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
+	
+			// Validating a range of variables
+			if (left_motor_speed > 255)
+				left_motor_speed = 255;
+			else if (left_motor_speed < 0)
+				left_motor_speed = 0;
+			if (right_motor_speed > 255)
+				right_motor_speed = 255;
+			else if (right_motor_speed < 0)
+				right_motor_speed = 0;
+	
+			// Motors power difference compensation
+			#if MOTORS_NOT_PERFECT
+				OCR2A = 0;
+				OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
+				OCR0A = 0;
+				OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
+				#else
+				OCR2A = 0;
+				OCR2B = left_motor_speed;
+				OCR0A = 0;
+				OCR0B = right_motor_speed;
+			#endif /* MOTORS_NOT_PERFECT */
+	
+			_delay_ms (MAIN_CYCLE_DELAY);
 		}
-		error_history[QTY_OF_ERR - 1] = CurrentRobotError ();
-
-		// Calculation of value P
-		P = error_history[QTY_OF_ERR - 1] * kP;			// Current error * kP
-		// Calculation of value I
-		for (i = 0; i < QTY_OF_ERR; i++) {
-			error_sum += error_history[i];
-		}
-		I = error_sum * kI;								// sum of errors * kI
-		// Calculation of value D
-		D = (error_history[QTY_OF_ERR - 1] -        	// (current error - error in past) * kD
-        	error_history[0]) * kD;
-
-		PID_total_correction = (P + I) + D;
-
-		// 
-		left_motor_speed  = AVG_SPEED - (uint16_t)PID_total_correction;
-		right_motor_speed = AVG_SPEED + (uint16_t)PID_total_correction;
-
-		// Validating a range of variables
-		if (left_motor_speed > 255)
-			left_motor_speed = 255;
-		else if (left_motor_speed < 0)
-			left_motor_speed = 0;
-		if (right_motor_speed > 255)
-			right_motor_speed = 255;
-		else if (right_motor_speed < 0)
-			right_motor_speed = 0;
-
-		// Motors power difference compensation
-		#if MOTORS_NOT_PERFECT
-			OCR2A = 0;
-			OCR2B = left_motor_speed * L_MOTOR_MISMATCH;
-			OCR0A = 0;
-			OCR0B = right_motor_speed * R_MOTOR_MISMATCH;
-		#else
-			OCR2A = 0;
-			OCR2B = left_motor_speed;
-			OCR0A = 0;
-			OCR0B = right_motor_speed;
-		#endif /* MOTORS_NOT_PERFECT */
-
-		_delay_ms (MAIN_CYCLE_DELAY);
-	}
 }
