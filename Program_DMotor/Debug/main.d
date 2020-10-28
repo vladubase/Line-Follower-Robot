@@ -14,7 +14,7 @@ main.d main.o: .././main.c .././inc/main.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- .././inc/InitSYS.h
+ .././inc/InitSYS.h .././inc/InitI2C.h .././inc/ReadSensorLineData.h
 
 .././inc/main.h:
 
@@ -49,3 +49,7 @@ c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\includ
 c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 .././inc/InitSYS.h:
+
+.././inc/InitI2C.h:
+
+.././inc/ReadSensorLineData.h:

@@ -4,8 +4,6 @@
 
 main.c
 
-src\CurrentRobotError.c
-
 src\InitI2C.c
 
 src\InitSYS.c

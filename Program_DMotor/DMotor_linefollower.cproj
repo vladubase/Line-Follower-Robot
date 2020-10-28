@@ -133,9 +133,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="inc\CurrentRobotError.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="inc\InitI2C.h">
       <SubType>compile</SubType>
     </Compile>
@@ -149,9 +146,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\CurrentRobotError.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\InitI2C.c">

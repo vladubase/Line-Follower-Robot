@@ -19,7 +19,7 @@
 
 /********************************* Function  prototypes *******************************/
 
-void CurrentRobotError (void);
+float CurrentRobotError (void);
 
 
 #endif /* _CURRENT_ROBOT_ERROR_H_ */
