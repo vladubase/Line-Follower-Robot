@@ -1,0 +1,17 @@
+Dependencies for Project 'Linelance_program', Target 'Linelance_program': (DO NOT MODIFY !)
+CompilerVersion: 6140001::V6.14.1::ARMCLANG
+F (.\Startup\startup_stm32f030.s)(0x54808D0E)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto -c-gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1"-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-I"C:/User Programs/Keil/ARM/CMSIS/Include"-Wa,armasm,--pd,"__UVISION_VERSION SETA 532" -Wa,armasm,--pd,"STM32F030x6 SETA 1"-o ./objects/startup_stm32f030.o)
+F (.\CMSIS\src\system_stm32f0xx.c)(0x5482190B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Program_Linelance -I ./CMSIS/inc -I ./Code/inc-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-I"C:/User Programs/Keil/ARM/CMSIS/Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o ./objects/system_stm32f0xx.o -MD)
+I (CMSIS\inc\stm32f0xx.h)(0x5F996FE8)
+I (CMSIS\inc\core_cm0.h)(0x547D9682)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F5158DE)
+I (CMSIS\inc\core_cmInstr.h)(0x547D9682)
+I (CMSIS\inc\core_cmFunc.h)(0x547D9682)
+I (CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
+F (.\Code\src\main.c)(0x5F996FAA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Program_Linelance -I ./CMSIS/inc -I ./Code/inc-I"C:/Users/Uladzislau Dubatouka/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include"-I"C:/User Programs/Keil/ARM/CMSIS/Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o ./objects/main.o -MD)
+I (CMSIS\inc\stm32f0xx.h)(0x5F996FE8)
+I (CMSIS\inc\core_cm0.h)(0x547D9682)
+I (C:\User Programs\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F5158DE)
+I (CMSIS\inc\core_cmInstr.h)(0x547D9682)
+I (CMSIS\inc\core_cmFunc.h)(0x547D9682)
+I (CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
