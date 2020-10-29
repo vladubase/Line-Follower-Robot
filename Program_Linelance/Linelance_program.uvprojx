@@ -408,6 +408,21 @@
               <FileType>1</FileType>
               <FilePath>.\Code\src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>InitGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\InitGPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitI2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\InitI2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitRCC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\InitRCC.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
