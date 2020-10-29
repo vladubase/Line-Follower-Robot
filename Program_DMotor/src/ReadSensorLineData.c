@@ -4,6 +4,8 @@
 	*
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
+	*	@version	V1.0
+	*	@date 		28-October-2020
 	*
 *****/
 
