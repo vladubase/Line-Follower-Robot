@@ -19,9 +19,15 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+// User headers
 #include "InitRCC.h"
 #include "InitGPIO.h"
 #include "InitI2C.h"
+
+//// FreeRTOS
+//#include "FreeRTOS.h"
+//#include "task.h"
+//#include "queue.h"
 
 
 /*************************************** Defines **************************************/
