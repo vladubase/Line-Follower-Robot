@@ -1,13 +1,13 @@
-/****
-	*	@name		Linelance_linefollower
-	*	@file 		InitGPIO.c
-	*
-	*	@author 	Uladzislau 'vladubase' Dubatouka
-	*				<vladubase@gmail.com>
-	*	@version	V1.0
-	*	@date 		29-October-2020
-	*
-*****/
+/**
+*	@file 		InitGPIO.c
+*
+*	@author 	Uladzislau 'vladubase' Dubatouka
+*				<vladubase@gmail.com>
+*	@version	V1.1
+*	@date 		11-November-2020
+*	@link		https://github.com/vladubase/STM32_Lib/tree/main/STM32F0/Projects/STM32F0_GPIO
+*
+*/
 
 
 /************************************** Includes **************************************/
@@ -18,25 +18,25 @@
 /************************************** Function **************************************/
 
 void InitGPIO (void) {
-   /*
-	*	@brief	This function setup GPIO.
-	*	@param	None.
-	*	@retval	None
-	*/
+/**
+*	@brief	This function setup GPIO.
+*			Port B1 as output 1.
+*	@param	None.
+*	@retval	None.
+*/
 	
-	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;			// GPIOA clock enable
-	RCC->AHBENR |= RCC_AHBENR_GPIOBEN;			// GPIOB clock enable
+	RCC->AHBENR |= RCC_AHBENR_GPIOBEN;			// GPIOB clock enable.
 	
-	// PA14..13:
-	// Alternative function mode - SWD
-	GPIOA->MODER |= GPIO_MODER_MODER14_1 | GPIO_MODER_MODER13_1;
 	
-	// PA7..0:
-	// Analog mode
-	GPIOA->MODER |= GPIO_MODER_MODER7 | GPIO_MODER_MODER6 | GPIO_MODER_MODER5 | GPIO_MODER_MODER4 |
-		GPIO_MODER_MODER3 | GPIO_MODER_MODER2 | GPIO_MODER_MODER1 | GPIO_MODER_MODER0;
+	/* **************************** PB1 ************************** */
 	
-	// PB1:
-	// General purpose output mode
+	// General purpose output mode.
 	GPIOB->MODER |= GPIO_MODER_MODER1_0;
+	
+	// Output push-pull (reset state).
+	GPIOB->OTYPER &= ~GPIO_OTYPER_OT_1;
+	
+	// High speed.
+	// @note	Refer to the device datasheet.
+	GPIOB->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR1;
 }

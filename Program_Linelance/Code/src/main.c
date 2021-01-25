@@ -1,13 +1,14 @@
-/****
-	*	@name		Linelance_linefollower
-	*	@file 		main.c
-	*
-	*	@author 	Uladzislau 'vladubase' Dubatouka
-	*				<vladubase@gmail.com>.
-	*	@version	V1.0
-	*	@date 		29-October-2020
-	*
-*****/
+/**
+*	@name		Linelance_linefollower
+*	@file 		main.c
+*
+*	@author 	Uladzislau 'vladubase' Dubatouka
+*				<vladubase@gmail.com>.
+*	@version	V1.0
+*	@date 		25-January-2021
+*	@link		https://github.com/vladubase/Linelance
+*
+*/
 
 
 /************************************** Include ***************************************/
@@ -19,15 +20,25 @@
 
 int main (void) {
 	// DEFINITION OF VARIABLES
-		
+		uint32_t i = 0;
 		
 	// MICROCONTROLLER INITIALIZATION
-		InitRCC ();
+		//InitRCC ();
+		InitSWD ();
 		InitGPIO ();
-		InitI2C ();
+		InitUSART1 ();
+		//InitTIM14 ();
 	
 	// MAIN CYCLE
-		while (true) {
-			GPIOB->BSRR |= GPIO_BSRR_BS_1;				// Output log.1
+		while (1) {
+			GPIOB->ODR |= GPIO_ODR_1;
+			
+			
+			
+//			for (i = 0; i < TIM14_ARR; i++) {
+//				TIM14->CCR1 = i;						// CH1 duty cycle.
+//			}
+			
+			//USART1_SendString ("MSFGovno");
 		}
 }

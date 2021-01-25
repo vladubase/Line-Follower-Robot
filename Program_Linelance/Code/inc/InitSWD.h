@@ -1,15 +1,14 @@
-#ifndef _INIT_RCC_H_
-#define _INIT_RCC_H_
+#ifndef _INIT_SWD_H_
+#define _INIT_SWD_H_
 
 /****
-	*	@name		STM32F0_RCC_PLL_48MHz
-	*	@file 		InitRCC.h
+	*	@file 		InitSWD.h
 	*
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
-	*	@version	V1.1
-	*	@date 		11-November-2020
-	*	@link		https://github.com/vladubase/STM32_Lib/tree/main/STM32F0/Projects/STM32F0_RCC_PLL_48MHz
+	*	@version	V1.0
+	*	@date 		2-November-2020
+	*	@link		https://github.com/vladubase/STM32_Lib/tree/main/STM32F0/Projects/STM32F0_SWD
 	*
 *****/
 
@@ -21,7 +20,7 @@
 
 /********************************* Function  prototypes *******************************/
 
-void InitRCC (void);
+void InitSWD (void);
 
 
-#endif /* _INIT_RCC_H_ */
+#endif /* _INIT_SWD_H_ */

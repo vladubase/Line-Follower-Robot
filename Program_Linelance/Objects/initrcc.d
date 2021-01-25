@@ -1,5 +1,8 @@
-./objects/initrcc.o: Code\src\InitRCC.c Code\inc\InitRCC.h \
-  CMSIS\inc\stm32f0xx.h CMSIS\inc\core_cm0.h \
-  C:\User\ Programs\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  CMSIS\inc\core_cmInstr.h CMSIS\inc\core_cmFunc.h \
-  CMSIS\inc\system_stm32f0xx.h
+.\objects\initrcc.o: Code\src\InitRCC.c
+.\objects\initrcc.o: .\Code\inc\InitRCC.h
+.\objects\initrcc.o: .\CMSIS\inc\stm32f0xx.h
+.\objects\initrcc.o: .\CMSIS\inc\core_cm0.h
+.\objects\initrcc.o: C:\User Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\initrcc.o: .\CMSIS\inc\core_cmInstr.h
+.\objects\initrcc.o: .\CMSIS\inc\core_cmFunc.h
+.\objects\initrcc.o: .\CMSIS\inc\system_stm32f0xx.h
