@@ -23,7 +23,7 @@ int main (void) {
 		uint32_t i = 0;
 		
 	// MICROCONTROLLER INITIALIZATION
-		//InitRCC ();
+		InitRCC ();
 		InitSWD ();
 		InitGPIO ();
 		InitUSART1 ();
@@ -39,6 +39,6 @@ int main (void) {
 //				TIM14->CCR1 = i;						// CH1 duty cycle.
 //			}
 			
-			//USART1_SendString ("MSFGovno");
+			//USART1_SendString ("H");
 		}
 }
