@@ -36,5 +36,10 @@ int main (void) {
 //			for (i = 0; i < TIM14_ARR; i++) {
 //				TIM14->CCR1 = i;						// CH1 duty cycle.
 //			}
+<<<<<<< HEAD
+=======
+			
+			//USART1_SendString ("H");
+>>>>>>> 76716edb507d7f8ef12b363cf20e3dd8a9d681f8
 		}
 }
