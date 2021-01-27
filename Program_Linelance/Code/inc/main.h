@@ -8,7 +8,7 @@
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>
 *	@version	V1.0
-*	@date 		26-January-2021
+*	@date 		28-January-2021
 *	@link		https://github.com/vladubase/Linelance
 *
 */
@@ -19,6 +19,7 @@
 #include "stm32f0xx.h"
 #include "stdint.h"
 #include "stdbool.h"
+#include "stdio.h"
 
 // User headers
 #include "InitRCC.h"
@@ -26,6 +27,7 @@
 #include "InitGPIO.h"
 #include "InitUART.h"
 #include "InitTIM.h"
+#include "InitADC.h"
 
 
 /************************************** Defines ***************************************/
