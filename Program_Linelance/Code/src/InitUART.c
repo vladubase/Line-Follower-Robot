@@ -1,12 +1,12 @@
 /**
-*	@name		Linelance_linefollower
+*	@name		STM32F0_UART
 *	@file 		InitUART.c
 *
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>
-*	@version	V1.0
+*	@version	V1.2
 *	@date 		25-January-2021
-*	@link		https://github.com/vladubase/Line-Follower-Robot/tree/master/Program_Linelance
+*	@link		https://github.com/vladubase/STM32_Lib/tree/main/STM32F0/Projects/STM32F0_UART
 *
 */
 
@@ -50,15 +50,13 @@ void InitUSART1 (void) {
 	// @note	Refer to the device datasheet.
 	GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR10;
 	
-	// GPIO alternate function.
-	GPIOA->AFR[1] = (1 << (1 * 4)) |
-		(1 << (2 * 4));
+	// Alternative function selection.
+	GPIOA->AFR[1] = (0x01 << (1 * 4)) | (1 << (2 * 4));
 	
 	USART1->CR1 |= USART_CR1_UE;				// USART Enable.
 	USART1->CR1 &= ~USART_CR1_M;				// Word - 8 data bits.
 	USART1->CR2 &= ~USART_CR2_STOP;				// 1 stop bit.
-	USART1->BRR = (f_AHB + USART1_BAUDRATE / 2) / 
-		USART1_BAUDRATE;						// 
+	USART1->BRR = (f_AHB + USART1_BAUDRATE / 2) / USART1_BAUDRATE;
 	USART1->CR1 |= USART_CR1_RE |				// Receiver Enable.
 		USART_CR1_TE;							// Transmitter Enable.
 }

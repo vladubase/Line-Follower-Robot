@@ -9,7 +9,7 @@ License Information: Uladzislau Dubatouka, BNTU, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.32.0.0
-Toolchain Path:  C:\User Programs\Keil\ARM\ARMCC\Bin
+Toolchain Path:  D:\User Programs\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 7 (build 960)
 Assembler:       Armasm.exe V5.06 update 7 (build 960)
 Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
@@ -21,13 +21,21 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TARMCM1.DLL V1.14.3.0
  
 <h2>Project:</h2>
-D:\Documents\Workspace\Line Follower Robot\Program_Linelance\Linelance_linefollower.uvprojx
-Project File Date:  01/25/2021
+D:\Documents\Workspace\Line-Follower-Robot\Program_Linelance\Linelance_linefollower.uvprojx
+Project File Date:  01/26/2021
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\User Programs\Keil\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\User Programs\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Linelance_linefollower'
-".\Objects\Linelance_linefollower.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+Code\src\main.c(23): warning:  #177-D: variable "i"  was declared but never referenced
+  		uint32_t i = 0;
+Code\src\main.c: 1 warning, 0 errors
+compiling InitUART.c...
+linking...
+Program Size: Code=1224 RO-data=196 RW-data=0 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\Linelance_linefollower.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -37,7 +45,7 @@ Package Vendor: Keil
                 STMicroelectronics STM32F0 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include
+  C:\Users\installer\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include
 
 <h2>Collection of Component Files used:</h2>
 Build Time Elapsed:  00:00:00
