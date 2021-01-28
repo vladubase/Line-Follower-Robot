@@ -455,32 +455,32 @@ Image Symbol Table
     i.InitADC1CH1                            0x080014cc   Section        0  initadc.o(i.InitADC1CH1)
     i.InitGPIO                               0x080015bc   Section        0  initgpio.o(i.InitGPIO)
     i.InitRCC                                0x080015f8   Section        0  initrcc.o(i.InitRCC)
-    i.InitSWD                                0x08001698   Section        0  initswd.o(i.InitSWD)
-    i.InitUSART1                             0x080016c0   Section        0  inituart.o(i.InitUSART1)
-    i.SetSysClock                            0x08001768   Section        0  system_stm32f0xx.o(i.SetSysClock)
-    SetSysClock                              0x08001769   Thumb Code   206  system_stm32f0xx.o(i.SetSysClock)
-    i.SystemInit                             0x08001840   Section        0  system_stm32f0xx.o(i.SystemInit)
-    i.USART1_SendByte                        0x080018bc   Section        0  inituart.o(i.USART1_SendByte)
-    i.USART1_SendString                      0x080018d8   Section        0  inituart.o(i.USART1_SendString)
-    i.__ARM_common_ll_muluu                  0x080018f4   Section        0  btod.o(i.__ARM_common_ll_muluu)
-    i.__ARM_fpclassify                       0x08001924   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i._is_digit                              0x08001950   Section        0  __printf_wp.o(i._is_digit)
-    i.main                                   0x08001960   Section        0  main.o(i.main)
-    locale$$code                             0x08001a34   Section       44  lc_numeric_c.o(locale$$code)
-    x$fpl$dleqf                              0x08001a60   Section      100  dlef.o(x$fpl$dleqf)
-    x$fpl$fmul                               0x08001ac4   Section      176  fmul.o(x$fpl$fmul)
-    x$fpl$printf1                            0x08001b74   Section       16  printf1.o(x$fpl$printf1)
-    .constdata                               0x08001b84   Section      148  bigflt0.o(.constdata)
-    x$fpl$usenofp                            0x08001b84   Section        0  usenofp.o(x$fpl$usenofp)
-    tenpwrs_x                                0x08001b84   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x08001bc0   Data          64  bigflt0.o(.constdata)
-    locale$$data                             0x08001c28   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x08001c2c   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x08001c34   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x08001c40   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x08001c42   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x08001c43   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_end                            0x08001c44   Data           0  lc_numeric_c.o(locale$$data)
+    i.InitSWD                                0x080016b4   Section        0  initswd.o(i.InitSWD)
+    i.InitUSART1                             0x080016dc   Section        0  inituart.o(i.InitUSART1)
+    i.SetSysClock                            0x08001784   Section        0  system_stm32f0xx.o(i.SetSysClock)
+    SetSysClock                              0x08001785   Thumb Code   206  system_stm32f0xx.o(i.SetSysClock)
+    i.SystemInit                             0x0800185c   Section        0  system_stm32f0xx.o(i.SystemInit)
+    i.USART1_SendByte                        0x080018d8   Section        0  inituart.o(i.USART1_SendByte)
+    i.USART1_SendString                      0x080018f4   Section        0  inituart.o(i.USART1_SendString)
+    i.__ARM_common_ll_muluu                  0x08001910   Section        0  btod.o(i.__ARM_common_ll_muluu)
+    i.__ARM_fpclassify                       0x08001940   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i._is_digit                              0x0800196c   Section        0  __printf_wp.o(i._is_digit)
+    i.main                                   0x0800197c   Section        0  main.o(i.main)
+    locale$$code                             0x08001a50   Section       44  lc_numeric_c.o(locale$$code)
+    x$fpl$dleqf                              0x08001a7c   Section      100  dlef.o(x$fpl$dleqf)
+    x$fpl$fmul                               0x08001ae0   Section      176  fmul.o(x$fpl$fmul)
+    x$fpl$printf1                            0x08001b90   Section       16  printf1.o(x$fpl$printf1)
+    .constdata                               0x08001ba0   Section      148  bigflt0.o(.constdata)
+    x$fpl$usenofp                            0x08001ba0   Section        0  usenofp.o(x$fpl$usenofp)
+    tenpwrs_x                                0x08001ba0   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x08001bdc   Data          64  bigflt0.o(.constdata)
+    locale$$data                             0x08001c44   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x08001c48   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x08001c50   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x08001c5c   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x08001c5e   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x08001c5f   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_end                            0x08001c60   Data           0  lc_numeric_c.o(locale$$data)
     .bss                                     0x20000000   Section       96  libspace.o(.bss)
     HEAP                                     0x20000060   Section      512  startup_stm32f030.o(HEAP)
     Heap_Mem                                 0x20000060   Data         512  startup_stm32f030.o(HEAP)
@@ -672,25 +672,25 @@ Image Symbol Table
     InitADC                                  0x080014c5   Thumb Code     8  initadc.o(i.InitADC)
     InitADC1CH1                              0x080014cd   Thumb Code   230  initadc.o(i.InitADC1CH1)
     InitGPIO                                 0x080015bd   Thumb Code    52  initgpio.o(i.InitGPIO)
-    InitRCC                                  0x080015f9   Thumb Code   150  initrcc.o(i.InitRCC)
-    InitSWD                                  0x08001699   Thumb Code    34  initswd.o(i.InitSWD)
-    InitUSART1                               0x080016c1   Thumb Code   160  inituart.o(i.InitUSART1)
-    SystemInit                               0x08001841   Thumb Code   110  system_stm32f0xx.o(i.SystemInit)
-    USART1_SendByte                          0x080018bd   Thumb Code    22  inituart.o(i.USART1_SendByte)
-    USART1_SendString                        0x080018d9   Thumb Code    28  inituart.o(i.USART1_SendString)
-    __ARM_common_ll_muluu                    0x080018f5   Thumb Code    48  btod.o(i.__ARM_common_ll_muluu)
-    __ARM_fpclassify                         0x08001925   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    _is_digit                                0x08001951   Thumb Code    14  __printf_wp.o(i._is_digit)
-    main                                     0x08001961   Thumb Code   154  main.o(i.main)
-    _get_lc_numeric                          0x08001a35   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    __aeabi_cdcmple                          0x08001a61   Thumb Code     0  dlef.o(x$fpl$dleqf)
-    _dcmple                                  0x08001a61   Thumb Code    94  dlef.o(x$fpl$dleqf)
-    __aeabi_fmul                             0x08001ac5   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x08001ac5   Thumb Code   172  fmul.o(x$fpl$fmul)
-    _printf_fp_dec                           0x08001b75   Thumb Code    16  printf1.o(x$fpl$printf1)
-    __I$use$fp                               0x08001b84   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08001c18   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001c28   Number         0  anon$$obj.o(Region$$Table)
+    InitRCC                                  0x080015f9   Thumb Code   180  initrcc.o(i.InitRCC)
+    InitSWD                                  0x080016b5   Thumb Code    34  initswd.o(i.InitSWD)
+    InitUSART1                               0x080016dd   Thumb Code   160  inituart.o(i.InitUSART1)
+    SystemInit                               0x0800185d   Thumb Code   110  system_stm32f0xx.o(i.SystemInit)
+    USART1_SendByte                          0x080018d9   Thumb Code    22  inituart.o(i.USART1_SendByte)
+    USART1_SendString                        0x080018f5   Thumb Code    28  inituart.o(i.USART1_SendString)
+    __ARM_common_ll_muluu                    0x08001911   Thumb Code    48  btod.o(i.__ARM_common_ll_muluu)
+    __ARM_fpclassify                         0x08001941   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    _is_digit                                0x0800196d   Thumb Code    14  __printf_wp.o(i._is_digit)
+    main                                     0x0800197d   Thumb Code   154  main.o(i.main)
+    _get_lc_numeric                          0x08001a51   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    __aeabi_cdcmple                          0x08001a7d   Thumb Code     0  dlef.o(x$fpl$dleqf)
+    _dcmple                                  0x08001a7d   Thumb Code    94  dlef.o(x$fpl$dleqf)
+    __aeabi_fmul                             0x08001ae1   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08001ae1   Thumb Code   172  fmul.o(x$fpl$fmul)
+    _printf_fp_dec                           0x08001b91   Thumb Code    16  printf1.o(x$fpl$printf1)
+    __I$use$fp                               0x08001ba0   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08001c34   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001c44   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x20000000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000060   Data           0  libspace.o(.bss)
 
@@ -702,9 +702,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000165
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00001c44, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00001c60, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001c44, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001c60, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -802,34 +802,34 @@ Memory Map of the image
     0x080014c4   0x080014c4   0x00000008   Code   RO          242    i.InitADC           initadc.o
     0x080014cc   0x080014cc   0x000000f0   Code   RO          243    i.InitADC1CH1       initadc.o
     0x080015bc   0x080015bc   0x0000003c   Code   RO          195    i.InitGPIO          initgpio.o
-    0x080015f8   0x080015f8   0x000000a0   Code   RO          117    i.InitRCC           initrcc.o
-    0x08001698   0x08001698   0x00000028   Code   RO          137    i.InitSWD           initswd.o
-    0x080016c0   0x080016c0   0x000000a8   Code   RO          158    i.InitUSART1        inituart.o
-    0x08001768   0x08001768   0x000000d8   Code   RO           12    i.SetSysClock       system_stm32f0xx.o
-    0x08001840   0x08001840   0x0000007c   Code   RO           14    i.SystemInit        system_stm32f0xx.o
-    0x080018bc   0x080018bc   0x0000001c   Code   RO          159    i.USART1_SendByte   inituart.o
-    0x080018d8   0x080018d8   0x0000001c   Code   RO          160    i.USART1_SendString  inituart.o
-    0x080018f4   0x080018f4   0x00000030   Code   RO          376    i.__ARM_common_ll_muluu  c_p.l(btod.o)
-    0x08001924   0x08001924   0x0000002c   Code   RO          387    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
-    0x08001950   0x08001950   0x0000000e   Code   RO          291    i._is_digit         c_p.l(__printf_wp.o)
-    0x0800195e   0x0800195e   0x00000002   PAD
-    0x08001960   0x08001960   0x000000d4   Code   RO           65    i.main              main.o
-    0x08001a34   0x08001a34   0x0000002c   Code   RO          379    locale$$code        c_p.l(lc_numeric_c.o)
-    0x08001a60   0x08001a60   0x00000064   Code   RO          314    x$fpl$dleqf         fz_ps.l(dlef.o)
-    0x08001ac4   0x08001ac4   0x000000b0   Code   RO          320    x$fpl$fmul          fz_ps.l(fmul.o)
-    0x08001b74   0x08001b74   0x00000010   Code   RO          322    x$fpl$printf1       fz_ps.l(printf1.o)
-    0x08001b84   0x08001b84   0x00000000   Code   RO          342    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x08001b84   0x08001b84   0x00000094   Data   RO          372    .constdata          c_p.l(bigflt0.o)
-    0x08001c18   0x08001c18   0x00000010   Data   RO          538    Region$$Table       anon$$obj.o
-    0x08001c28   0x08001c28   0x0000001c   Data   RO          378    locale$$data        c_p.l(lc_numeric_c.o)
+    0x080015f8   0x080015f8   0x000000bc   Code   RO          117    i.InitRCC           initrcc.o
+    0x080016b4   0x080016b4   0x00000028   Code   RO          137    i.InitSWD           initswd.o
+    0x080016dc   0x080016dc   0x000000a8   Code   RO          158    i.InitUSART1        inituart.o
+    0x08001784   0x08001784   0x000000d8   Code   RO           12    i.SetSysClock       system_stm32f0xx.o
+    0x0800185c   0x0800185c   0x0000007c   Code   RO           14    i.SystemInit        system_stm32f0xx.o
+    0x080018d8   0x080018d8   0x0000001c   Code   RO          159    i.USART1_SendByte   inituart.o
+    0x080018f4   0x080018f4   0x0000001c   Code   RO          160    i.USART1_SendString  inituart.o
+    0x08001910   0x08001910   0x00000030   Code   RO          376    i.__ARM_common_ll_muluu  c_p.l(btod.o)
+    0x08001940   0x08001940   0x0000002c   Code   RO          387    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
+    0x0800196c   0x0800196c   0x0000000e   Code   RO          291    i._is_digit         c_p.l(__printf_wp.o)
+    0x0800197a   0x0800197a   0x00000002   PAD
+    0x0800197c   0x0800197c   0x000000d4   Code   RO           65    i.main              main.o
+    0x08001a50   0x08001a50   0x0000002c   Code   RO          379    locale$$code        c_p.l(lc_numeric_c.o)
+    0x08001a7c   0x08001a7c   0x00000064   Code   RO          314    x$fpl$dleqf         fz_ps.l(dlef.o)
+    0x08001ae0   0x08001ae0   0x000000b0   Code   RO          320    x$fpl$fmul          fz_ps.l(fmul.o)
+    0x08001b90   0x08001b90   0x00000010   Code   RO          322    x$fpl$printf1       fz_ps.l(printf1.o)
+    0x08001ba0   0x08001ba0   0x00000000   Code   RO          342    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x08001ba0   0x08001ba0   0x00000094   Data   RO          372    .constdata          c_p.l(bigflt0.o)
+    0x08001c34   0x08001c34   0x00000010   Data   RO          538    Region$$Table       anon$$obj.o
+    0x08001c44   0x08001c44   0x0000001c   Data   RO          378    locale$$data        c_p.l(lc_numeric_c.o)
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001c44, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001c60, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x08001c44, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000000, Load base: 0x08001c60, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -847,7 +847,7 @@ Image component sizes
 
        288         14          0          0          0       1367   initadc.o
         60          8          0          0          0        415   initgpio.o
-       160         10          0          0          0        462   initrcc.o
+       188          8          0          0          0        474   initrcc.o
         40          6          0          0          0        398   initswd.o
        224         14          0          0          0       1435   inituart.o
        212         58          0          0          0        631   main.o
@@ -855,7 +855,7 @@ Image component sizes
        340         24          0          0          0       5897   system_stm32f0xx.o
 
     ----------------------------------------------------------------------
-      1440        190        196          0       1536      11281   Object Totals
+      1468        188        196          0       1536      11293   Object Totals
          0          0         16          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -937,15 +937,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6864        348        372          0       1632      12321   Grand Totals
-      6864        348        372          0       1632      12321   ELF Image Totals
-      6864        348        372          0          0          0   ROM Totals
+      6892        346        372          0       1632      12333   Grand Totals
+      6892        346        372          0       1632      12333   ELF Image Totals
+      6892        346        372          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7236 (   7.07kB)
+    Total RO  Size (Code + RO Data)                 7264 (   7.09kB)
     Total RW  Size (RW Data + ZI Data)              1632 (   1.59kB)
-    Total ROM Size (Code + RO Data + RW Data)       7236 (   7.07kB)
+    Total ROM Size (Code + RO Data + RW Data)       7264 (   7.09kB)
 
 ==============================================================================
 

@@ -31,6 +31,9 @@ void InitRCC (void) {
 			RCC_CFGR_SWS_HSI);
 	}
 	
+	RCC->CR &= (uint32_t) (~RCC_CR_PLLON);		// Disable the PLL.
+	while ((RCC->CR & RCC_CR_PLLRDY) != 0);		// PLL clock ready flag.
+	
 	RCC->CR |= (uint32_t)RCC_CR_HSION; 			// Internal High Speed clock enable.
 	while (!(RCC->CR & RCC_CR_HSIRDY));			// Internal High Speed clock ready flag.
 	
@@ -43,12 +46,12 @@ void InitRCC (void) {
 												// 4 MHz: HSI (8 MHz) is divided by 2 when timing PLL.
 	
 	RCC->CR |= RCC_CR_PLLON;					// PLL enable.
-	while(!(RCC->CR & RCC_CR_PLLRDY));      	// PLL clock ready flag.
+	while ((RCC->CR & RCC_CR_PLLRDY) != 0);		// PLL clock ready flag.
 	
 	/* System clock MUX - PLLCLK */
 	RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;		// Select source SYSCLK = PLL.
-	while((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) !=	// Wait till PLL is used.
-		(uint32_t)RCC_CFGR_SWS_PLL);
+	while ((RCC->CFGR & RCC_CFGR_SWS) !=		// Wait till PLL is used.
+		RCC_CFGR_SWS_PLL);
 	
 	/* Configure Flash */
 	FLASH->ACR = FLASH_ACR_PRFTBE |				// Prefetch buffer enable.
