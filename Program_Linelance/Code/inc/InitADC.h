@@ -27,7 +27,7 @@
 /********************************* Function  prototypes *******************************/
 
 void InitADC (void);
-void InitADC1CH1 (void);
+void InitADC1 (void);
 uint16_t ADC1_StartConversion (void);
 
 
