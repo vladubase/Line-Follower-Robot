@@ -424,11 +424,6 @@
               <FilePath>.\Code\src\InitUART.c</FilePath>
             </File>
             <File>
-              <FileName>InitGPIO.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Code\src\InitGPIO.c</FilePath>
-            </File>
-            <File>
               <FileName>InitTIM.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Code\src\InitTIM.c</FilePath>
@@ -437,6 +432,26 @@
               <FileName>InitADC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Code\src\InitADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitDMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\InitDMA.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\InitGPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>func_ReadSensorLineData.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\func_ReadSensorLineData.c</FilePath>
+            </File>
+            <File>
+              <FileName>func_CurrentRobotError.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Code\src\func_CurrentRobotError.c</FilePath>
             </File>
           </Files>
         </Group>

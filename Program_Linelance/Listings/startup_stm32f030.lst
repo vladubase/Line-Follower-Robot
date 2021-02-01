@@ -407,12 +407,12 @@ ARM Macro Assembler    Page 7
               00000200 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
-ork --depend=.\objects\startup_stm32f030.d -o.\objects\startup_stm32f030.o -IC:
-\Users\installer\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS
-\Device\ST\STM32F0xx\Include -I"D:\User Programs\Keil_v5\ARM\CMSIS\Include" --p
-redefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 532" --predefine="
-STM32F030x6 SETA 1" --list=.\listings\startup_stm32f030.lst Startup\startup_stm
-32f030.s
+ork --depend=.\objects\startup_stm32f030.d -o.\objects\startup_stm32f030.o -I"C
+:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\D
+rivers\CMSIS\Device\ST\STM32F0xx\Include" -I"C:\User Programs\Keil\ARM\CMSIS\In
+clude" --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 532" --p
+redefine="STM32F030x6 SETA 1" --list=.\listings\startup_stm32f030.lst Startup\s
+tartup_stm32f030.s
 
 
 
