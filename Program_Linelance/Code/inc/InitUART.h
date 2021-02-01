@@ -23,7 +23,7 @@
 
 /************************************** Defines ***************************************/
 
-#define f_AHB			((uint32_t)	48e6)
+#define f_AHB			((uint32_t)	8e6)
 #define USART1_BAUDRATE	((uint32_t)	230400)
 
 
