@@ -8,7 +8,6 @@
 .\objects\main.o: .\CMSIS\inc\system_stm32f0xx.h
 .\objects\main.o: C:\User Programs\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: C:\User Programs\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: C:\User Programs\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: .\Code\inc\InitRCC.h
 .\objects\main.o: .\Code\inc\InitSWD.h
 .\objects\main.o: .\Code\inc\InitGPIO.h
