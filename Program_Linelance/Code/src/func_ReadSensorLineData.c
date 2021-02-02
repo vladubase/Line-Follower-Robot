@@ -34,13 +34,13 @@ void ReadSensorLineData (void) {
 			// Write data from PA0 to PA7.
 			line_data[i] = ((GPIOA->IDR) & (1 << i));
 			
-			sprintf (port_num, "%u", i);
-			USART1_SendString ("PORT ");
-			USART1_SendString (port_num);
-			USART1_SendString (", VALUE ");
-			sprintf (port_state, "%u", line_data[i]);
-			USART1_SendString (port_state);
-			USART1_SendString ("\r\n");
+//			sprintf (port_num, "%u", i);
+//			USART1_SendString ("PORT ");
+//			USART1_SendString (port_num);
+//			USART1_SendString (", VALUE ");
+//			sprintf (port_state, "%u", line_data[i]);
+//			USART1_SendString (port_state);
+//			USART1_SendString ("\r\n");
 		}	
 }
  
