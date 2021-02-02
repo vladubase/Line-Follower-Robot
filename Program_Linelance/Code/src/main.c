@@ -5,8 +5,8 @@
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>.
 *	@version	V1.0
-*	@date 		28-January-2021
-*	@link		https://github.com/vladubase/Linelance
+*	@date 		02-February-2021
+*	@link		https://github.com/vladubase/Line-Follower-Robot
 *
 */
 
@@ -41,7 +41,7 @@ int main (void) {
 	
 	// MAIN CYCLE
 		while (1) {
-			PID_total_correction = 0;
+			PID_total_correction = 0.0;
 			
 			ReadSensorLineData ();
 			

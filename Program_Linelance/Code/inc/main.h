@@ -8,8 +8,8 @@
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>
 *	@version	V1.0
-*	@date 		28-January-2021
-*	@link		https://github.com/vladubase/Linelance
+*	@date 		02-February-2021
+*	@link		https://github.com/vladubase/Line-Follower-Robot
 *
 */
 
@@ -30,12 +30,6 @@
 
 // GENERAL PARAMETERS
 #define		QTY_OF_SENSORS		8U						// Quantity of sensors.
-
-#define		MOTORS_NOT_PERFECT	false 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
-#if MOTORS_NOT_PERFECT									// There is nothing perfect ;)
-	#define	L_MOTOR_MISMATCH	((float)	1.0)		// Coefficients of motor power difference.
-	#define	R_MOTOR_MISMATCH	((float)	1.07)
-#endif /* MOTORS_NOT_PERFECT */
 
 // PID
 // Setup: P -> PD -> PID
