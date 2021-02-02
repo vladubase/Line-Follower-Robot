@@ -8,8 +8,8 @@ I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
 I (.\CMSIS\inc\core_cmInstr.h)(0x547D9682)
 I (.\CMSIS\inc\core_cmFunc.h)(0x547D9682)
 I (.\CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
-F (.\Code\src\main.c)(0x60192E36)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Code\inc\main.h)(0x60192E07)
+F (.\Code\src\main.c)(0x601977FC)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\Code\inc\main.h)(0x60197798)
 I (.\CMSIS\inc\stm32f0xx.h)(0x60154DDF)
 I (.\CMSIS\inc\core_cm0.h)(0x547D9682)
 I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
@@ -23,7 +23,7 @@ I (.\Code\inc\InitSWD.h)(0x5FACF5AD)
 I (.\Code\inc\InitGPIO.h)(0x5FAC4FD4)
 I (.\Code\inc\InitUART.h)(0x6017397B)
 I (.\Code\inc\func_ReadSensorLineData.h)(0x601735D7)
-I (.\Code\inc\func_CurrentRobotError.h)(0x60192AF3)
+I (.\Code\inc\func_CurrentRobotError.h)(0x60197811)
 F (.\Code\src\InitRCC.c)(0x60146E47)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\initrcc.o --omf_browse .\objects\initrcc.crf --depend .\objects\initrcc.d)
 I (.\Code\inc\InitRCC.h)(0x5FAC464C)
 I (.\CMSIS\inc\stm32f0xx.h)(0x60154DDF)
@@ -82,7 +82,7 @@ I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
 I (.\CMSIS\inc\core_cmInstr.h)(0x547D9682)
 I (.\CMSIS\inc\core_cmFunc.h)(0x547D9682)
 I (.\CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
-F (.\Code\src\func_ReadSensorLineData.c)(0x60192A0D)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\func_readsensorlinedata.o --omf_browse .\objects\func_readsensorlinedata.crf --depend .\objects\func_readsensorlinedata.d)
+F (.\Code\src\func_ReadSensorLineData.c)(0x60197803)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\func_readsensorlinedata.o --omf_browse .\objects\func_readsensorlinedata.crf --depend .\objects\func_readsensorlinedata.d)
 I (.\Code\inc\func_ReadSensorLineData.h)(0x601735D7)
 I (.\CMSIS\inc\stm32f0xx.h)(0x60154DDF)
 I (.\CMSIS\inc\core_cm0.h)(0x547D9682)
@@ -91,7 +91,7 @@ I (.\CMSIS\inc\core_cmInstr.h)(0x547D9682)
 I (.\CMSIS\inc\core_cmFunc.h)(0x547D9682)
 I (.\CMSIS\inc\system_stm32f0xx.h)(0x54808D0E)
 I (C:\User Programs\Keil\ARM\ARMCC\include\stdbool.h)(0x5F63CDCC)
-F (.\Code\src\func_CurrentRobotError.c)(0x60192E7A)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\func_currentroboterror.o --omf_browse .\objects\func_currentroboterror.crf --depend .\objects\func_currentroboterror.d)
-I (.\Code\inc\func_CurrentRobotError.h)(0x60192AF3)
+F (.\Code\src\func_CurrentRobotError.c)(0x6019780D)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\STM32F0_USART -I .\CMSIS\inc -I .\Code\inc -I .\FreeRTOS\inc-I"C:\Users\Uladzislau Dubatouka\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include"-I"C:\User Programs\Keil\ARM\CMSIS\Include"-D__UVISION_VERSION="532" -DSTM32F030x6-o .\objects\func_currentroboterror.o --omf_browse .\objects\func_currentroboterror.crf --depend .\objects\func_currentroboterror.d)
+I (.\Code\inc\func_CurrentRobotError.h)(0x60197811)
 I (C:\User Programs\Keil\ARM\ARMCC\include\stdint.h)(0x5F63CDCC)
 I (C:\User Programs\Keil\ARM\ARMCC\include\stdbool.h)(0x5F63CDCC)
