@@ -34,7 +34,7 @@
 // PID
 // Setup: P -> PD -> PID
 #define		kP					((float)	1)			// Proportional	feedback coefficient.
-#define		kI					((float)	0.025)		// Integral 	feedback coefficient.
+#define		kI					((float)	0)			// Integral 	feedback coefficient.
 #define		kD					((float)	0)			// Differential	feedback coefficient.
 #define		QTY_OF_ERR			((uint8_t)	10)			// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms.
 #define		MAIN_CYCLE_DELAY	((uint8_t)	5)			// The main cycle delay (in ms) for correct work of I- and D-regulation.

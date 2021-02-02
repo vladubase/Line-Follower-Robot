@@ -28,7 +28,7 @@ int main (void) {
 		float D = 0.0;
 		float PID_total_correction = 0.0;      		// Sum of P, I, D.
 		
-		char USART_message[10];
+//		char USART_message[10];
 		
 	// MICROCONTROLLER INITIALIZATION
 		//InitRCC ();
@@ -57,19 +57,22 @@ int main (void) {
 			
 			PID_total_correction = (P*kP + I*kI) + D*kD;
 			
-			sprintf (USART_message, "%f", PID_total_correction);
-			USART1_SendString ("PID_total_correction: ");
-			USART1_SendString (USART_message);						// Send delta to the DMotor module.
-			USART1_SendString ("\r\n");
+//			sprintf (USART_message, "%f", PID_total_correction);
+//			USART1_SendString ("PID_total_correction: ");
+//			USART1_SendString (USART_message);						// Send delta to the DMotor module.
+//			USART1_SendString ("\r\n");
+//			
+//			USART1_SendString ("error_history:");
+//			for (i = 0; i < 8; i++) {
+//				sprintf (USART_message, "%f", error_history[i]);
+//				USART1_SendString (" ");
+//				USART1_SendString (USART_message);					// Send delta to the DMotor module.
+//			}
+//			USART1_SendString ("\r\n\r\n");
 			
-			USART1_SendString ("error_history:");
-			for (i = 0; i < 8; i++) {
-				sprintf (USART_message, "%f", error_history[i]);
-				USART1_SendString (" ");
-				USART1_SendString (USART_message);					// Send delta to the DMotor module.
-			}
-			USART1_SendString ("\r\n\r\n");
-			
+			if (PID_total_correction > 127)		PID_total_correction = 127;
+			if (PID_total_correction < -127)	PID_total_correction = -127;
+			USART1_SendByte ((uint8_t) PID_total_correction);
 			
 			// Delay.
 			for (i = 0; i < (1000000 * MAIN_CYCLE_DELAY) / 1000; i++) {
