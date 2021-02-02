@@ -40,9 +40,9 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../src/InitI2C.c \
 ../src/InitSYS.c \
-../src/ReadSensorLineData.c
+../src/InitTIM.c \
+../src/InitUSART.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,27 +53,27 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-src/InitI2C.o \
 src/InitSYS.o \
-src/ReadSensorLineData.o
+src/InitTIM.o \
+src/InitUSART.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-src/InitI2C.o \
 src/InitSYS.o \
-src/ReadSensorLineData.o
+src/InitTIM.o \
+src/InitUSART.o
 
 C_DEPS +=  \
 main.d \
-src/InitI2C.d \
 src/InitSYS.d \
-src/ReadSensorLineData.d
+src/InitTIM.d \
+src/InitUSART.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-src/InitI2C.d \
 src/InitSYS.d \
-src/ReadSensorLineData.d
+src/InitTIM.d \
+src/InitUSART.d
 
 OUTPUT_FILE_PATH +=DMotor_linefollower.elf
 
@@ -96,13 +96,6 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-src/InitI2C.o: ../src/InitI2C.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\User Programs\Atmel Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 src/InitSYS.o: ../src/InitSYS.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -110,7 +103,14 @@ src/InitSYS.o: ../src/InitSYS.c
 	@echo Finished building: $<
 	
 
-src/ReadSensorLineData.o: ../src/ReadSensorLineData.c
+src/InitTIM.o: ../src/InitTIM.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\User Programs\Atmel Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+src/InitUSART.o: ../src/InitUSART.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\User Programs\Atmel Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\User Programs\Atmel Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

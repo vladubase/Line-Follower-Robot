@@ -4,9 +4,9 @@
 
 main.c
 
-src\InitI2C.c
-
 src\InitSYS.c
 
-src\ReadSensorLineData.c
+src\InitTIM.c
+
+src\InitUSART.c
 

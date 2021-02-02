@@ -1,4 +1,5 @@
-src/InitI2C.d src/InitI2C.o: ../src/InitI2C.c ../src/../inc/InitI2C.h \
+src/InitUSART.d src/InitUSART.o: ../src/InitUSART.c \
+ ../src/../inc/InitUSART.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -11,7 +12,7 @@ src/InitI2C.d src/InitI2C.o: ../src/InitI2C.c ../src/../inc/InitI2C.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
 
-../src/../inc/InitI2C.h:
+../src/../inc/InitUSART.h:
 
 c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 

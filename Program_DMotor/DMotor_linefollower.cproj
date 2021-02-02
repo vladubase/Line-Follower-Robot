@@ -133,28 +133,28 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="inc\InitI2C.h">
+    <Compile Include="inc\InitSYS.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="inc\InitSYS.h">
+    <Compile Include="inc\InitTIM.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="inc\InitUSART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="inc\main.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="inc\ReadSensorLineData.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\InitI2C.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\InitSYS.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\ReadSensorLineData.c">
+    <Compile Include="src\InitTIM.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\InitUSART.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
