@@ -36,25 +36,7 @@ float CurrentRobotError (void) {
 			if (line_data[i] != 0) {
 				current_error += power_of_sensor[i];
 			}
-			
-//			if (line_data[i] != 0) {
-//				/*	If the data on the i-th sensor is zero,
-//				 *	then the sensor is located above the black line.
-//				 *	Odd degree to preserve the sign '-'. */
-//				current_error += pow (8 / 2 - i - 0.5, 3); 	// (8 sensors / 2 - 0.5 - i)^3.
-//			}
 		}
 	
 	return current_error;
 }
-
-//float pow (float base, uint8_t power) {
-//	uint32_t result = 1;
-//	
-//	while (power > 0) {
-//		result *= base;		
-//		power--;
-//	}
-//	
-//	return result;
-//}

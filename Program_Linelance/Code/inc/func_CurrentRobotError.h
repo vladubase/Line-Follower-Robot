@@ -23,7 +23,6 @@
 /********************************* Function  prototypes *******************************/
 
 float CurrentRobotError (void);
-//float pow (float base, uint8_t power);
 
 
 #endif /* _INIT_CURRENT_ROBOT_ERROR_H_ */
