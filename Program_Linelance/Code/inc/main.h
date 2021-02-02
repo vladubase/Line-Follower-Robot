@@ -20,7 +20,6 @@
 #include "stdint.h"
 #include "stdbool.h"
 #include "stdio.h"
-#include "math.h"
 
 
 /************************************** Defines ***************************************/
@@ -31,7 +30,6 @@
 
 // GENERAL PARAMETERS
 #define		QTY_OF_SENSORS		8U						// Quantity of sensors.
-#define		AVG_SPEED			((uint8_t)	155)		// Average speed of robot.
 
 #define		MOTORS_NOT_PERFECT	false 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
 #if MOTORS_NOT_PERFECT									// There is nothing perfect ;)
@@ -41,11 +39,11 @@
 
 // PID
 // Setup: P -> PD -> PID
-#define		kP					((uint8_t)	1)			// Proportional	feedback coefficient.
-#define		kI					((uint8_t)	0)			// Integral 	feedback coefficient.
-#define		kD					((uint8_t)	0)			// Differential	feedback coefficient.
+#define		kP					((float)	1)			// Proportional	feedback coefficient.
+#define		kI					((float)	0.025)		// Integral 	feedback coefficient.
+#define		kD					((float)	0)			// Differential	feedback coefficient.
 #define		QTY_OF_ERR			((uint8_t)	10)			// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms.
-#define		MAIN_CYCLE_DELAY	((uint8_t)	2)			// The main cycle delay (in ms) for correct work of D-regulation.
+#define		MAIN_CYCLE_DELAY	((uint8_t)	5)			// The main cycle delay (in ms) for correct work of I- and D-regulation.
 
 
 /********************************** Global variables **********************************/
