@@ -74,9 +74,9 @@ int main (void) {
 			if (PID_total_correction < -127)	PID_total_correction = -127;
 			USART1_SendByte ((uint8_t) PID_total_correction);
 			
-			// Delay.
-			for (i = 0; i < (1000000 * MAIN_CYCLE_DELAY) / 1000; i++) {
-				__ASM ("nop");
-			}
+//			// Delay.
+//			for (i = 0; i < (1000000 * MAIN_CYCLE_DELAY) / 1000; i++) {
+//				__ASM ("nop");
+//			}
 		}
 }
