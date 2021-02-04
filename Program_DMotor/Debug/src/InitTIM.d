@@ -1,4 +1,4 @@
-src/InitTIM.d src/InitTIM.o: ../src/InitTIM.c ../src/../inc/InitTIM.h \
+src/InitTIM.d src/InitTIM.o: ../src/InitTIM.c \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,8 +10,6 @@ src/InitTIM.d src/InitTIM.o: ../src/InitTIM.c ../src/../inc/InitTIM.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
-
-../src/../inc/InitTIM.h:
 
 c:\user\ programs\atmel\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
