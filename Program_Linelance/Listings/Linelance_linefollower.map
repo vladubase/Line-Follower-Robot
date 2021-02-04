@@ -389,16 +389,16 @@ Image Symbol Table
     i.SystemInit                             0x080007dc   Section        0  system_stm32f0xx.o(i.SystemInit)
     i.USART1_SendByte                        0x08000858   Section        0  inituart.o(i.USART1_SendByte)
     i.main                                   0x08000874   Section        0  main.o(i.main)
-    x$fpl$fadd                               0x08000964   Section      140  faddsub.o(x$fpl$fadd)
-    _fadd1                                   0x08000971   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    x$fpl$fleqf                              0x080009f0   Section       84  flef.o(x$fpl$fleqf)
-    x$fpl$fmul                               0x08000a44   Section      176  fmul.o(x$fpl$fmul)
-    x$fpl$frleqf                             0x08000af4   Section       88  frlef.o(x$fpl$frleqf)
-    x$fpl$fsub                               0x08000b4c   Section      208  faddsub.o(x$fpl$fsub)
-    _fsub1                                   0x08000b59   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    .constdata                               0x08000c1c   Section       64  fdiv.o(.constdata)
-    x$fpl$usenofp                            0x08000c1c   Section        0  usenofp.o(x$fpl$usenofp)
-    fdiv_tab                                 0x08000c1c   Data          64  fdiv.o(.constdata)
+    x$fpl$fadd                               0x08000954   Section      140  faddsub.o(x$fpl$fadd)
+    _fadd1                                   0x08000961   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    x$fpl$fleqf                              0x080009e0   Section       84  flef.o(x$fpl$fleqf)
+    x$fpl$fmul                               0x08000a34   Section      176  fmul.o(x$fpl$fmul)
+    x$fpl$frleqf                             0x08000ae4   Section       88  frlef.o(x$fpl$frleqf)
+    x$fpl$fsub                               0x08000b3c   Section      208  faddsub.o(x$fpl$fsub)
+    _fsub1                                   0x08000b49   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    .constdata                               0x08000c0c   Section       64  fdiv.o(.constdata)
+    x$fpl$usenofp                            0x08000c0c   Section        0  usenofp.o(x$fpl$usenofp)
+    fdiv_tab                                 0x08000c0c   Data          64  fdiv.o(.constdata)
     .data                                    0x20000000   Section        8  main.o(.data)
     .bss                                     0x20000008   Section       96  libspace.o(.bss)
     HEAP                                     0x20000068   Section      512  startup_stm32f030.o(HEAP)
@@ -565,20 +565,20 @@ Image Symbol Table
     ReadSensorLineData                       0x080006d5   Thumb Code    42  func_readsensorlinedata.o(i.ReadSensorLineData)
     SystemInit                               0x080007dd   Thumb Code   110  system_stm32f0xx.o(i.SystemInit)
     USART1_SendByte                          0x08000859   Thumb Code    22  inituart.o(i.USART1_SendByte)
-    main                                     0x08000875   Thumb Code   224  main.o(i.main)
-    __aeabi_fadd                             0x08000965   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    _fadd                                    0x08000965   Thumb Code   134  faddsub.o(x$fpl$fadd)
-    __aeabi_cfcmple                          0x080009f1   Thumb Code     0  flef.o(x$fpl$fleqf)
-    _fcmple                                  0x080009f1   Thumb Code    78  flef.o(x$fpl$fleqf)
-    __aeabi_fmul                             0x08000a45   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x08000a45   Thumb Code   172  fmul.o(x$fpl$fmul)
-    __aeabi_cfrcmple                         0x08000af5   Thumb Code     0  frlef.o(x$fpl$frleqf)
-    _frcmple                                 0x08000af5   Thumb Code    84  frlef.o(x$fpl$frleqf)
-    __aeabi_fsub                             0x08000b4d   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    _fsub                                    0x08000b4d   Thumb Code   204  faddsub.o(x$fpl$fsub)
-    __I$use$fp                               0x08000c1c   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08000c5c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000c7c   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08000875   Thumb Code   210  main.o(i.main)
+    __aeabi_fadd                             0x08000955   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    _fadd                                    0x08000955   Thumb Code   134  faddsub.o(x$fpl$fadd)
+    __aeabi_cfcmple                          0x080009e1   Thumb Code     0  flef.o(x$fpl$fleqf)
+    _fcmple                                  0x080009e1   Thumb Code    78  flef.o(x$fpl$fleqf)
+    __aeabi_fmul                             0x08000a35   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08000a35   Thumb Code   172  fmul.o(x$fpl$fmul)
+    __aeabi_cfrcmple                         0x08000ae5   Thumb Code     0  frlef.o(x$fpl$frleqf)
+    _frcmple                                 0x08000ae5   Thumb Code    84  frlef.o(x$fpl$frleqf)
+    __aeabi_fsub                             0x08000b3d   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    _fsub                                    0x08000b3d   Thumb Code   204  faddsub.o(x$fpl$fsub)
+    __I$use$fp                               0x08000c0c   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08000c4c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000c6c   Number         0  anon$$obj.o(Region$$Table)
     line_data                                0x20000000   Data           8  main.o(.data)
     __libspace_start                         0x20000008   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000068   Data           0  libspace.o(.bss)
@@ -591,9 +591,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000159
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00000c84, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00000c74, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000c7c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000c6c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -674,25 +674,25 @@ Memory Map of the image
     0x08000704   0x08000704   0x000000d8   Code   RO           12    i.SetSysClock       system_stm32f0xx.o
     0x080007dc   0x080007dc   0x0000007c   Code   RO           14    i.SystemInit        system_stm32f0xx.o
     0x08000858   0x08000858   0x0000001c   Code   RO          162    i.USART1_SendByte   inituart.o
-    0x08000874   0x08000874   0x000000f0   Code   RO           65    i.main              main.o
-    0x08000964   0x08000964   0x0000008c   Code   RO          372    x$fpl$fadd          fz_ps.l(faddsub.o)
-    0x080009f0   0x080009f0   0x00000054   Code   RO          385    x$fpl$fleqf         fz_ps.l(flef.o)
-    0x08000a44   0x08000a44   0x000000b0   Code   RO          387    x$fpl$fmul          fz_ps.l(fmul.o)
-    0x08000af4   0x08000af4   0x00000058   Code   RO          389    x$fpl$frleqf        fz_ps.l(frlef.o)
-    0x08000b4c   0x08000b4c   0x000000d0   Code   RO          374    x$fpl$fsub          fz_ps.l(faddsub.o)
-    0x08000c1c   0x08000c1c   0x00000000   Code   RO          398    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x08000c1c   0x08000c1c   0x00000040   Data   RO          379    .constdata          fz_ps.l(fdiv.o)
-    0x08000c5c   0x08000c5c   0x00000020   Data   RO          567    Region$$Table       anon$$obj.o
+    0x08000874   0x08000874   0x000000e0   Code   RO           65    i.main              main.o
+    0x08000954   0x08000954   0x0000008c   Code   RO          372    x$fpl$fadd          fz_ps.l(faddsub.o)
+    0x080009e0   0x080009e0   0x00000054   Code   RO          385    x$fpl$fleqf         fz_ps.l(flef.o)
+    0x08000a34   0x08000a34   0x000000b0   Code   RO          387    x$fpl$fmul          fz_ps.l(fmul.o)
+    0x08000ae4   0x08000ae4   0x00000058   Code   RO          389    x$fpl$frleqf        fz_ps.l(frlef.o)
+    0x08000b3c   0x08000b3c   0x000000d0   Code   RO          374    x$fpl$fsub          fz_ps.l(faddsub.o)
+    0x08000c0c   0x08000c0c   0x00000000   Code   RO          398    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x08000c0c   0x08000c0c   0x00000040   Data   RO          379    .constdata          fz_ps.l(fdiv.o)
+    0x08000c4c   0x08000c4c   0x00000020   Data   RO          567    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000c7c, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000c6c, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08000c7c   0x00000008   Data   RW           66    .data               main.o
+    0x20000000   0x08000c6c   0x00000008   Data   RW           66    .data               main.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x08000c84, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x08000c74, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -713,12 +713,12 @@ Image component sizes
         84         14          0          0          0        423   initgpio.o
         40          6          0          0          0        398   initswd.o
        196         14          0          0          0        907   inituart.o
-       240         16          0          8          0       1659   main.o
+       224         14          0          8          0       1603   main.o
        116         56        180          0       1536        676   startup_stm32f030.o
        340         24          0          0          0       5889   system_stm32f0xx.o
 
     ----------------------------------------------------------------------
-      1132        148        212          8       1536      11101   Object Totals
+      1116        146        212          8       1536      11045   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -781,15 +781,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2920        204        276          8       1632      11645   Grand Totals
-      2920        204        276          8       1632      11645   ELF Image Totals
-      2920        204        276          8          0          0   ROM Totals
+      2904        202        276          8       1632      11589   Grand Totals
+      2904        202        276          8       1632      11589   ELF Image Totals
+      2904        202        276          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3196 (   3.12kB)
+    Total RO  Size (Code + RO Data)                 3180 (   3.11kB)
     Total RW  Size (RW Data + ZI Data)              1640 (   1.60kB)
-    Total ROM Size (Code + RO Data + RW Data)       3204 (   3.13kB)
+    Total ROM Size (Code + RO Data + RW Data)       3188 (   3.11kB)
 
 ==============================================================================
 
