@@ -51,20 +51,39 @@
 
 void main (void) {
 	// DEFINITION OF VARIABLES
-		char USART_message[1];
-		uint8_t i = 0;
-	
+		uint8_t motor_delta = 81;
+		
 	// MICROCONTROLLER INITIALIZATION
 		InitSYS ();
 		InitTIM ();
 		InitUSART ();
-		
-		DDRD |= (1 << DDD7);	// output
 	
 	// MAIN CYCLE
 		while (true) {
-			USART_message[0] = USART_Receive ();
+			motor_delta = USART_ReceiveByte ();
 			
-			USART_Transmit ()
+			//motor_delta = -117;
+			//
+			//if (motor_delta < 0) {
+				//motor_delta = -(2 * motor_delta) + 1;
+				//
+				//OCR0A = 0;
+				//OCR0B = AVG_SPEED - motor_delta;
+				//OCR2A = AVG_SPEED + motor_delta;
+				//OCR2B = 0;
+			//}
+			//else {
+				//motor_delta = 2 * motor_delta + 1;
+				//
+				//OCR0A = 0;
+				//OCR0B = AVG_SPEED + motor_delta;
+				//OCR2A = AVG_SPEED - motor_delta;
+				//OCR2B = 0;
+			//}
+			
+			//OCR0A = 0;
+			//OCR0B = 0;
+			//OCR2A = 0;
+			//OCR2B = 0;
 		}
 }

@@ -26,9 +26,10 @@
 
 // CLOCK
 #define		F_CPU				((uint32_t)	20000000)	// Quartz resonator clock frequency
+// FUSE_CKSEL[1..2] 011
 
 // GENERAL PARAMETERS
-#define		AVG_SPEED			((uint8_t)	155)		// Average speed of robot
+#define		AVG_SPEED			((uint8_t)	127)		// Average speed of robot
 
 #define		MOTORS_NOT_PERFECT	false 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
 #if MOTORS_NOT_PERFECT
