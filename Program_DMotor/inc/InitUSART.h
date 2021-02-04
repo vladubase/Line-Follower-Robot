@@ -21,15 +21,14 @@
 
 /*************************************** Defines **************************************/
 
-#define	FOSC	(uint32_t) 20e6							// Clock Speed
-#define	BAUD	(uint16_t) 9600
-#define	MYUBRR	(uint8_t) FOSC / 16 / BAUD - 1
+#define	F_CPU		(uint32_t)	20e6									// Clock Speed
+#define	USART_BAUD	(uint16_t)	230400
 
 /********************************* Function  prototypes *******************************/
 
 void InitUSART (void);
-uint8_t USART_Receive (void);
-void USART_Transmit(uint8_t data);
+uint8_t USART_ReceiveByte (void);
+void USART_SendByte (uint8_t data);
 
 
 #endif /* _INIT_USART_H_ */
