@@ -5,7 +5,7 @@
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
 	*	@version	V1.0
-	*	@date 		01-February-2021
+	*	@date 		09-February-2021
 	*	@link		https://github.com/vladubase/Linelance
 	*
 *****/
@@ -26,14 +26,15 @@ void ReadSensorLineData (void) {
 	// DEFINITION OF VARIABLES
 		extern bool line_data[];
 		uint8_t i = 0;
-		char port_num[1];
-		char port_state[1];
+//		char port_num[1];
+//		char port_state[1];
 	
-	// FUNCTION
+	// FUNCTION	
+//		USART1_SendString ("\n\n");
 		for (i = 0; i < 8; i++) {
 			// Write data from PA0 to PA7.
 			line_data[i] = ((GPIOA->IDR) & (1 << i));
-			
+
 //			sprintf (port_num, "%u", i);
 //			USART1_SendString ("PORT ");
 //			USART1_SendString (port_num);
@@ -43,4 +44,3 @@ void ReadSensorLineData (void) {
 //			USART1_SendString ("\r\n");
 		}	
 }
- 

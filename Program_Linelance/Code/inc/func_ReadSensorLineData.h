@@ -8,7 +8,7 @@
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
 	*	@version	V1.0
-	*	@date 		01-February-2021
+	*	@date 		09-February-2021
 	*	@link		https://github.com/vladubase/Linelance
 	*
 *****/
@@ -19,6 +19,8 @@
 #include "stm32f0xx.h"
 #include "stdint.h"
 #include "stdbool.h"
+#include "stdio.h"
+#include "InitUART.h"
 
 
 /********************************* Function  prototypes *******************************/
