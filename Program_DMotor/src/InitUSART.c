@@ -19,17 +19,19 @@
 /************************************** Function **************************************/
 
 void InitUSART () {
-	/* Set baud rate 230400 */
+	/* Asynchronous Normal mode. Asynchronous Normal mode. Set baud rate 230400 */
 	UBRR0 = 4;											// F_CPU / (USART_BAUD * 16) - 1.
 	
-	/* Enable receiver and transmitter */
-	UCSR0B |= (1 << RXEN0) | (1 << TXEN0);
+	UCSR0B |= (1 << RXEN0) |							// Enable receiver.
+		(1 << TXEN0);									// Enable transmitter.
 	
-	/* Set frame format: 8data, 1 stop bit */
-	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);
+	/* Set frame format */
+	UCSR0C |= (1 << UCSZ01) |							// USART Character Size / Data Order.
+		(1 << UCSZ00);									// 011:	8-bit.
+	UCSR0C &= ~(1 << USBS0);							// 0:	1 stop-bit.
 }
 
-uint8_t USART_ReceiveByte (void) {
+int8_t USART_ReceiveByte (void) {
 	/* Wait for data to be received */
 	while (!(UCSR0A & (1 << RXC0)));
 	
@@ -37,7 +39,7 @@ uint8_t USART_ReceiveByte (void) {
 	return UDR0;
 }
 
-void USART_SendByte (uint8_t data) {
+void USART_SendByte (int8_t data) {
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & (1 << UDRE0)));
 	

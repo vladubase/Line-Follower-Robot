@@ -27,8 +27,8 @@
 /********************************* Function  prototypes *******************************/
 
 void InitUSART (void);
-uint8_t USART_ReceiveByte (void);
-void USART_SendByte (uint8_t data);
+int8_t USART_ReceiveByte (void);
+void USART_SendByte (int8_t data);
 
 
 #endif /* _INIT_USART_H_ */
