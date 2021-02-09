@@ -25,18 +25,10 @@
 /*************************************** Defines **************************************/
 
 // CLOCK
-#define		F_CPU				((uint32_t)	20000000)	// Quartz resonator clock frequency
-// FUSE_CKSEL[1..2] 011
+#define		F_CPU				((uint32_t)	20000000)	// Quartz resonator clock frequency.
 
 // GENERAL PARAMETERS
-#define		AVG_SPEED			((uint8_t)	127)		// Average speed of robot
-
-#define		MOTORS_NOT_PERFECT	false 					// Do the motors have different real parameters (e.g. Speed, Torque, etc.)?
-#if MOTORS_NOT_PERFECT
-	// There is nothing perfect ;)
-	#define	L_MOTOR_MISMATCH	((float)	1.0)		// Coefficients of motor power difference
-	#define	R_MOTOR_MISMATCH	((float)	1.07)
-#endif /* MOTORS_NOT_PERFECT */
+#define		MOTOR_POWER			((float)	0.65)		// Speed of robot in percents.
 
 //#define	READ_IR_SENSOR		PINx & (1 << DDxx)
 
