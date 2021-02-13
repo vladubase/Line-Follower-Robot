@@ -28,7 +28,7 @@
 #define		F_CPU				((uint32_t)	20000000)	// Quartz resonator clock frequency.
 
 // GENERAL PARAMETERS
-#define		MOTOR_POWER			((float)	0.65)		// Speed of robot in percents.
+#define		MOTOR_POWER			((float)	0.7)		// Speed of robot in percents.
 
 //#define	READ_IR_SENSOR		PINx & (1 << DDxx)
 

@@ -64,20 +64,36 @@ void main (void) {
       USART_message = (int8_t) USART_ReceiveByte ();
       
       if (USART_message < 0) {
-        motor_delta = 2 * -USART_message;
+        motor_delta = -USART_message;
         
-        OCR0A = 127 - motor_delta;
-        OCR0B = 0;
-        OCR2A = 0;
-        OCR2B = 127 + motor_delta;
+		// Turn left.
+		if (motor_delta >= 120) {
+			OCR0A = 0;
+			OCR0B = motor_delta / 2;
+			OCR2A = 0;
+			OCR2B = 127 + motor_delta;
+		} else {
+			OCR0A = 127 - motor_delta;
+			OCR0B = 0;
+			OCR2A = 0;
+			OCR2B = 127 + motor_delta;
+		}
       }
-      else if (USART_message > 0) {
-        motor_delta = 2 * USART_message;
+	  // Turn right.
+      else if (USART_message >= 0) {
+        motor_delta = USART_message;
         
-        OCR0A = 127 + motor_delta;
-        OCR0B = 0;
-        OCR2A = 0;
-        OCR2B = 127 - motor_delta;
+		if (motor_delta >= 120) {
+			OCR0A = 127 + motor_delta;
+			OCR0B = 0;
+			OCR2A = motor_delta / 2;
+			OCR2B = 0;
+		} else {
+			OCR0A = 127 + motor_delta;
+			OCR0B = 0;
+			OCR2A = 0;
+			OCR2B = 127 - motor_delta;
+		}
       }
     }
 }
