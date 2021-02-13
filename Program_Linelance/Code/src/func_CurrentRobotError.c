@@ -5,7 +5,7 @@
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
 	*	@version	V1.0
-	*	@date 		09-February-2021
+	*	@date 		13-February-2021
 	*	@link		https://github.com/vladubase/Linelance
 	*
 *****/
@@ -27,7 +27,7 @@ float CurrentRobotError (void) {
 		extern bool line_data[];
 		uint8_t i = 0;
 		float current_error = 0.0;
-		int8_t power_of_sensor[8] = {-10, -5, -2, -1, 1, 2, 5, 10};
+		int8_t power_of_sensor[8] = {-15, -7, -5, -3, 3, 5, 7, 15};
 	
 	// FUNCTION
 		for (i = 0; i < 8; i++) {

@@ -8,7 +8,7 @@
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>
 *	@version	V1.0
-*	@date 		09-February-2021
+*	@date 		13-February-2021
 *	@link		https://github.com/vladubase/Line-Follower-Robot
 *
 */
@@ -33,13 +33,13 @@
 
 // PID
 // Setup: P -> PD -> PID
-#define		kP					((float)	8)			// Proportional	feedback coefficient.
-#define		kI					((float)	0)			// Integral 	feedback coefficient.
-#define		kD					((float)	0)			// Differential	feedback coefficient.
-#define		PID_DIRECTION		1						// 0 - NORMAL,
-														// 1 - REVERSE.
+#define		kP					((float)	6.5)		// Proportional	feedback coefficient.
+#define		kI					((float)	0.0)		// Integral 	feedback coefficient.
+#define		kD					((float)	0.0)		// Differential	feedback coefficient.
+#define		PID_DIRECTION		1U						// 0 - NORMAL,
+														// 1 - REVERSE (opposite values of errors).
 #define		QTY_OF_ERR			((uint8_t)	10)			// Quantity of errors in memory during last (QTY_OF_ERR * MAIN_CYCLE_DELAY) ms.
-#define		MAIN_CYCLE_DELAY	((float)	0.050)		// The main cycle delay (in sec.) for correct work of I- and D-regulation.
+#define		MAIN_CYCLE_DELAY	((float)	0.020)		// The main cycle delay (in sec.) for correct work of I- and D-regulation.
 
 #define		DEBUG				false
 

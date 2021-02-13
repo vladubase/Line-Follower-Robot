@@ -5,7 +5,7 @@
 *	@author 	Uladzislau 'vladubase' Dubatouka
 *				<vladubase@gmail.com>.
 *	@version	V1.0
-*	@date 		09-February-2021
+*	@date 		13-February-2021
 *	@link		https://github.com/vladubase/Line-Follower-Robot
 *
 */
@@ -81,9 +81,9 @@ int main (void) {
 			if (PID_total_correction < -127.0)	PID_total_correction = -127.0;
 			USART1_SendByte ((int8_t)PID_total_correction);						// Send delta to the DMotor module.
 			
-//			// Delay.
-//			for (i = 0; i < (1e5 * MAIN_CYCLE_DELAY); i++) {
-//				__ASM ("nop");
-//			}
+			// Delay.
+			for (i = 0; i < (1e5 * MAIN_CYCLE_DELAY); i++) {
+				__ASM ("nop");
+			}
 		}
 }

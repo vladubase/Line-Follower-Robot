@@ -5,7 +5,7 @@
 	*	@author 	Uladzislau 'vladubase' Dubatouka
 	*				<vladubase@gmail.com>
 	*	@version	V1.0
-	*	@date 		09-February-2021
+	*	@date 		13-February-2021
 	*	@link		https://github.com/vladubase/Linelance
 	*
 *****/
