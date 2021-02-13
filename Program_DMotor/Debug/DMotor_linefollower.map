@@ -167,7 +167,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x17a
+.text           0x00000000      0x1a2
  *(.vectors)
  .vectors       0x00000000       0x68 C:/User Programs/Atmel Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -250,23 +250,23 @@ END GROUP
                 0x0000007c                __vector_20
                 0x00000080                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000080       0x54 main.o
+ .text.main     0x00000080       0x7c main.o
                 0x00000080                main
- .text.InitSYS  0x000000d4        0xe src/InitSYS.o
-                0x000000d4                InitSYS
- .text.InitTIM  0x000000e2       0x5c src/InitTIM.o
-                0x000000e2                InitTIM
+ .text.InitSYS  0x000000fc        0xe src/InitSYS.o
+                0x000000fc                InitSYS
+ .text.InitTIM  0x0000010a       0x5c src/InitTIM.o
+                0x0000010a                InitTIM
  .text.InitUSART
-                0x0000013e       0x28 src/InitUSART.o
-                0x0000013e                InitUSART
+                0x00000166       0x28 src/InitUSART.o
+                0x00000166                InitUSART
  .text.USART_ReceiveByte
-                0x00000166       0x10 src/InitUSART.o
-                0x00000166                USART_ReceiveByte
-                0x00000176                . = ALIGN (0x2)
+                0x0000018e       0x10 src/InitUSART.o
+                0x0000018e                USART_ReceiveByte
+                0x0000019e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000176        0x0 c:/user programs/atmel studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000176                _exit
-                0x00000176                exit
+ .fini9         0x0000019e        0x0 c:/user programs/atmel studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000019e                _exit
+                0x0000019e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -285,11 +285,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000176        0x4 c:/user programs/atmel studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000019e        0x4 c:/user programs/atmel studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000017a                _etext = .
+                0x000001a2                _etext = .
 
-.data           0x00800100        0x0 load address 0x0000017a
+.data           0x00800100        0x0 load address 0x000001a2
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -307,8 +307,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x0000017a                __data_load_start = LOADADDR (.data)
-                0x0000017a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001a2                __data_load_start = LOADADDR (.data)
+                0x000001a2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -412,13 +412,13 @@ END GROUP
  .debug_abbrev  0x00000675       0x51 src/InitTIM.o
  .debug_abbrev  0x000006c6       0x92 src/InitUSART.o
 
-.debug_line     0x00000000      0x510
+.debug_line     0x00000000      0x540
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/User Programs/Atmel Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000133      0x133 main.o
- .debug_line    0x00000266       0xa6 src/InitSYS.o
- .debug_line    0x0000030c       0xfa src/InitTIM.o
- .debug_line    0x00000406      0x10a src/InitUSART.o
+ .debug_line    0x00000133      0x163 main.o
+ .debug_line    0x00000296       0xa6 src/InitSYS.o
+ .debug_line    0x0000033c       0xfa src/InitTIM.o
+ .debug_line    0x00000436      0x10a src/InitUSART.o
 
 .debug_frame    0x00000000       0xb0
  *(.debug_frame)
@@ -439,9 +439,9 @@ END GROUP
  .debug_str     0x000003a7       0x30 src/InitUSART.o
                                 0x1ad (size before relaxing)
 
-.debug_loc      0x00000000       0x64
+.debug_loc      0x00000000       0x7a
  *(.debug_loc)
- .debug_loc     0x00000000       0x64 main.o
+ .debug_loc     0x00000000       0x7a main.o
 
 .debug_macinfo
  *(.debug_macinfo)
