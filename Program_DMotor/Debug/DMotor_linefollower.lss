@@ -3,29 +3,27 @@ DMotor_linefollower.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001f6  2**0
+  0 .data         00000000  00800100  00800100  0000018a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000001a2  00000000  00000000  00000054  2**1
+  1 .text         00000136  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000001f6  2**0
+  2 .comment      00000030  00000000  00000000  0000018a  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000228  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001bc  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000090  00000000  00000000  00000268  2**0
+  4 .debug_aranges 00000090  00000000  00000000  000001fc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000008db  00000000  00000000  000002f8  2**0
+  5 .debug_info   000008be  00000000  00000000  0000028c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000758  00000000  00000000  00000bd3  2**0
+  6 .debug_abbrev 00000765  00000000  00000000  00000b4a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000540  00000000  00000000  0000132b  2**0
+  7 .debug_line   000004f0  00000000  00000000  000012af  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000b0  00000000  00000000  0000186c  2**2
+  8 .debug_frame  000000b0  00000000  00000000  000017a0  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003d7  00000000  00000000  0000191c  2**0
+  9 .debug_str    000003d7  00000000  00000000  00001850  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000007a  00000000  00000000  00001cf3  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000050  00000000  00000000  00001d6d  2**0
+ 10 .debug_ranges 00000050  00000000  00000000  00001c27  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -66,7 +64,7 @@ Disassembly of section .text:
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
   74:	0e 94 40 00 	call	0x80	; 0x80 <main>
-  78:	0c 94 cf 00 	jmp	0x19e	; 0x19e <_exit>
+  78:	0c 94 99 00 	jmp	0x132	; 0x132 <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -78,254 +76,165 @@ Disassembly of section .text:
     
   // MICROCONTROLLER INITIALIZATION
     InitSYS ();
-  80:	0e 94 7e 00 	call	0xfc	; 0xfc <InitSYS>
+  80:	0e 94 50 00 	call	0xa0	; 0xa0 <InitSYS>
     InitTIM ();
-  84:	0e 94 85 00 	call	0x10a	; 0x10a <InitTIM>
+  84:	0e 94 57 00 	call	0xae	; 0xae <InitTIM>
     InitUSART ();
-  88:	0e 94 b3 00 	call	0x166	; 0x166 <InitUSART>
-			OCR2A = motor_delta / 2;
-			OCR2B = 0;
-		} else {
-			OCR0A = 127 + motor_delta;
-			OCR0B = 0;
-			OCR2A = 0;
-  8c:	03 eb       	ldi	r16, 0xB3	; 179
-  8e:	10 e0       	ldi	r17, 0x00	; 0
-			OCR2B = 127 - motor_delta;
-  90:	0f 2e       	mov	r0, r31
-  92:	ff e7       	ldi	r31, 0x7F	; 127
-  94:	ff 2e       	mov	r15, r31
-  96:	f0 2d       	mov	r31, r0
-  98:	c4 eb       	ldi	r28, 0xB4	; 180
-  9a:	d0 e0       	ldi	r29, 0x00	; 0
-    InitTIM ();
+  88:	0e 94 85 00 	call	0x10a	; 0x10a <InitUSART>
+  
+  // MAIN CYCLE
+    while (true) {
+		
+		OCR0A = 50;
+  8c:	82 e3       	ldi	r24, 0x32	; 50
+		OCR0B = 50;
+		OCR2A = 50;
+  8e:	a3 eb       	ldi	r26, 0xB3	; 179
+  90:	b0 e0       	ldi	r27, 0x00	; 0
+		OCR2B = 50;
+  92:	e4 eb       	ldi	r30, 0xB4	; 180
+  94:	f0 e0       	ldi	r31, 0x00	; 0
     InitUSART ();
   
   // MAIN CYCLE
     while (true) {
-      USART_message = (int8_t) USART_ReceiveByte ();
-  9c:	0e 94 c7 00 	call	0x18e	; 0x18e <USART_ReceiveByte>
-      
-      if (USART_message < 0) {
-  a0:	88 23       	and	r24, r24
-  a2:	bc f4       	brge	.+46     	; 0xd2 <main+0x52>
-        motor_delta = -USART_message;
-  a4:	98 2f       	mov	r25, r24
-  a6:	91 95       	neg	r25
-        
-		// Turn left.
-		if (motor_delta >= 120) {
-  a8:	98 37       	cpi	r25, 0x78	; 120
-  aa:	48 f0       	brcs	.+18     	; 0xbe <main+0x3e>
-			OCR0A = 0;
-  ac:	17 bc       	out	0x27, r1	; 39
-			OCR0B = motor_delta / 2;
-  ae:	96 95       	lsr	r25
-  b0:	98 bd       	out	0x28, r25	; 40
-			OCR2A = 0;
-  b2:	f8 01       	movw	r30, r16
-  b4:	10 82       	st	Z, r1
-			OCR2B = 127 + motor_delta;
-  b6:	ff 2d       	mov	r31, r15
-  b8:	f8 1b       	sub	r31, r24
-  ba:	f8 83       	st	Y, r31
-  bc:	ef cf       	rjmp	.-34     	; 0x9c <main+0x1c>
-		} else {
-			OCR0A = 127 - motor_delta;
-  be:	9f e7       	ldi	r25, 0x7F	; 127
-  c0:	98 0f       	add	r25, r24
-  c2:	97 bd       	out	0x27, r25	; 39
-			OCR0B = 0;
-  c4:	18 bc       	out	0x28, r1	; 40
-			OCR2A = 0;
-  c6:	f8 01       	movw	r30, r16
-  c8:	10 82       	st	Z, r1
-			OCR2B = 127 + motor_delta;
-  ca:	ff 2d       	mov	r31, r15
-  cc:	f8 1b       	sub	r31, r24
-  ce:	f8 83       	st	Y, r31
-  d0:	e5 cf       	rjmp	.-54     	; 0x9c <main+0x1c>
-      }
-	  // Turn right.
-      else if (USART_message >= 0) {
-        motor_delta = USART_message;
-        
-		if (motor_delta >= 120) {
-  d2:	88 37       	cpi	r24, 0x78	; 120
-  d4:	48 f0       	brcs	.+18     	; 0xe8 <main+0x68>
-			OCR0A = 127 + motor_delta;
-  d6:	9f e7       	ldi	r25, 0x7F	; 127
-  d8:	98 0f       	add	r25, r24
-  da:	97 bd       	out	0x27, r25	; 39
-			OCR0B = 0;
-  dc:	18 bc       	out	0x28, r1	; 40
-			OCR2A = motor_delta / 2;
-  de:	86 95       	lsr	r24
-  e0:	f8 01       	movw	r30, r16
-  e2:	80 83       	st	Z, r24
-			OCR2B = 0;
-  e4:	18 82       	st	Y, r1
-  e6:	da cf       	rjmp	.-76     	; 0x9c <main+0x1c>
-		} else {
-			OCR0A = 127 + motor_delta;
-  e8:	9f e7       	ldi	r25, 0x7F	; 127
-  ea:	98 0f       	add	r25, r24
-  ec:	97 bd       	out	0x27, r25	; 39
-			OCR0B = 0;
-  ee:	18 bc       	out	0x28, r1	; 40
-			OCR2A = 0;
-  f0:	f8 01       	movw	r30, r16
-  f2:	10 82       	st	Z, r1
-			OCR2B = 127 - motor_delta;
-  f4:	ff 2d       	mov	r31, r15
-  f6:	f8 1b       	sub	r31, r24
-  f8:	f8 83       	st	Y, r31
-  fa:	d0 cf       	rjmp	.-96     	; 0x9c <main+0x1c>
+		
+		OCR0A = 50;
+  96:	87 bd       	out	0x27, r24	; 39
+		OCR0B = 50;
+  98:	88 bd       	out	0x28, r24	; 40
+		OCR2A = 50;
+  9a:	8c 93       	st	X, r24
+		OCR2B = 50;
+  9c:	80 83       	st	Z, r24
+  9e:	fb cf       	rjmp	.-10     	; 0x96 <main+0x16>
 
-000000fc <InitSYS>:
+000000a0 <InitSYS>:
 			DDRx &= ~(1 << DDxx);
 		#endif /* READ_SENSOR_IR */
 
 	// Crystal Oscillator division factor: 1
 		#pragma optsize-
 			CLKPR |= (1 << CLKPCE);
-  fc:	e1 e6       	ldi	r30, 0x61	; 97
-  fe:	f0 e0       	ldi	r31, 0x00	; 0
- 100:	80 81       	ld	r24, Z
- 102:	80 68       	ori	r24, 0x80	; 128
- 104:	80 83       	st	Z, r24
+  a0:	e1 e6       	ldi	r30, 0x61	; 97
+  a2:	f0 e0       	ldi	r31, 0x00	; 0
+  a4:	80 81       	ld	r24, Z
+  a6:	80 68       	ori	r24, 0x80	; 128
+  a8:	80 83       	st	Z, r24
 			CLKPR = 0x00;
- 106:	10 82       	st	Z, r1
- 108:	08 95       	ret
+  aa:	10 82       	st	Z, r1
+  ac:	08 95       	ret
 
-0000010a <InitTIM>:
+000000ae <InitTIM>:
 /************************************** Function **************************************/
 
 void InitTIM (void) {
 	// Motors
 	// Output mode
 	DDRB |= (1 << DDB3);	// OC2A
- 10a:	23 9a       	sbi	0x04, 3	; 4
+  ae:	23 9a       	sbi	0x04, 3	; 4
 	DDRD |= (1 << DDD6) |	// OC0A
- 10c:	8a b1       	in	r24, 0x0a	; 10
- 10e:	88 66       	ori	r24, 0x68	; 104
- 110:	8a b9       	out	0x0a, r24	; 10
+  b0:	8a b1       	in	r24, 0x0a	; 10
+  b2:	88 66       	ori	r24, 0x68	; 104
+  b4:	8a b9       	out	0x0a, r24	; 10
 	// Timer/Counter 0
 	// Fast PWM Mode
 	// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
 	// TOP = 0xFF
 	// Prescaler: 1:64
 	TCCR0A |= (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
- 112:	84 b5       	in	r24, 0x24	; 36
- 114:	83 6a       	ori	r24, 0xA3	; 163
- 116:	84 bd       	out	0x24, r24	; 36
+  b6:	84 b5       	in	r24, 0x24	; 36
+  b8:	83 6a       	ori	r24, 0xA3	; 163
+  ba:	84 bd       	out	0x24, r24	; 36
 	TCCR0A &= ~((1 << COM0A0) | (1 << COM0B0) | (1 << 3) | (1 << 2));
- 118:	84 b5       	in	r24, 0x24	; 36
- 11a:	83 7a       	andi	r24, 0xA3	; 163
- 11c:	84 bd       	out	0x24, r24	; 36
+  bc:	84 b5       	in	r24, 0x24	; 36
+  be:	83 7a       	andi	r24, 0xA3	; 163
+  c0:	84 bd       	out	0x24, r24	; 36
 	TCCR0B |= (1 << CS01) | (1 << CS00);
- 11e:	85 b5       	in	r24, 0x25	; 37
- 120:	83 60       	ori	r24, 0x03	; 3
- 122:	85 bd       	out	0x25, r24	; 37
+  c2:	85 b5       	in	r24, 0x25	; 37
+  c4:	83 60       	ori	r24, 0x03	; 3
+  c6:	85 bd       	out	0x25, r24	; 37
 	TCCR0B &= ~((1 << FOC0A) | (1 << FOC0B) | (1 << 5) | (1 << 4) | (1 << WGM02) | (1 << CS02));
- 124:	85 b5       	in	r24, 0x25	; 37
- 126:	83 70       	andi	r24, 0x03	; 3
- 128:	85 bd       	out	0x25, r24	; 37
+  c8:	85 b5       	in	r24, 0x25	; 37
+  ca:	83 70       	andi	r24, 0x03	; 3
+  cc:	85 bd       	out	0x25, r24	; 37
 	TCNT0  = 0x00;
- 12a:	16 bc       	out	0x26, r1	; 38
+  ce:	16 bc       	out	0x26, r1	; 38
 	TIMSK0 = 0x00;
- 12c:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__DATA_REGION_ORIGIN__+0xe>
+  d0:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__DATA_REGION_ORIGIN__+0xe>
 	OCR0A  = 0x00;	OCR0B  = 0x00;
- 130:	17 bc       	out	0x27, r1	; 39
- 132:	18 bc       	out	0x28, r1	; 40
+  d4:	17 bc       	out	0x27, r1	; 39
+  d6:	18 bc       	out	0x28, r1	; 40
 	// Timer/Counter 2
 	// Fast PWM Mode
 	// Clear OC0A on Compare Match, set OC0A at BOTTOM (non-inverting mode)
 	// TOP = 0xFF
 	// Prescaler: 1:64
 	TCCR2A |= (1 << COM2A1) | (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
- 134:	e0 eb       	ldi	r30, 0xB0	; 176
- 136:	f0 e0       	ldi	r31, 0x00	; 0
- 138:	80 81       	ld	r24, Z
- 13a:	83 6a       	ori	r24, 0xA3	; 163
- 13c:	80 83       	st	Z, r24
+  d8:	e0 eb       	ldi	r30, 0xB0	; 176
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	80 81       	ld	r24, Z
+  de:	83 6a       	ori	r24, 0xA3	; 163
+  e0:	80 83       	st	Z, r24
 	TCCR2A &= ~((1 << COM2A0) | (1 << COM2B0) | (1 << 3) | (1 << 2));
- 13e:	80 81       	ld	r24, Z
- 140:	83 7a       	andi	r24, 0xA3	; 163
- 142:	80 83       	st	Z, r24
+  e2:	80 81       	ld	r24, Z
+  e4:	83 7a       	andi	r24, 0xA3	; 163
+  e6:	80 83       	st	Z, r24
 	TCCR2B |= (1 << CS22);
- 144:	e1 eb       	ldi	r30, 0xB1	; 177
- 146:	f0 e0       	ldi	r31, 0x00	; 0
- 148:	80 81       	ld	r24, Z
- 14a:	84 60       	ori	r24, 0x04	; 4
- 14c:	80 83       	st	Z, r24
+  e8:	e1 eb       	ldi	r30, 0xB1	; 177
+  ea:	f0 e0       	ldi	r31, 0x00	; 0
+  ec:	80 81       	ld	r24, Z
+  ee:	84 60       	ori	r24, 0x04	; 4
+  f0:	80 83       	st	Z, r24
 	TCCR2B &= ~((1 << FOC2A) | (1 << FOC2B) | (1 << 5) | (1 << 4) | (1 << WGM22) | (1 << CS21) | (1 << CS20));
- 14e:	80 81       	ld	r24, Z
- 150:	84 70       	andi	r24, 0x04	; 4
- 152:	80 83       	st	Z, r24
+  f2:	80 81       	ld	r24, Z
+  f4:	84 70       	andi	r24, 0x04	; 4
+  f6:	80 83       	st	Z, r24
 	TCNT2  = 0x00;
- 154:	10 92 b2 00 	sts	0x00B2, r1	; 0x8000b2 <__DATA_REGION_ORIGIN__+0x52>
+  f8:	10 92 b2 00 	sts	0x00B2, r1	; 0x8000b2 <__DATA_REGION_ORIGIN__+0x52>
 	TIMSK2 = 0x00;
- 158:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <__DATA_REGION_ORIGIN__+0x10>
+  fc:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <__DATA_REGION_ORIGIN__+0x10>
 	OCR2A  = 0x00;	OCR2B  = 0x00;
- 15c:	10 92 b3 00 	sts	0x00B3, r1	; 0x8000b3 <__DATA_REGION_ORIGIN__+0x53>
- 160:	10 92 b4 00 	sts	0x00B4, r1	; 0x8000b4 <__DATA_REGION_ORIGIN__+0x54>
- 164:	08 95       	ret
+ 100:	10 92 b3 00 	sts	0x00B3, r1	; 0x8000b3 <__DATA_REGION_ORIGIN__+0x53>
+ 104:	10 92 b4 00 	sts	0x00B4, r1	; 0x8000b4 <__DATA_REGION_ORIGIN__+0x54>
+ 108:	08 95       	ret
 
-00000166 <InitUSART>:
+0000010a <InitUSART>:
 
 /************************************** Function **************************************/
 
 void InitUSART () {
 	/* Asynchronous Normal mode. Asynchronous Normal mode. Set baud rate 230400 */
 	UBRR0 = 4;											// F_CPU / (USART_BAUD * 16) - 1.
- 166:	84 e0       	ldi	r24, 0x04	; 4
- 168:	90 e0       	ldi	r25, 0x00	; 0
- 16a:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
- 16e:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+ 10a:	84 e0       	ldi	r24, 0x04	; 4
+ 10c:	90 e0       	ldi	r25, 0x00	; 0
+ 10e:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+ 112:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
 	
 	UCSR0B |= (1 << RXEN0) |							// Enable receiver.
- 172:	e1 ec       	ldi	r30, 0xC1	; 193
- 174:	f0 e0       	ldi	r31, 0x00	; 0
- 176:	80 81       	ld	r24, Z
- 178:	88 61       	ori	r24, 0x18	; 24
- 17a:	80 83       	st	Z, r24
+ 116:	e1 ec       	ldi	r30, 0xC1	; 193
+ 118:	f0 e0       	ldi	r31, 0x00	; 0
+ 11a:	80 81       	ld	r24, Z
+ 11c:	88 61       	ori	r24, 0x18	; 24
+ 11e:	80 83       	st	Z, r24
 		(1 << TXEN0);									// Enable transmitter.
 	
 	/* Set frame format */
 	UCSR0C |= (1 << UCSZ01) |							// USART Character Size / Data Order.
- 17c:	e2 ec       	ldi	r30, 0xC2	; 194
- 17e:	f0 e0       	ldi	r31, 0x00	; 0
- 180:	80 81       	ld	r24, Z
- 182:	86 60       	ori	r24, 0x06	; 6
- 184:	80 83       	st	Z, r24
+ 120:	e2 ec       	ldi	r30, 0xC2	; 194
+ 122:	f0 e0       	ldi	r31, 0x00	; 0
+ 124:	80 81       	ld	r24, Z
+ 126:	86 60       	ori	r24, 0x06	; 6
+ 128:	80 83       	st	Z, r24
 		(1 << UCSZ00);									// 011:	8-bit.
 	UCSR0C &= ~(1 << USBS0);							// 0:	1 stop-bit.
- 186:	80 81       	ld	r24, Z
- 188:	87 7f       	andi	r24, 0xF7	; 247
- 18a:	80 83       	st	Z, r24
- 18c:	08 95       	ret
+ 12a:	80 81       	ld	r24, Z
+ 12c:	87 7f       	andi	r24, 0xF7	; 247
+ 12e:	80 83       	st	Z, r24
+ 130:	08 95       	ret
 
-0000018e <USART_ReceiveByte>:
-}
+00000132 <_exit>:
+ 132:	f8 94       	cli
 
-int8_t USART_ReceiveByte (void) {
-	/* Wait for data to be received */
-	while (!(UCSR0A & (1 << RXC0)));
- 18e:	e0 ec       	ldi	r30, 0xC0	; 192
- 190:	f0 e0       	ldi	r31, 0x00	; 0
- 192:	80 81       	ld	r24, Z
- 194:	88 23       	and	r24, r24
- 196:	ec f7       	brge	.-6      	; 0x192 <USART_ReceiveByte+0x4>
-	
-	/* Get and return received data from buffer */
-	return UDR0;
- 198:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
-}
- 19c:	08 95       	ret
-
-0000019e <_exit>:
- 19e:	f8 94       	cli
-
-000001a0 <__stop_program>:
- 1a0:	ff cf       	rjmp	.-2      	; 0x1a0 <__stop_program>
+00000134 <__stop_program>:
+ 134:	ff cf       	rjmp	.-2      	; 0x134 <__stop_program>
